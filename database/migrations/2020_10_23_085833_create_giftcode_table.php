@@ -16,7 +16,7 @@ class CreateGiftcodeTable extends Migration
         Schema::create('giftcode', function (Blueprint $table) {
             $table->increments('id');
             $table->string('code')->unique();
-            $table->integer('gia_tri');
+            $table->double('gia_tri');
             $table->date('ngay_bat_dau');
             $table->date('ngay_ket_thuc');
         });

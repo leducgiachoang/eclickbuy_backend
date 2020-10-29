@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
     <!-- Our Custom CSS -->
     <link rel="stylesheet" href="../css/style4.css">
+    <link rel="stylesheet" href="../css/backend_css.css">
 
     <!-- Font Awesome JS -->
     <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
@@ -48,25 +49,26 @@
                     </ul>
                 </li>
                 <li>
+                    <a href="#category_product" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                        <i class="fas fa-copy"></i>
+                        Danh mục sản phẩm
+                    </a>
+                    <ul class="collapse list-unstyled" id="category_product">
+                        <li>
+                            <a href="{{ route('DanhMucSanPham_themmoi_get') }}">Thêm mới</a>
+                        </li>
+                        <li>
+                            <a href="{{ route('DanhMucSanPham_danhsach') }}">Danh Sách</a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li>
                     <a href="#">
                         <i class="fas fa-briefcase"></i>
                         About
                     </a>
-                    <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
-                        <i class="fas fa-copy"></i>
-                        Pages
-                    </a>
-                    <ul class="collapse list-unstyled" id="pageSubmenu">
-                        <li>
-                            <a href="#">Page 1</a>
-                        </li>
-                        <li>
-                            <a href="#">Page 2</a>
-                        </li>
-                        <li>
-                            <a href="#">Page 3</a>
-                        </li>
-                    </ul>
+
                 </li>
                 <li>
                     <a href="#">
@@ -90,10 +92,10 @@
 
             <ul class="list-unstyled CTAs">
                 <li>
-                   
+
                 </li>
                 <li>
-                    
+
                 </li>
             </ul>
         </nav>
@@ -135,7 +137,7 @@
 
             @yield('container')
 
-            
+
         </div>
     </div>
 

@@ -19,7 +19,7 @@ class CreateChiTietHoaDonTable extends Migration
             $table->foreign('id_san_pham')->references('id')->on('san_pham')->onDelete('cascade');
             $table->integer('id_hoa_don')->unsigned();
             $table->foreign('id_hoa_don')->references('id')->on('hoa_don')->onDelete('cascade');
-            $table->integer('don_gia');
+            $table->double('don_gia');
             $table->integer('so_luong');
         });
     }

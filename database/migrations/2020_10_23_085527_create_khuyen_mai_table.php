@@ -15,7 +15,8 @@ class CreateKhuyenMaiTable extends Migration
     {
         Schema::create('khuyen_mai', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('noi_dung_khuyen_mai');
+            $table->text('noi_dung_khuyen_mai');
+            $table->double('gia_tri');
         });
     }
 
