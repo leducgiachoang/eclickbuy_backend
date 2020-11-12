@@ -1,9 +1,7 @@
-@extends('template.backend')
+@extends('backEnd.danh_muc_san_pham.template')
 
-@section('container')
+@section('danhmucsanpham_templae')
 
-<div class="row">
-    <div class="col-lg-6 ">
             <div class="card">
                 <div class="card-header">
                     Thêm mới Danh mục
@@ -29,49 +27,5 @@
                       </form>
                 </div>
             </div>
-
-
-    </div>
-    <div class="col-lg-6">
-        <div class="card">
-            <div class="card-header">
-                Danh sách
-            </div>
-
-
-            <div class="card-body">
-
-                <div class="list_danhsach">
-                <table class="table table-hover">
-
-                        <thead>
-                            <tr>
-                                <td>id</td>
-                                <td>Tên danh mục</td>
-                                <td>hình ảnh</td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                        </thead>
-
-                        <tbody>
-                            @foreach ($danhsach as $item)
-                            <tr>
-                                <td>{{ $item->id }}</td>
-                                <td>{{ $item->ten_danh_muc }}</td>
-                                <td><img width="40" src="images/category_product/{{ $item->hinh_anh }}" alt="{{ $item->hinh_anh }}"></td>
-                                <td><a href="{{ route('DanhMucSanPham_xoa',['id'=> $item->id]) }}"><button type="button" class="btn btn-warning">Xóa</button> </a>                               </td>
-                                <td><button type="button" class="btn btn-primary">Chỉnh sửa</button></td>
-                            </tr>
-                            @endforeach
-                        </tbody>
-                </table>
-            </div>
-            </div>
-        </div>
-
-    </div>
-</div>
-
 
 @endsection

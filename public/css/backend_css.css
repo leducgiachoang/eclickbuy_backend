@@ -1,4 +1,25 @@
 .list_danhsach{
     overflow: auto;
-    height: 490px;
+    height: 415px;
 }
+.noi_dung_ghi_chu{
+    height: 211px;
+    overflow: auto;
+}
+
+.noi_dung_ghi_chu::-webkit-scrollbar {
+    width: 5px;
+    border-radius: 20px;
+  }
+.noi_dung_ghi_chu::-webkit-scrollbar-track {
+    background: #7386D5;
+  }
+.noi_dung_ghi_chu::-webkit-scrollbar-thumb {
+    background-color: rgb(255, 255, 255);
+    border-radius: 20px;
+    border: 2px solid #7386D5;
+  }
+
+  .card-body{
+      overflow: auto;
+  }
