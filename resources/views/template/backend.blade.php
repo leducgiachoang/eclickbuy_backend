@@ -62,6 +62,34 @@
                         </li>
                     </ul>
                 </li>
+                <li>
+                    <a href="#brand_product" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                        <i class="fas fa-copy"></i>
+                        Thương hiệu
+                    </a>
+                    <ul class="collapse list-unstyled" id="brand_product">
+                        <li>
+                            <a href="{{ route('add-brand-product') }}">Thêm mới</a>
+                        </li>
+                        <li>
+                            <a href="{{ route('all-brand-product') }}">Danh Sách</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#user" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                        <i class="fas fa-copy"></i>
+                        Tài khoản
+                    </a>
+                    <ul class="collapse list-unstyled" id="user">
+                        <li>
+                            <a href="{{ route('add-user') }}">Thêm mới</a>
+                        </li>
+                        <li>
+                            <a href="{{ route('all-user') }}">Danh Sách</a>
+                        </li>
+                    </ul>
+                </li>
 
                 <li>
                     <a href="#">
