@@ -79,4 +79,18 @@ Route::group(['prefix' => 'admin', 'namespace' => 'BackEnd'], function () {
         Route::get('edit-user/{id}', 'UserController@edit_user')->name('edit-user');
         Route::post('update-user/{id}', 'UserController@update_user')->name('update-user');
     });
+
+    Route::group(['prefix' => 'san-pham'], function () {
+
+        Route::group(['prefix' => 'ajax'], function () {
+
+        });
+
+        Route::get('them-moi', 'productsController@index')->name('them_sanpham');
+        Route::post('them-moi', 'productsController@store')->name('them_sanpham_post');
+        Route::get('danh-sach','productsController@create')->name('danh_sach_product');
+        Route::get('xoa/{id}','productsController@show')->name('xoa_san_pham');
+        Route::get('chinh-sua/{id}','productsController@edit')->name('chinh_san_pham_get');
+        Route::post('chinh-sua/{id}', 'productsController@update')->name('chinh_san_pham_post');
+    });
 });

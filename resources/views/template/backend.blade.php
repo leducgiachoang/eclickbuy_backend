@@ -20,6 +20,8 @@
     <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
+    <script src="../ckeditor/ckeditor.js"></script>
+
 </head>
 
 <body>
@@ -61,6 +63,21 @@
                     <ul class="collapse list-unstyled" id="category_product">
                         <li>
                             <a href="{{ route('DanhMucSanPham_themmoi_get') }}">Thêm mới</a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="#sanpham" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                        <i class="fas fa-copy"></i>
+                        Sản phẩm
+                    </a>
+                    <ul class="collapse list-unstyled" id="sanpham">
+                        <li>
+                            <a href="{{ route('them_sanpham') }}">Thêm mới</a>
+                        </li>
+                        <li>
+                            <a href="{{ route('danh_sach_product') }}">Danh sách</a>
                         </li>
                     </ul>
                 </li>
@@ -308,6 +325,12 @@
     </script>
 
     @yield('script')
+
+    <script>
+        CKEDITOR.replace('editor1');
+        CKEDITOR.replace('editor2');
+
+    </script>
 </body>
 
 </html>
