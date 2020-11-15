@@ -4,6 +4,7 @@ namespace App\Http\Controllers\FrontEnd;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Model\DanhMucSanPham_Model;
 
 
 class homePage extends Controller
@@ -15,7 +16,9 @@ class homePage extends Controller
      */
     public function index()
     {
-        return view('frontEnd.pages.home');
+        $danhmucs = DanhMucSanPham_Model::all();
+        return view('frontEnd.pages.home', ['danhmucs'=> $danhmucs]);
+
     }
 
     /**

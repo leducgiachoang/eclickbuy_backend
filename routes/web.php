@@ -94,3 +94,9 @@ Route::group(['prefix' => 'admin', 'namespace' => 'BackEnd'], function () {
         Route::post('chinh-sua/{id}', 'productsController@update')->name('chinh_san_pham_post');
     });
 });
+
+
+
+Route::group(['prefix' => 'san-pham', 'namespace'=>'FrontEnd'], function() {
+    Route::get('/{id}', 'SanPhamController@DanhSachById')->name('DanhSachById_get');
+});

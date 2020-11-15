@@ -32,54 +32,6 @@
                     <div class="item">
                         <div class="item_product_main">
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
                             <form action="/cart/add" method="post" class="variants product-action"
                                 data-id="product-actions-18703977" enctype="multipart/form-data">
                                 <div class="product-thumbnail">

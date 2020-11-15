@@ -5,7 +5,7 @@
 	<meta charset="UTF-8">
 	<meta name='revisit-after' content='2 days'>
 	<meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-
+    <base href="{{ asset('') }}">
 	<title>EClickBuy </title>
 	<meta name="keywords" content="Cập nhật sau">
 
@@ -166,22 +166,14 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 col-mega hidden-sm hidden-xs">
-					<div class="menu_mega">
+					<div id="box_menu_group_header" class="menu_mega">
 						<div class="title_menu">
 							<span class="title_">Danh mục sản phẩm</span>
 							<span class="nav_button"><span><i class="fa fa-bars" aria-hidden="true"></i></span></span>
-						</div>
-						<div class="menu_all_site menu_index_site col-lg-3 col-md-3">
+                        </div>
+
+						<div id="menu_header_menu" class="menu_all_site menu_index_site col-lg-3 col-md-3">
 							<ul class="ul_menu site-nav-vetical">
-
-
-
-
-
-
-
-
-
 								<li class="nav_item lev-1 lv1 li_check">
 									<a href="dien-thoai-may-tinh-bang.html" title="Điện thoại - Máy tính bảng">Điện
 										thoại - Máy tính bảng
@@ -314,81 +306,19 @@
 
 
 
-										<li class="banner_img_mega hidden-sm hidden-xs">
-											<a class="banner_" href="#" title="Điện thoại - Máy tính bảng">
-												<img class="imageload lazyload"
-													src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC"
-													data-src="//bizweb.dktcdn.net/100/397/652/themes/792901/assets/cate-image-1.jpg?1603341153354"
-													alt="Điện thoại - Máy tính bảng">
-											</a>
-										</li>
+
 
 									</ul>
 								</li>
 
-
-
-								<li class="nav_item lev-1 lv1 li_check">
-									<a href="laptop-laptop-gaming.html" title="Laptop - Laptop Gaming">Laptop - Laptop
-										Gaming
+                                @foreach ($danhmucs as $danhmuc)
+								<li class="lev-1 lv1 li_check">
+                                    <img style="width: 20px;height: 20px;border-radius: 50%;margin: 0 15px;" src="../images/category_product/{{ $danhmuc->hinh_anh }}" alt="">
+									<a href="{{ route('DanhSachById_get',['id'=>$danhmuc->ten_danh_muc]) }}" title="Laptop - Laptop Gaming">
+                                        {{ $danhmuc->ten_danh_muc }}
 									</a>
-								</li>
-
-
-
-								<li class="nav_item lev-1 lv1 li_check">
-									<a href="may-giat-may-say.html" title="Máy giặt - Máy sấy">Máy giặt - Máy sấy
-									</a>
-								</li>
-
-
-
-								<li class="nav_item lev-1 lv1 li_check">
-									<a href="tivi-loa-am-thanh.html" title="Tivi - Loa âm thanh">Tivi - Loa âm thanh
-									</a>
-								</li>
-
-
-
-								<li class="nav_item lev-1 lv1 li_check">
-									<a href="dieu-hoa-nhiet-do.html" title="Điều hoà nhiệt độ">Điều hoà nhiệt độ
-									</a>
-								</li>
-
-
-
-								<li class="nav_item lev-1 lv1 li_check">
-									<a href="gia-dung-thiet-bi-bep.html" title="Gia dụng - Thiết bị bếp">Gia dụng -
-										Thiết bị bếp
-									</a>
-								</li>
-
-
-
-								<li class="nav_item lev-1 lv1 li_check">
-									<a href="thiet-bi-van-phong.html" title="Thiết bị văn phòng">Thiết bị văn phòng
-									</a>
-								</li>
-
-
-
-								<li class="nav_item lev-1 lv1 li_check">
-									<a href="ky-thuat-so.html" title="Kỹ thuật số">Kỹ thuật số
-									</a>
-								</li>
-
-
-
-								<li class="nav_item lev-1 lv1 li_check">
-									<a href="phu-kien.html" title="Phụ kiện">Phụ kiện
-									</a>
-								</li>
-
-
-
-
-
-
+                                </li>
+                                @endforeach
 							</ul>
 						</div>
 					</div>
@@ -647,40 +577,14 @@
 
 									</li>
 
-									<li class="level1 ">
-										<a href="laptop-laptop-gaming.html"> <span>Laptop - Laptop Gaming</span> </a>
+                                    @foreach ($danhmucs as $danhmuc)
+                                    <li class="level1">
+                                        <a href="{{ route('DanhSachById_get',['id'=>$danhmuc->ten_danh_muc]) }}">
+                                            <span>{{ $danhmuc->ten_danh_muc }}</span>
+                                        </a>
+                                    </li>
+                                    @endforeach
 
-									</li>
-
-									<li class="level1 ">
-										<a href="may-giat-may-say.html"> <span>Máy giặt - Máy sấy</span> </a>
-
-									</li>
-
-									<li class="level1 ">
-										<a href="tivi-loa-am-thanh.html"> <span>Tivi - Loa âm thanh</span> </a>
-
-									</li>
-
-									<li class="level1 ">
-										<a href="dieu-hoa-nhiet-do.html"> <span>Điều hoà nhiệt độ</span> </a>
-
-									</li>
-
-									<li class="level1 ">
-										<a href="gia-dung-thiet-bi-bep.html"> <span>Gia dụng - Thiết bị bếp</span> </a>
-
-									</li>
-
-									<li class="level1 ">
-										<a href="thiet-bi-van-phong.html"> <span>Thiết bị văn phòng</span> </a>
-
-									</li>
-
-									<li class="level1 ">
-										<a href="ky-thuat-so.html"> <span>Kỹ thuật số</span> </a>
-
-									</li>
 
 									<li class="level1 ">
 										<a href="phu-kien.html"> <span>Phụ kiện</span> </a>
@@ -719,18 +623,17 @@
 				<div class="container">
 					<div class="row">
 						<div class="col-xl-3">
-
                         </div>
 
 
-						<div class="col-xl-9 padding-left-0">
+						<div id="banner_header_menu" class="col-xl-9 padding-left-0">
                             <div style="overflow: hidden;
                             height: 402px;
                             width: 100%;">
                                 <img width="100%" height="100%" src="https://c.wallhere.com/images/28/c6/ef27f2cc88f1547e76713b511769-1582587.jpg!d" alt="">
 
                             </div>
-							</div>
+						</div>
 
 					</div>
 				</div>
@@ -992,7 +895,8 @@
 			timer = undefined;
 		}, 1500)
 	</script>
-	<div id="popupCartModal" class="modal fade" role="dialog">
+
+    @yield('script')
 	</div>
 </body>
 

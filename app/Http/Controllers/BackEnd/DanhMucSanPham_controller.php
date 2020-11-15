@@ -16,7 +16,7 @@ class DanhMucSanPham_controller extends Controller
      */
     public function index()
     {
-        $danhsach = DanhMucSanPham_Model::paginate(1);
+        $danhsach = DanhMucSanPham_Model::paginate(6);
         return view('backEnd.danh_muc_san_pham.new',['danhsach'=>$danhsach]);
     }
 

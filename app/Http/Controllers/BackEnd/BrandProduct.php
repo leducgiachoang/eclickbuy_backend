@@ -25,13 +25,13 @@ class BrandProduct extends Controller
         $this->validate(
             $request,
             [   //name ở form                            table       name colum table
-                'brand_product_name' => 'required|unique:thuong_hieu,ten_thuong_hieu|min:3|max:100',
+                'brand_product_name' => 'required|unique:thuong_hieu,ten_thuong_hieu|min:1|max:100',
 
             ],
             [
                 'brand_product_name.required' => 'Bạn chưa nhập tên danh mục',
                 'brand_product_name.unique' => 'Tên danh mục đã tồn tại',
-                'brand_product_name.min' => 'Tên danh mục ít nhất 3 kí tự',
+                'brand_product_name.min' => 'Tên danh mục ít nhất 1 kí tự',
                 'brand_product_name.max' => 'Tên danh mục tối đa 100 kí tự'
             ]
         );
