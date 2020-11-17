@@ -48,19 +48,19 @@
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Mật khẩu</label>
-                                <input type="password" name="mat_khau" class="form-control" placeholder="Mật khẩu của bạn">
-                                @if($errors->has('mat_khau'))
+                                <input type="password" name="password" class="form-control" placeholder="Mật khẩu của bạn">
+                                @if($errors->has('password'))
 							    <div class="alert alert-danger" role="alert">
-								<strong>{{$errors->first('mat_khau')}}</strong>
+								<strong>{{$errors->first('password')}}</strong>
 							    </div>
 		                        @endif
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Nhập lại mật khẩu</label>
-                                <input type="password" name="nhap_lai_mat_khau" class="form-control" placeholder="Nhập lại mật khẩu của bạn">
-                                @if($errors->has('nhap_lai_mat_khau'))
+                                <input type="password" name="re_password" class="form-control" placeholder="Nhập lại mật khẩu của bạn">
+                                @if($errors->has('re_password'))
 							    <div class="alert alert-danger" role="alert">
-								<strong>{{$errors->first('nhap_lai_mat_khau')}}</strong>
+								<strong>{{$errors->first('re_password')}}</strong>
 							    </div>
 		                        @endif
                             </div>

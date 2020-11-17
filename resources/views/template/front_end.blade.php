@@ -15,7 +15,13 @@
 	<link href="../css/home/font-roboto.scss.css" rel="stylesheet" type="text/css">
 	<link href="../css/home/index.scss.css" rel="stylesheet" type="text/css">
 	<link href="../css/home/responsive.scss.css" rel="stylesheet" type="text/css">
+<<<<<<< HEAD
 	<script src="../js/home.js"></script>
+=======
+    <link href="../css/account_oder_style.scss.css" rel="stylesheet" type="text/css">
+    <script src="../js/home.js"></script>
+
+>>>>>>> f77e12efdc992fa3f42ab7c0dbf84a4151eb2009
 
 </head>
 
@@ -125,14 +131,23 @@
 									<div class="accout hidden-xs hidden-sm">
 										<div class="tkname">
 											<img src="../images/icon/i_user.png"
-												alt="khách hàng">
-											<span>Tài khoản</span>
+                                                alt="khách hàng">
+                                            @if (!auth()->check())
+                                            <span>Tài khoản</span>
+                                            @else
+                                            <span class="btnx" href="">{{ Auth::user()->ho_ten }}</span>
+                                            @endif
 										</div>
 										<div class="group_ac">
-
-											<a class="btnx" href="account/login.html">Đăng nhập</a>
-											<a href="account/register.html">Đăng ký</a>
-
+                                            @if (!auth()->check())
+								            <a class="btnx" href="{{route('dang-nhap')}}">Đăng nhập</a>
+											<a href="{{route('dang-ki')}}">Đăng ký</a>
+                                            @else
+                                        	<a class="btnx" href="{{route('dashboard')}}">Quản lí</a>
+                                            <a class="btnx" href="">Hồ sơ</a>
+                                            <a class="btnx" href="{{route('dang-xuat')}}">Đăng xuất</a>
+                                            @endif
+                                            {{-- @if(isset(Auth::user()->vai_tro)) --}}
 										</div>
 									</div>
 									<div class="heading-cart cart_header">
@@ -367,8 +382,8 @@
 					<div class="contenttop">
 						<div class="section margin-bottom-10 margin-top-20">
 
-							<a class="btnx" href="account/login.html">Đăng nhập</a>&nbsp;/
-							<a href="account/register.html">Đăng ký</a>
+                        <a class="btnx" href="{{route('dang-nhap')}}">Đăng nhập</a>&nbsp;/
+							<a href="{{route('dang-ki')}}">Đăng ký</a>
 
 						</div>
 					</div>

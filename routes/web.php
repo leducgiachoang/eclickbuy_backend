@@ -126,3 +126,18 @@ Route::group(['prefix' => 'san-pham', 'namespace'=>'FrontEnd'], function() {
         Route::get('sap-xep/{kieu}/{id}','SanPhamController@sap_xep');
     });
 });
+
+//dang nhap
+Route::group(['prefix' => 'tai-khoan', 'namespace' => 'FrontEnd'], function () {
+    Route::get('dang-nhap', 'UserController@view_login')->name('dang-nhap');
+    Route::post('dang-nhap', 'UserController@login')->name('dang-nhap');
+    Route::get('dang-xuat', 'UserController@logout')->name('dang-xuat');
+    Route::get('dang-ki', 'UserController@view_register')->name('dang-ki');
+    Route::post('dang-ki', 'UserController@register')->name('dang-ki');
+    Route::get('verify/{code}/{email}', 'UserController@verify')->name('kich-hoat');
+});
+
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
