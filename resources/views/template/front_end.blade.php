@@ -15,7 +15,6 @@
 	<link href="../css/home/font-roboto.scss.css" rel="stylesheet" type="text/css">
 	<link href="../css/home/index.scss.css" rel="stylesheet" type="text/css">
 	<link href="../css/home/responsive.scss.css" rel="stylesheet" type="text/css">
-
 	<script src="../js/home.js"></script>
 
 </head>
@@ -137,22 +136,14 @@
 										</div>
 									</div>
 									<div class="heading-cart cart_header">
-										<a class="img_hover_cart" href="cart.html" title="Giỏ hàng">
+										<a class="img_hover_cart" href="{{ route('gioHang_get') }}" title="Xem giỏ hàng">
 											<div class="icon_hotline">
 												<img src="../images/icon/i_cart.png"
 													alt="Giỏ hàng">
 												<span class="bolds cartext"><span class="hidden-xs hidden-sm">Giỏ
-														hàng</span><span class="count_item count_item_pr">4</span></span>
+														hàng</span><span id="so_cart" class="count_item count_item_pr">{{ Cart::count() }}</span></span>
 											</div>
 										</a>
-										<div class="top-cart-content">
-											<ul id="cart-sidebar" class="mini-products-list count_li">
-												<li class="list-item">
-													<ul>cart</ul>
-												</li>
-
-											</ul>
-										</div>
 									</div>
 								</div>
 							</div>
@@ -644,21 +635,6 @@
 
 @yield('container_layout')
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 		<div class="section footer_wwap clearfix">
 			<footer class="footer">
 				<div class="site-footer">
@@ -894,10 +870,25 @@
 			//]]>
 			timer = undefined;
 		}, 1500)
-	</script>
+    </script>
+
+
 
     @yield('script')
-	</div>
+    </div>
+
+
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content alert alert-success">
+              <p style="text-align: center; font-size: 20px">
+                <i style="font-size: 50px" class="fas fa-cart-arrow-down"></i> <br/> Thêm vào giỏ hàng thành công
+                <br/><a href="{{ route('gioHang_get') }}"><button  class="btn btn-outline-success">Xem giỏ hàng</button></a>
+            </p>
+          </div>
+        </div>
+      </div>
+
 </body>
 
 </html>

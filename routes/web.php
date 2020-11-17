@@ -96,7 +96,33 @@ Route::group(['prefix' => 'admin', 'namespace' => 'BackEnd'], function () {
 });
 
 
+Route::group(['prefix' => 'danh-muc', 'namespace'=> 'FrontEnd'], function() {
+    Route::get('/{id}', 'SanPhamController@DanhSachById')->name('DanhSachById_get');
+});
+
+
+Route::group(['prefix' => 'gio-hang', 'namespace'=> 'FrontEnd'], function() {
+
+    Route::get('them/{id}', 'GioHangController@add_cart');
+    Route::get('gio-hang', 'GioHangController@index')->name('gioHang_get');
+    Route::post('cap_nhap', 'GioHangController@update')->name('CapNhapGioHnag_post');
+    Route::get('xoa/{id}', 'GioHangController@destroy')->name('XoaHangById');
+});
+
+
+
 
 Route::group(['prefix' => 'san-pham', 'namespace'=>'FrontEnd'], function() {
-    Route::get('/{id}', 'SanPhamController@DanhSachById')->name('DanhSachById_get');
+    Route::get('/{ten_san_pham}','SanPhamController@chi_tiet_san_pham')->name('ChiTietSanPham');
+
+
+    Route::group(['prefix' => 'ajax'], function () {
+        Route::get('filter-duoi-2-000-000d/{id}', 'SanPhamController@filter_duoi_2_000_000d');
+        Route::get('filter-2-000-000d-4-000-000d/{id}', 'SanPhamController@filter_2_000_000d_4_000_000d');
+        Route::get('filter-4-000-000d-7-000-000d/{id}', 'SanPhamController@filter_4_000_000d_7_000_000d');
+        Route::get('filter-7-000-000d-13-000-000d/{id}', 'SanPhamController@filter_7_000_000d_13_000_000d');
+        Route::get('filter-tren13-000-000d/{id}', 'SanPhamController@filter_tren13_000_000d');
+        Route::get('tat-ca/{id}', 'SanPhamController@tat_ca');
+        Route::get('sap-xep/{kieu}/{id}','SanPhamController@sap_xep');
+    });
 });
