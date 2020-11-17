@@ -25,8 +25,8 @@ class UserController extends Controller
                 'ho_ten'=> 'required|min:5|max:50',
                 'so_dien_thoai'=>'required|unique:tai_khoan,so_dien_thoai',
                 'email'=> 'required|email|unique:tai_khoan,email',
-                'mat_khau'=> 'required|min:6',
-                'nhap_lai_mat_khau'=>'required|same:mat_khau',
+                'password'=> 'required|min:6',
+                're_password'=>'required|same:password',
             ],
             [
                 'ho_ten.required'=> 'Vui lòng nhập Họ và Tên',
@@ -37,15 +37,15 @@ class UserController extends Controller
                 'email.required'=> 'Vui lòng nhập Email',
                 'email.email'=> 'Không đúng định dạng Email',
                 'email.unique'=> 'Email đã có người sử dụng',
-                'mat_khau.required'=> 'Vui lòng nhập mật khẩu',
-                'nhap_lai_mat_khau.same'=> 'Mật khẩu không giống nhau',
-                'nhap_lai_mat_khau.required'=> 'Vui lòng nhập xác nhận lại mật khẩu',
-                'mat_khau.min'=> 'Mật khẩu ít nhất 6 kí tự',
+                'password.required'=> 'Vui lòng nhập mật khẩu',
+                're_password.same'=> 'Mật khẩu không giống nhau',
+                're_password.required'=> 'Vui lòng nhập xác nhận lại mật khẩu',
+                'password.min'=> 'Mật khẩu ít nhất 6 kí tự',
         ]);
         $data['ho_ten'] = $request->ho_ten;
         $data['so_dien_thoai'] = $request->so_dien_thoai;
         $data['email'] = $request->email;
-        $data['mat_khau'] = Hash::make($request->mat_khau);
+        $data['password'] = bcrypt($request->password);
         $data['vai_tro'] = $request->vai_tro;
         $data['ngay_sinh'] = $request->ngay_sinh;
         $data['status'] = $request->trang_thai;
@@ -64,7 +64,7 @@ class UserController extends Controller
         }
         $data['anh_dai_dien'] = '';
         DB::table('tai_khoan')->insert($data);
-        Session::put('message', 'Thêm người dùng phẩm thành công');
+        Session::put('message', 'Thêm người dùng thành công');
         return redirect()->back();
     }
     public function all_user()
@@ -103,7 +103,7 @@ class UserController extends Controller
         $data['ho_ten'] = $request->ho_ten;
         $data['so_dien_thoai'] = $request->so_dien_thoai;
         $data['email'] = $request->email;
-        $data['mat_khau'] = Hash::make($request->mat_khau);
+        $data['password'] = bcrypt($request->password);
         $data['vai_tro'] = $request->vai_tro;
         $data['ngay_sinh'] = $request->ngay_sinh;
         $data['status'] = $request->trang_thai;
@@ -121,7 +121,7 @@ class UserController extends Controller
         }
         $data['anh_dai_dien'] = '';
         DB::table('tai_khoan')->where('id', $id)->update($data);
-        Session::put('message', 'Sửa người dùng phẩm thành công');
+        Session::put('message', 'Sửa người dùng thành công');
         return redirect()->back();
     }
 }
