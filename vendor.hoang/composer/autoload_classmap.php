@@ -8,12 +8,15 @@ $baseDir = dirname($vendorDir);
 return array(
     'App\\Console\\Kernel' => $baseDir . '/app/Console/Kernel.php',
     'App\\Exceptions\\Handler' => $baseDir . '/app/Exceptions/Handler.php',
+<<<<<<< HEAD
     'App\\Http\\Controllers\\Auth\\ConfirmPasswordController' => $baseDir . '/app/Http/Controllers/Auth/ConfirmPasswordController.php',
     'App\\Http\\Controllers\\Auth\\ForgotPasswordController' => $baseDir . '/app/Http/Controllers/Auth/ForgotPasswordController.php',
     'App\\Http\\Controllers\\Auth\\LoginController' => $baseDir . '/app/Http/Controllers/Auth/LoginController.php',
     'App\\Http\\Controllers\\Auth\\RegisterController' => $baseDir . '/app/Http/Controllers/Auth/RegisterController.php',
     'App\\Http\\Controllers\\Auth\\ResetPasswordController' => $baseDir . '/app/Http/Controllers/Auth/ResetPasswordController.php',
     'App\\Http\\Controllers\\Auth\\VerificationController' => $baseDir . '/app/Http/Controllers/Auth/VerificationController.php',
+=======
+>>>>>>> 56c39d6c015f7327c8e1258df0facd160b5e2bd5
     'App\\Http\\Controllers\\BackEnd\\BrandProduct' => $baseDir . '/app/Http/Controllers/BackEnd/BrandProduct.php',
     'App\\Http\\Controllers\\BackEnd\\DanhMucSanPham_controller' => $baseDir . '/app/Http/Controllers/BackEnd/DanhMucSanPham_controller.php',
     'App\\Http\\Controllers\\BackEnd\\DonHangController' => $baseDir . '/app/Http/Controllers/BackEnd/DonHangController.php',
@@ -21,12 +24,17 @@ return array(
     'App\\Http\\Controllers\\BackEnd\\homeController' => $baseDir . '/app/Http/Controllers/BackEnd/homeController.php',
     'App\\Http\\Controllers\\BackEnd\\productsController' => $baseDir . '/app/Http/Controllers/BackEnd/productsController.php',
     'App\\Http\\Controllers\\Controller' => $baseDir . '/app/Http/Controllers/Controller.php',
+<<<<<<< HEAD
     'App\\Http\\Controllers\\FrontEnd\\GioHangController' => $baseDir . '/app/Http/Controllers/FrontEnd/GioHangController.php',
     'App\\Http\\Controllers\\FrontEnd\\SanPhamController' => $baseDir . '/app/Http/Controllers/FrontEnd/SanPhamController.php',
     'App\\Http\\Controllers\\FrontEnd\\UserController' => $baseDir . '/app/Http/Controllers/FrontEnd/UserController.php',
     'App\\Http\\Controllers\\FrontEnd\\homePage' => $baseDir . '/app/Http/Controllers/FrontEnd/homePage.php',
     'App\\Http\\Controllers\\HomeController' => $baseDir . '/app/Http/Controllers/HomeController.php',
     'App\\Http\\Controllers\\MailController' => $baseDir . '/app/Http/Controllers/MailController.php',
+=======
+    'App\\Http\\Controllers\\FrontEnd\\SanPhamController' => $baseDir . '/app/Http/Controllers/FrontEnd/SanPhamController.php',
+    'App\\Http\\Controllers\\FrontEnd\\homePage' => $baseDir . '/app/Http/Controllers/FrontEnd/homePage.php',
+>>>>>>> 56c39d6c015f7327c8e1258df0facd160b5e2bd5
     'App\\Http\\Kernel' => $baseDir . '/app/Http/Kernel.php',
     'App\\Http\\Middleware\\Authenticate' => $baseDir . '/app/Http/Middleware/Authenticate.php',
     'App\\Http\\Middleware\\CheckForMaintenanceMode' => $baseDir . '/app/Http/Middleware/CheckForMaintenanceMode.php',
@@ -1806,6 +1814,7 @@ return array(
     'Illuminate\\Foundation\\Application' => $vendorDir . '/laravel/framework/src/Illuminate/Foundation/Application.php',
     'Illuminate\\Foundation\\Auth\\Access\\Authorizable' => $vendorDir . '/laravel/framework/src/Illuminate/Foundation/Auth/Access/Authorizable.php',
     'Illuminate\\Foundation\\Auth\\Access\\AuthorizesRequests' => $vendorDir . '/laravel/framework/src/Illuminate/Foundation/Auth/Access/AuthorizesRequests.php',
+<<<<<<< HEAD
     'Illuminate\\Foundation\\Auth\\AuthenticatesUsers' => $vendorDir . '/laravel/ui/auth-backend/AuthenticatesUsers.php',
     'Illuminate\\Foundation\\Auth\\ConfirmsPasswords' => $vendorDir . '/laravel/ui/auth-backend/ConfirmsPasswords.php',
     'Illuminate\\Foundation\\Auth\\RedirectsUsers' => $vendorDir . '/laravel/ui/auth-backend/RedirectsUsers.php',
@@ -1815,6 +1824,9 @@ return array(
     'Illuminate\\Foundation\\Auth\\ThrottlesLogins' => $vendorDir . '/laravel/ui/auth-backend/ThrottlesLogins.php',
     'Illuminate\\Foundation\\Auth\\User' => $vendorDir . '/laravel/framework/src/Illuminate/Foundation/Auth/User.php',
     'Illuminate\\Foundation\\Auth\\VerifiesEmails' => $vendorDir . '/laravel/ui/auth-backend/VerifiesEmails.php',
+=======
+    'Illuminate\\Foundation\\Auth\\User' => $vendorDir . '/laravel/framework/src/Illuminate/Foundation/Auth/User.php',
+>>>>>>> 56c39d6c015f7327c8e1258df0facd160b5e2bd5
     'Illuminate\\Foundation\\Bootstrap\\BootProviders' => $vendorDir . '/laravel/framework/src/Illuminate/Foundation/Bootstrap/BootProviders.php',
     'Illuminate\\Foundation\\Bootstrap\\HandleExceptions' => $vendorDir . '/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php',
     'Illuminate\\Foundation\\Bootstrap\\LoadConfiguration' => $vendorDir . '/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php',
@@ -2306,6 +2318,7 @@ return array(
     'Laravel\\Tinker\\Console\\TinkerCommand' => $vendorDir . '/laravel/tinker/src/Console/TinkerCommand.php',
     'Laravel\\Tinker\\TinkerCaster' => $vendorDir . '/laravel/tinker/src/TinkerCaster.php',
     'Laravel\\Tinker\\TinkerServiceProvider' => $vendorDir . '/laravel/tinker/src/TinkerServiceProvider.php',
+<<<<<<< HEAD
     'Laravel\\Ui\\AuthCommand' => $vendorDir . '/laravel/ui/src/AuthCommand.php',
     'Laravel\\Ui\\AuthRouteMethods' => $vendorDir . '/laravel/ui/src/AuthRouteMethods.php',
     'Laravel\\Ui\\ControllersCommand' => $vendorDir . '/laravel/ui/src/ControllersCommand.php',
@@ -2315,6 +2328,8 @@ return array(
     'Laravel\\Ui\\Presets\\Vue' => $vendorDir . '/laravel/ui/src/Presets/Vue.php',
     'Laravel\\Ui\\UiCommand' => $vendorDir . '/laravel/ui/src/UiCommand.php',
     'Laravel\\Ui\\UiServiceProvider' => $vendorDir . '/laravel/ui/src/UiServiceProvider.php',
+=======
+>>>>>>> 56c39d6c015f7327c8e1258df0facd160b5e2bd5
     'League\\CommonMark\\Block\\Element\\AbstractBlock' => $vendorDir . '/league/commonmark/src/Block/Element/AbstractBlock.php',
     'League\\CommonMark\\Block\\Element\\AbstractStringContainerBlock' => $vendorDir . '/league/commonmark/src/Block/Element/AbstractStringContainerBlock.php',
     'League\\CommonMark\\Block\\Element\\BlockQuote' => $vendorDir . '/league/commonmark/src/Block/Element/BlockQuote.php',

@@ -123,12 +123,18 @@ class ComposerStaticInit9f5dce467753ebc5399df58f2e2926e7
             'League\\MimeTypeDetection\\' => 25,
             'League\\Flysystem\\' => 17,
             'League\\CommonMark\\' => 18,
+<<<<<<< HEAD
             'Laravel\\Ui\\' => 11,
+=======
+>>>>>>> 56c39d6c015f7327c8e1258df0facd160b5e2bd5
             'Laravel\\Tinker\\' => 15,
         ),
         'I' => 
         array (
+<<<<<<< HEAD
             'Illuminate\\Foundation\\Auth\\' => 27,
+=======
+>>>>>>> 56c39d6c015f7327c8e1258df0facd160b5e2bd5
             'Illuminate\\' => 11,
         ),
         'G' => 
@@ -385,18 +391,24 @@ class ComposerStaticInit9f5dce467753ebc5399df58f2e2926e7
         array (
             0 => __DIR__ . '/..' . '/league/commonmark/src',
         ),
+<<<<<<< HEAD
         'Laravel\\Ui\\' => 
         array (
             0 => __DIR__ . '/..' . '/laravel/ui/src',
         ),
+=======
+>>>>>>> 56c39d6c015f7327c8e1258df0facd160b5e2bd5
         'Laravel\\Tinker\\' => 
         array (
             0 => __DIR__ . '/..' . '/laravel/tinker/src',
         ),
+<<<<<<< HEAD
         'Illuminate\\Foundation\\Auth\\' => 
         array (
             0 => __DIR__ . '/..' . '/laravel/ui/auth-backend',
         ),
+=======
+>>>>>>> 56c39d6c015f7327c8e1258df0facd160b5e2bd5
         'Illuminate\\' => 
         array (
             0 => __DIR__ . '/..' . '/laravel/framework/src/Illuminate',
@@ -523,12 +535,15 @@ class ComposerStaticInit9f5dce467753ebc5399df58f2e2926e7
     public static $classMap = array (
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
+<<<<<<< HEAD
         'App\\Http\\Controllers\\Auth\\ConfirmPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ConfirmPasswordController.php',
         'App\\Http\\Controllers\\Auth\\ForgotPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ForgotPasswordController.php',
         'App\\Http\\Controllers\\Auth\\LoginController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/LoginController.php',
         'App\\Http\\Controllers\\Auth\\RegisterController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/RegisterController.php',
         'App\\Http\\Controllers\\Auth\\ResetPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ResetPasswordController.php',
         'App\\Http\\Controllers\\Auth\\VerificationController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/VerificationController.php',
+=======
+>>>>>>> 56c39d6c015f7327c8e1258df0facd160b5e2bd5
         'App\\Http\\Controllers\\BackEnd\\BrandProduct' => __DIR__ . '/../..' . '/app/Http/Controllers/BackEnd/BrandProduct.php',
         'App\\Http\\Controllers\\BackEnd\\DanhMucSanPham_controller' => __DIR__ . '/../..' . '/app/Http/Controllers/BackEnd/DanhMucSanPham_controller.php',
         'App\\Http\\Controllers\\BackEnd\\DonHangController' => __DIR__ . '/../..' . '/app/Http/Controllers/BackEnd/DonHangController.php',
@@ -536,12 +551,17 @@ class ComposerStaticInit9f5dce467753ebc5399df58f2e2926e7
         'App\\Http\\Controllers\\BackEnd\\homeController' => __DIR__ . '/../..' . '/app/Http/Controllers/BackEnd/homeController.php',
         'App\\Http\\Controllers\\BackEnd\\productsController' => __DIR__ . '/../..' . '/app/Http/Controllers/BackEnd/productsController.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
+<<<<<<< HEAD
         'App\\Http\\Controllers\\FrontEnd\\GioHangController' => __DIR__ . '/../..' . '/app/Http/Controllers/FrontEnd/GioHangController.php',
         'App\\Http\\Controllers\\FrontEnd\\SanPhamController' => __DIR__ . '/../..' . '/app/Http/Controllers/FrontEnd/SanPhamController.php',
         'App\\Http\\Controllers\\FrontEnd\\UserController' => __DIR__ . '/../..' . '/app/Http/Controllers/FrontEnd/UserController.php',
         'App\\Http\\Controllers\\FrontEnd\\homePage' => __DIR__ . '/../..' . '/app/Http/Controllers/FrontEnd/homePage.php',
         'App\\Http\\Controllers\\HomeController' => __DIR__ . '/../..' . '/app/Http/Controllers/HomeController.php',
         'App\\Http\\Controllers\\MailController' => __DIR__ . '/../..' . '/app/Http/Controllers/MailController.php',
+=======
+        'App\\Http\\Controllers\\FrontEnd\\SanPhamController' => __DIR__ . '/../..' . '/app/Http/Controllers/FrontEnd/SanPhamController.php',
+        'App\\Http\\Controllers\\FrontEnd\\homePage' => __DIR__ . '/../..' . '/app/Http/Controllers/FrontEnd/homePage.php',
+>>>>>>> 56c39d6c015f7327c8e1258df0facd160b5e2bd5
         'App\\Http\\Kernel' => __DIR__ . '/../..' . '/app/Http/Kernel.php',
         'App\\Http\\Middleware\\Authenticate' => __DIR__ . '/../..' . '/app/Http/Middleware/Authenticate.php',
         'App\\Http\\Middleware\\CheckForMaintenanceMode' => __DIR__ . '/../..' . '/app/Http/Middleware/CheckForMaintenanceMode.php',
@@ -2321,6 +2341,7 @@ class ComposerStaticInit9f5dce467753ebc5399df58f2e2926e7
         'Illuminate\\Foundation\\Application' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Foundation/Application.php',
         'Illuminate\\Foundation\\Auth\\Access\\Authorizable' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Foundation/Auth/Access/Authorizable.php',
         'Illuminate\\Foundation\\Auth\\Access\\AuthorizesRequests' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Foundation/Auth/Access/AuthorizesRequests.php',
+<<<<<<< HEAD
         'Illuminate\\Foundation\\Auth\\AuthenticatesUsers' => __DIR__ . '/..' . '/laravel/ui/auth-backend/AuthenticatesUsers.php',
         'Illuminate\\Foundation\\Auth\\ConfirmsPasswords' => __DIR__ . '/..' . '/laravel/ui/auth-backend/ConfirmsPasswords.php',
         'Illuminate\\Foundation\\Auth\\RedirectsUsers' => __DIR__ . '/..' . '/laravel/ui/auth-backend/RedirectsUsers.php',
@@ -2330,6 +2351,9 @@ class ComposerStaticInit9f5dce467753ebc5399df58f2e2926e7
         'Illuminate\\Foundation\\Auth\\ThrottlesLogins' => __DIR__ . '/..' . '/laravel/ui/auth-backend/ThrottlesLogins.php',
         'Illuminate\\Foundation\\Auth\\User' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Foundation/Auth/User.php',
         'Illuminate\\Foundation\\Auth\\VerifiesEmails' => __DIR__ . '/..' . '/laravel/ui/auth-backend/VerifiesEmails.php',
+=======
+        'Illuminate\\Foundation\\Auth\\User' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Foundation/Auth/User.php',
+>>>>>>> 56c39d6c015f7327c8e1258df0facd160b5e2bd5
         'Illuminate\\Foundation\\Bootstrap\\BootProviders' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Foundation/Bootstrap/BootProviders.php',
         'Illuminate\\Foundation\\Bootstrap\\HandleExceptions' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php',
         'Illuminate\\Foundation\\Bootstrap\\LoadConfiguration' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php',
@@ -2821,6 +2845,7 @@ class ComposerStaticInit9f5dce467753ebc5399df58f2e2926e7
         'Laravel\\Tinker\\Console\\TinkerCommand' => __DIR__ . '/..' . '/laravel/tinker/src/Console/TinkerCommand.php',
         'Laravel\\Tinker\\TinkerCaster' => __DIR__ . '/..' . '/laravel/tinker/src/TinkerCaster.php',
         'Laravel\\Tinker\\TinkerServiceProvider' => __DIR__ . '/..' . '/laravel/tinker/src/TinkerServiceProvider.php',
+<<<<<<< HEAD
         'Laravel\\Ui\\AuthCommand' => __DIR__ . '/..' . '/laravel/ui/src/AuthCommand.php',
         'Laravel\\Ui\\AuthRouteMethods' => __DIR__ . '/..' . '/laravel/ui/src/AuthRouteMethods.php',
         'Laravel\\Ui\\ControllersCommand' => __DIR__ . '/..' . '/laravel/ui/src/ControllersCommand.php',
@@ -2830,6 +2855,8 @@ class ComposerStaticInit9f5dce467753ebc5399df58f2e2926e7
         'Laravel\\Ui\\Presets\\Vue' => __DIR__ . '/..' . '/laravel/ui/src/Presets/Vue.php',
         'Laravel\\Ui\\UiCommand' => __DIR__ . '/..' . '/laravel/ui/src/UiCommand.php',
         'Laravel\\Ui\\UiServiceProvider' => __DIR__ . '/..' . '/laravel/ui/src/UiServiceProvider.php',
+=======
+>>>>>>> 56c39d6c015f7327c8e1258df0facd160b5e2bd5
         'League\\CommonMark\\Block\\Element\\AbstractBlock' => __DIR__ . '/..' . '/league/commonmark/src/Block/Element/AbstractBlock.php',
         'League\\CommonMark\\Block\\Element\\AbstractStringContainerBlock' => __DIR__ . '/..' . '/league/commonmark/src/Block/Element/AbstractStringContainerBlock.php',
         'League\\CommonMark\\Block\\Element\\BlockQuote' => __DIR__ . '/..' . '/league/commonmark/src/Block/Element/BlockQuote.php',

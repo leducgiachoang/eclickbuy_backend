@@ -1715,6 +1715,7 @@
         ]
     },
     {
+<<<<<<< HEAD
         "name": "laravel/ui",
         "version": "v2.4.0",
         "version_normalized": "2.4.0.0",
@@ -1772,6 +1773,8 @@
         ]
     },
     {
+=======
+>>>>>>> 56c39d6c015f7327c8e1258df0facd160b5e2bd5
         "name": "league/commonmark",
         "version": "1.5.5",
         "version_normalized": "1.5.5.0",
