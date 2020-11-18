@@ -156,9 +156,8 @@
 										<a class="img_hover_cart" href="{{ route('gioHang_get') }}" title="Xem giỏ hàng">
 											<div class="icon_hotline">
 												<img src="../images/icon/i_cart.png"
-													alt="Giỏ hàng">
-												<span class="bolds cartext"><span class="hidden-xs hidden-sm">Giỏ
-														hàng</span><span id="so_cart" class="count_item count_item_pr">{{ Cart::count() }}</span></span>
+                                                    alt="Giỏ hàng">
+                                                    <span id="so_cart" class="count_item count_item_pr">{{ Cart::count() }}</span></span>
 											</div>
 										</a>
 									</div>

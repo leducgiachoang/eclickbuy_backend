@@ -72,13 +72,13 @@ class UserController extends Controller
         $data['status'] = '0';
         $data['anh_dai_dien'] = 'e5809db818346b4be5-1.gif';
         $email = $data['email'];
-        $code = bcrypt($request->email.time());
+        $code = bcrypt(md5(time() . $request->email));
         $data['code'] = $code;
         DB::table('tai_khoan')->insert($data);
+         $url = route('kich-hoat', ['code' => $code, 'email' => $request->email]);
         $data = [
-            'ten' => $request->ho_ten,
-            'code' => $code,
-            'email' => $request->email,
+            'link' => $url,
+            'ten'=> $request->ho_ten
         ];
 
         Mail::send('mail.mail', $data, function ($message) use ($email) {
@@ -103,7 +103,7 @@ class UserController extends Controller
         )->first();
         if(!$user){
             Session::put('message_front_end', 'Xin lỗi đường dẫn không hợp lệ');
-            return redirect(route('/'));
+            return redirect('tai-khoan/dang-nhap');
         }else{
             $user = DB::table('tai_khoan')->where(
                 [
@@ -113,7 +113,7 @@ class UserController extends Controller
             )->update(['status'=>1]);
 
             Session::put('message_front_end', 'Kích hoạt tài khoản thành công');
-            return redirect(route('dang-nhap'));
+            return redirect('tai-khoan/dang-nhap');
         }
     }
 }
