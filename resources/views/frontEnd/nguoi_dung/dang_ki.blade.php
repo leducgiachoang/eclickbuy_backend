@@ -193,7 +193,7 @@
         </div>
     </div>
 </section>
-<<<<<<< HEAD
+
 @section('script')
 <style>
     #menu_header_menu{
@@ -208,6 +208,4 @@
 
 </style>
 @endsection
-=======
->>>>>>> 56c39d6c015f7327c8e1258df0facd160b5e2bd5
 @endsection

@@ -15,19 +15,15 @@
 	<link href="../css/home/font-roboto.scss.css" rel="stylesheet" type="text/css">
 	<link href="../css/home/index.scss.css" rel="stylesheet" type="text/css">
 	<link href="../css/home/responsive.scss.css" rel="stylesheet" type="text/css">
-<<<<<<< HEAD
+
     <link href="../css/account_oder_style.scss.css" rel="stylesheet" type="text/css">
     <script src="../js/home.js"></script>
 
-=======
-<<<<<<< HEAD
+
 	<script src="../js/home.js"></script>
-=======
     <link href="../css/account_oder_style.scss.css" rel="stylesheet" type="text/css">
     <script src="../js/home.js"></script>
 
->>>>>>> f77e12efdc992fa3f42ab7c0dbf84a4151eb2009
->>>>>>> 56c39d6c015f7327c8e1258df0facd160b5e2bd5
 
 </head>
 
