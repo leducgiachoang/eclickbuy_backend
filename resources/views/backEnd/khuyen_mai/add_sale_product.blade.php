@@ -5,7 +5,7 @@
         <div class="col-lg-12">
             <section class="panel">
                 <header class="panel-heading" style="text-align: center">
-                    Thêm người dùng
+                    Thêm khuyến mãi
                 </header>
                 <div class="panel-body">
 
@@ -20,11 +20,11 @@
                         <form role="form" action="{{route('save-user')}}" method="post" enctype="multipart/form-data">
                             @csrf
                             <div class="form-group">
-                                <label for="exampleInputEmail1">Họ và Tên</label>
-                                <input type="text" name="ho_ten" class="form-control" placeholder="Họ và Tên">
-                                @if($errors->has('ho_ten'))
+                                <label for="exampleInputEmail1">Nội Dung Khuyến Mãi</label>
+                                <input type="text" name="content" class="form-control" placeholder="Họ và Tên">
+                                @if($errors->has('content'))
 							    <div class="alert alert-danger" role="alert">
-								<strong>{{$errors->first('ho_ten')}}</strong>
+								<strong>{{$errors->first('content')}}</strong>
 							    </div>
 		                        @endif
                             </div>

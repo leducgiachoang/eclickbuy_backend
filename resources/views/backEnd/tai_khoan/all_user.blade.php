@@ -48,10 +48,6 @@
                                     ?>
                                         <span class="badge badge-success">Mặc Định</span>
                                     <?php
-                                    } elseif ($user->vai_tro == 2) {
-                                    ?>
-                                        <span class="badge badge-success">Admin</span>
-                                    <?php
                                     }
                                     else {
                                     ?>
@@ -78,7 +74,7 @@
                                     </span></td>
                                 <td>
                                     <?php
-                                    if ($user->vai_tro == 2) {
+                                    if ($user->vai_tro == 1) {
                                     ?>
                                         <span class="badge badge-secondary">ADMIN</span>
                                     <?php
