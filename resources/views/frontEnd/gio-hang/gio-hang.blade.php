@@ -128,9 +128,9 @@
                                         <a href="#"
                                             class="form-cart-continue"><i class="fas fa-reply"></i>Tiếp tục mua
                                             hàng</a>
-                                        <a href="#"
-                                            class="btn-checkout-cart button_checkfor_buy"><i
-                                                class="fas fa-check"></i>Tiến hành thanh toán</a>
+                                        <a href="{{ route('thanhtoan_get') }}" class="btn-checkout-cart button_checkfor_buy">
+                                            <i class="fas fa-check"></i>Tiến hành thanh toán
+                                        </a>
                                     </div>
                                 </div>
 
@@ -244,11 +244,14 @@
                                 <a class="text-xs-right  totals_price_mobile">129.000.000₫</a>
                             </div>
                             <div class="checkout">
-                                <button class="btn-proceed-checkout-mobile" title="Tiến hành thanh toán"
-                                    type="button" onclick="window.location.href=&#39;/checkout&#39;">
-                                    <span>Tiến hành thanh toán</span></button>
-                                <button class="btn btn-white f-left" title="Tiếp tục mua hàng" type="button"
-                                    onclick="window.location.href=&#39;/collections/all&#39;">
+                                <a href="{{ route('thanhtoan_get') }}">
+                                    <button class="btn-proceed-checkout-mobile" title="Tiến hành thanh toán"
+                                    type="button">
+                                    <span>Tiến hành thanh toán</span>
+                                </button>
+                                </a>
+
+                                <button class="btn btn-white f-left" title="Tiếp tục mua hàng" type="button">
                                     <span>Tiếp tục mua hàng</span>
                                 </button>
                             </div>

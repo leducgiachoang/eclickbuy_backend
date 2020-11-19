@@ -21,7 +21,7 @@ Route::get('/admin', function () {
 });
 
 
-Route::group(['prefix' => 'admin', 'namespace' => 'BackEnd'], function () {
+Route::group(['prefix' => 'admin', 'namespace' => 'BackEnd', 'middleware'=>'CheckAdmin'], function () {
 
 
     Route::group(['prefix' => 'ajax'], function () {
@@ -63,6 +63,7 @@ Route::group(['prefix' => 'admin', 'namespace' => 'BackEnd'], function () {
         Route::get('page/{id}', 'DonHangController@show')->name('DonHangGetId');
         Route::get('chi-tiet-don-hang/{id}', 'DonHangController@ChiTietHoaDon')->name('ChiTietDonHang_Get');
         Route::get('cap-nhap-tinh-trang/{id}/{tinhTrang}', 'DonHangController@update')->name('CapNhapTrinhTrangDonHang');
+
     });
 
     //user
@@ -107,6 +108,9 @@ Route::group(['prefix' => 'gio-hang', 'namespace'=> 'FrontEnd'], function() {
     Route::get('gio-hang', 'GioHangController@index')->name('gioHang_get');
     Route::post('cap_nhap', 'GioHangController@update')->name('CapNhapGioHnag_post');
     Route::get('xoa/{id}', 'GioHangController@destroy')->name('XoaHangById');
+    Route::get('thanh-toan','GioHangController@thanhtoan')->name('thanhtoan_get')->middleware('CheckLogin');
+    Route::post('thanh-toan','GioHangController@thanhtoan_post')->name('thanhtoan_post')->middleware('CheckLogin');
+    Route::get('check_giftcode/{code}','GioHangController@giftCode');
 });
 
 

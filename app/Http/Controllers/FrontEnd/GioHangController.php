@@ -6,7 +6,11 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Model\SanPham_Model;
 use App\Model\DanhMucSanPham_Model;
+use App\Model\DonHang_Model;
 use Gloudemans\Shoppingcart\Facades\Cart;
+use App\Model\GiftCode_Model;
+use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Auth;
 
 class GioHangController extends Controller
 {
@@ -115,5 +119,37 @@ class GioHangController extends Controller
     {
         Cart::remove($id);
         return redirect()->back();
+    }
+
+    public function thanhtoan(){
+        return view('frontEnd.gio-hang.thanh-toan');
+    }
+    public function giftCode($code){
+        $checkGift = GiftCode_Model::where('code', $code)->first();
+        if(!$checkGift){
+            echo '';
+        }else{
+            echo $checkGift->gia_tri;
+        }
+    }
+    public function thanhtoan_post(Request $request){
+        if($request->code == ''){
+            $id_giftcode = 1;
+        }else{
+            $dbGift = GiftCode_Model::where('code', $request->code)->first();
+            $id_giftcode = $dbGift->id;
+        }
+
+        $idHoadon = DonHang_Model::insertGetId([
+            'tong_tien' =>$request->tong_tien,
+            'dia_chi_noi_gui' =>'Điện Bàn, Quảng Nam',
+            'dia_chi_noi_nhan' =>$request->dia_chi_noi_nhan,
+            'id_tai_khoan' => Auth::user()->id,
+            'so_dien_thoai' =>$request->so_dien_thoai,
+            'loi_nhan' => $request->loi_nhan,
+            'tinh_trang' =>0,
+            'id_giftcode' =>$id_giftcode,
+            'ngay_tao' => Carbon::now(),
+        ]);
     }
 }

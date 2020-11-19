@@ -26,7 +26,7 @@ class UserController extends Controller
         $email = $request->email;
         $password = $request->mat_khau;
         if (Auth::attempt(['email' => $email, 'password' => $password, 'status' => 1])) {
-            return view('frontEnd.nguoi_dung.dang_nhap', ['danhmucs'=> $danhmucs]);
+            return view('frontEnd.pages.home', ['danhmucs'=> $danhmucs]);
         }else {
             Session::put('message', 'Sai tên đăng nhập hoặc mật khẩu');
             return redirect()->back();
