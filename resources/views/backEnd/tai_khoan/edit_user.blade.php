@@ -58,8 +58,8 @@
                             <div class="form-group">
                                 <label for="exampleInputPassword1">Trạng thái</label>
                                 <select name="trang_thai" class="form-control input-sm m-bot15">
-                                    <option value="0">Vô hiệu hóa</option>
                                     <option value="1">Hoạt Động</option>
+                                    <option value="0">Vô hiệu hóa</option>
                                 </select>
                             </div>
                             <button type="submit" name="update-user" class="btn btn-info">Sửa người dùng</button>

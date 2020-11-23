@@ -81,7 +81,7 @@
                                     } else {
                                     ?>
                                         <a href="{{ route('edit-user',['id'=> $user->id]) }}" class="active" ui-toggle-class="">
-                                            <i class="fa fa-pencil-square-o text-success text-active"></i></a>
+                                            <i class="fas fa-edit"></i></a>
                                         <a onclick="return confirm('Bạn muốn xóa thương hiệu này hả ?')" href="{{ route('delete-user',['id'=> $user->id]) }}" class="active" ui-toggle-class="">
                                             <i class="fa fa-times text-danger text"></i></a>
                                     <?php

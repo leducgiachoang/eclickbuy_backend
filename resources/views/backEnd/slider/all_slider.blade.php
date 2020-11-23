@@ -1,10 +1,10 @@
 @extends('template.backend')
 @section('container')
-<div class="" style="width:100%;text-align: center;" >
-    <div class="row" style="font-size: 16px">
+<div class="container" style="width:100%">
+    <div class="row" style="font-size: 14px">
             <div class="panel panel-default">
                 <div class="panel-heading" style="text-align: center">
-                    Liệt kê khuyến mãi
+                    Liệt kê Slider
                 </div><br>
                 <div class="table-responsive">
                     <?php
@@ -23,23 +23,23 @@
                                     </label>
                                 </th>
                                 <th>Số TT</th>
-                                <th>Nội Dung Khuyến Mãi</th>
-                                <th>Giá Trị</th>
+                                <th>Hình ảnh</th>
+                                <th>Mô tả</th>
                                 <th>Chỉnh sửa</th>
                             </tr>
                         </thead>
-                        <tbody style="font-size: 14px">
-                            @foreach($all_sale_product as $key =>$all_sale)
+                        <tbody>
+                            @foreach($all_slider_product as $key =>$slider)
                             <tr>
                                 <td><label class="i-checks m-b-none"><input type="checkbox" name="post[]"><i></i></label></td>
-                                <td>{{$all_sale->id}}</td>
-                                <td>{{$all_sale->noi_dung_khuyen_mai}}</td>
-                                <td>{{$all_sale->gia_tri}}</td>
+                                <td>{{$slider->id}}</td>
+                                <td><img src="images/slider/{{$slider->hinh_anh}}" alt="" height="120" width="100"></td>
+                                <td>{{$slider->noi_dung_hinh_anh}}</td>
                                 <td>
-                                <a href="{{ route('edit-sale-product',['id'=> $all_sale->id]) }}" class="active" ui-toggle-class="">
-                                <i class="fas fa-edit"></i></a>
-                                <a onclick="return confirm('Bạn muốn xóa khuyến mãi này hả ?')" href="{{ route('delete-sale-product',['id'=> $all_sale->id]) }}" class="active" ui-toggle-class="">
-                                <i class="fa fa-times text-danger text"></i></a>
+                                    <a href="{{ route('view-edit-slider',['id'=> $slider->id]) }}" class="active" ui-toggle-class="">
+                                        <i class="fas fa-edit"></i></a>
+                                    <a onclick="return confirm('Bạn muốn xóa slider này hả ?')" href="{{ route('delete-slider',['id'=> $slider->id]) }}" class="active" ui-toggle-class="">
+                                        <i class="fa fa-times text-danger text"></i></a>
                                 </td>
                             </tr>
                             @endforeach

@@ -4,7 +4,7 @@
     <div class="row" style="font-size: 16px">
             <div class="panel panel-default">
                 <div class="panel-heading" style="text-align: center">
-                    Liệt kê khuyến mãi
+                    Liệt kê Mã GiftCode
                 </div><br>
                 <div class="table-responsive">
                     <?php
@@ -23,22 +23,26 @@
                                     </label>
                                 </th>
                                 <th>Số TT</th>
-                                <th>Nội Dung Khuyến Mãi</th>
+                                <th>Mã GiftCode</th>
                                 <th>Giá Trị</th>
+                                <th>Ngày Bắt Đầu</th>
+                                <th>Ngày Kết Thúc</th>
                                 <th>Chỉnh sửa</th>
                             </tr>
                         </thead>
                         <tbody style="font-size: 14px">
-                            @foreach($all_sale_product as $key =>$all_sale)
+                            @foreach($all_giftcode_product as $key =>$all_giftcode)
                             <tr>
                                 <td><label class="i-checks m-b-none"><input type="checkbox" name="post[]"><i></i></label></td>
-                                <td>{{$all_sale->id}}</td>
-                                <td>{{$all_sale->noi_dung_khuyen_mai}}</td>
-                                <td>{{$all_sale->gia_tri}}</td>
+                                <td>{{$all_giftcode->id}}</td>
+                                <td>{{$all_giftcode->code}}</td>
+                                <td>{{$all_giftcode->gia_tri}} %</td>
+                                <td>{{$all_giftcode->ngay_bat_dau}}</td>
+                                <td>{{$all_giftcode->ngay_ket_thuc}}</td>
                                 <td>
-                                <a href="{{ route('edit-sale-product',['id'=> $all_sale->id]) }}" class="active" ui-toggle-class="">
+                                <a href="{{ route('edit-giftcode-product',['id'=> $all_giftcode->id]) }}" class="active" ui-toggle-class="">
                                 <i class="fas fa-edit"></i></a>
-                                <a onclick="return confirm('Bạn muốn xóa khuyến mãi này hả ?')" href="{{ route('delete-sale-product',['id'=> $all_sale->id]) }}" class="active" ui-toggle-class="">
+                                <a onclick="return confirm('Bạn muốn xóa khuyến mãi này hả ?')" href="{{ route('delete-giftcode-product',['id'=> $all_giftcode->id]) }}" class="active" ui-toggle-class="">
                                 <i class="fa fa-times text-danger text"></i></a>
                                 </td>
                             </tr>

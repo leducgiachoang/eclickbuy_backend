@@ -58,6 +58,27 @@ Route::group(['prefix' => 'admin', 'namespace' => 'BackEnd', 'middleware'=>'Chec
         Route::post('update-brand-product/{id}', 'BrandProduct@update_brand_product')->name('update-brand-product');
     });
 
+    //sale product
+    Route::group(['prefix' => 'khuyen-mai-san-pham'], function () {
+        Route::get('add-sale-product', 'SaleController@add_sale_product')->name('add-sale-product');
+        Route::post('save-sale-product', 'SaleController@save_sale_product')->name('save-sale-product');
+        Route::get('all-sale-product', 'SaleController@all_sale_product')->name('all-sale-product');
+        Route::get('delete-sale-product/{id}', 'SaleController@delete_sale_product')->name('delete-sale-product');
+        Route::get('edit-sale-product/{id}', 'SaleController@edit_sale_product')->name('edit-sale-product');
+        Route::post('update-sale-product/{id}', 'SaleController@update_sale_product')->name('update-sale-product');
+
+    });
+    //gift product
+    Route::group(['prefix' => 'giftcode-san-pham'], function () {
+        Route::get('add-giftcode-product', 'GiftCodeController@add_giftcode_product')->name('add-giftcode-product');
+        Route::post('save-giftcode-product', 'GiftCodeController@save_giftcode_product')->name('save-giftcode-product');
+        Route::get('all-giftcode-product', 'GiftCodeController@all_giftcode_product')->name('all-giftcode-product');
+        Route::get('delete-giftcode-product/{id}', 'GiftCodeController@delete_giftcode_product')->name('delete-giftcode-product');
+        Route::get('edit-giftcode-product/{id}', 'GiftCodeController@edit_giftcode_product')->name('edit-giftcode-product');
+        Route::post('update-giftcode-product/{id}', 'GiftCodeController@update_giftcode_product')->name('update-giftcode-product');
+
+    });
+
     Route::group(['prefix' => 'don-hang'], function () {
         Route::get('tat-ca-don-hang', 'DonHangController@index')->name('DonHangAll');
         Route::get('page/{id}', 'DonHangController@show')->name('DonHangGetId');
@@ -93,6 +114,16 @@ Route::group(['prefix' => 'admin', 'namespace' => 'BackEnd', 'middleware'=>'Chec
         Route::get('xoa/{id}','productsController@show')->name('xoa_san_pham');
         Route::get('chinh-sua/{id}','productsController@edit')->name('chinh_san_pham_get');
         Route::post('chinh-sua/{id}', 'productsController@update')->name('chinh_san_pham_post');
+    });
+    // slider
+    Route::group(['prefix' => 'slider-san-pham'], function () {
+        Route::get('them-moi', 'SliderController@add_slider')->name('view-page-slider');
+        Route::post('them-moi', 'SliderController@add_slider_product')->name('save-slider');
+        Route::get('danh-sach', 'SliderController@list_slider_product')->name('list-page-slider');
+        Route::get('xoa/{id}', 'SliderController@delete_slider_product')->name('delete-slider');
+        Route::get('chinh-sua/{id}', 'SliderController@edit_slider_product')->name('view-edit-slider');
+        Route::post('chinh-sua/{id}', 'SliderController@update_slider_product')->name('update-slider');
+
     });
 });
 
@@ -133,12 +164,14 @@ Route::group(['prefix' => 'san-pham', 'namespace'=>'FrontEnd'], function() {
 
 //dang nhap
 Route::group(['prefix' => 'tai-khoan', 'namespace' => 'FrontEnd'], function () {
-    Route::get('dang-nhap', 'UserController@view_login')->name('dang-nhap');
-    Route::post('dang-nhap', 'UserController@login')->name('dang-nhap');
-    Route::get('dang-xuat', 'UserController@logout')->name('dang-xuat');
-    Route::get('dang-ki', 'UserController@view_register')->name('dang-ki');
-    Route::post('dang-ki', 'UserController@register')->name('dang-ki');
+    Route::get('dang-nhap-tai-khoan', 'UserController@view_login')->name('dang-nhap');
+    Route::post('dang-nhap-tai-khoan', 'UserController@login')->name('dang-nhap');
+    Route::get('dang-xuat-tai-khoan', 'UserController@logout')->name('dang-xuat');
+    Route::get('dang-ki-tai-khoan', 'UserController@view_register')->name('dang-ki');
+    Route::post('dang-ki-tai-khoan', 'UserController@register')->name('dang-ki');
     Route::get('verify/{code}/{email}', 'UserController@verify')->name('kich-hoat');
+    Route::get('ho-so/{id}', 'UserController@profile')->name('ho-so-tai-khoan');
+    Route::post('update-profile/{id}', 'UserController@update_profile')->name('update-profile');
 });
 
 
