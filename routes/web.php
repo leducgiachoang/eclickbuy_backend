@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', 'FrontEnd\homePage@index');
+Route::get('/', 'FrontEnd\homePage@index')->name('homepage');
 
 
 Route::get('/admin', function () {
@@ -93,6 +93,7 @@ Route::group(['prefix' => 'admin', 'namespace' => 'BackEnd', 'middleware'=>'Chec
         Route::get('xoa/{id}','productsController@show')->name('xoa_san_pham');
         Route::get('chinh-sua/{id}','productsController@edit')->name('chinh_san_pham_get');
         Route::post('chinh-sua/{id}', 'productsController@update')->name('chinh_san_pham_post');
+
     });
 });
 
@@ -111,6 +112,8 @@ Route::group(['prefix' => 'gio-hang', 'namespace'=> 'FrontEnd'], function() {
     Route::get('thanh-toan','GioHangController@thanhtoan')->name('thanhtoan_get')->middleware('CheckLogin');
     Route::post('thanh-toan','GioHangController@thanhtoan_post')->name('thanhtoan_post')->middleware('CheckLogin');
     Route::get('check_giftcode/{code}','GioHangController@giftCode');
+    Route::post('them', 'GioHangController@them')->name('the_san_pham_cart_post');
+    Route::get('mua-ngay/{id}', 'GioHangController@muangay')->name('mua_ngay_get');
 });
 
 
@@ -145,3 +148,9 @@ Route::group(['prefix' => 'tai-khoan', 'namespace' => 'FrontEnd'], function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+
+Route::group(['prefix' => 'don-hang', 'namespace'=> 'FrontEnd'], function () {
+Route::get('don-hang-cua-toi', 'HoaDon_controller@donhangcuatoi')->name('DonHangCuaToi_get');
+Route::get('chi-tiet-don-hang-cua-toi/{id}', 'HoaDon_controller@ChiTietDonHangCuaToi')->name('ChiTietDonHangCuaToi_get');
+});

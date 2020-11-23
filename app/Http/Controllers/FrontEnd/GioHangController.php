@@ -11,6 +11,9 @@ use Gloudemans\Shoppingcart\Facades\Cart;
 use App\Model\GiftCode_Model;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
+use App\Model\ChiTietHoaDon_Model_h;
+use Illuminate\Support\Facades\Mail;
+
 
 class GioHangController extends Controller
 {
@@ -133,10 +136,10 @@ class GioHangController extends Controller
         }
     }
     public function thanhtoan_post(Request $request){
-        if($request->code == ''){
+        if($request->code_gift == ''){
             $id_giftcode = 1;
         }else{
-            $dbGift = GiftCode_Model::where('code', $request->code)->first();
+            $dbGift = GiftCode_Model::where('code', $request->code_gift)->first();
             $id_giftcode = $dbGift->id;
         }
 
@@ -151,5 +154,94 @@ class GioHangController extends Controller
             'id_giftcode' =>$id_giftcode,
             'ngay_tao' => Carbon::now(),
         ]);
+
+        if($idHoadon){
+            $productsCart = Cart::content();
+            foreach($productsCart as $item){
+                ChiTietHoaDon_Model_h::insert([
+                    'id_san_pham'=> $item->id,
+                    'id_hoa_don'=> $idHoadon,
+                    'don_gia'=> $item->price,
+                    'so_luong'=> $item->qty
+                ]);
+
+                $dbSanPham = SanPham_Model::where('id', $item->id)->get();
+                foreach($dbSanPham as $dbsp){
+                    $soluongsp = $dbsp->so_luong;
+                }
+
+                SanPham_Model::where('id', $item->id)->update([
+                    'so_luong'=> $soluongsp - $item->qty
+                ]);
+
+            }
+        }
+        $email = $request->email;
+        $data = [
+            'hoten' => $request->ho_ten,
+            'noigui'=> 'Điện Bàn, Quảng Nam',
+            'noinhan'=> $request->dia_chi_noi_nhan,
+            'sodienthoai' => $request->so_dien_thoai,
+            'ghichu'=> $request->loi_nhan,
+            'products' => Cart::content(),
+            'codegift'=> $request->code,
+            'tamtinh' => Cart::subtotal() . '₫',
+            'tonggia' => number_format($request->tong_tien, 2,'.', ','). '₫',
+            'email'=> $request->email
+        ];
+        Mail::send('mail.dat-hang-thanh-cong', $data, function ($message) use ($email, $idHoadon) {
+            $message->to($email, 'ECLICKBUY')->subject('ECLICKBUY đã nhận đơn hàng #' . $idHoadon);
+        });
+
+        Cart::destroy();
+
+        return view('frontEnd.gio-hang.mua-hang-thanh-cong', ['id_hoa_don'=> $idHoadon]);
+    }
+    public function them(Request $request){
+        $product = SanPham_Model::select()->find($request->id_san_pham);
+         $gia_goc = $product->gia_goc;
+         if($product->gia_sale != ''){
+             $gia_goc = $product->gia_sale;
+         }
+         if($product->id_khuyen_mai == 1){
+            $gia_chinh_thuc = $gia_goc;
+         }else{
+             $khuyen_mai = $gia_goc * ($product->khuyenmai->gia_tri) / 100;
+            $gia_chinh_thuc = $gia_goc - $khuyen_mai;
+         }
+        Cart::add([
+            'id' => $request->id_san_pham,
+            'name' => $request->ten_san_pham,
+            'qty' => $request->quantity,
+            'price' => $gia_chinh_thuc,
+            'weight' => 0,
+            'options' => ['avatar' => $request->hinh_anh]
+        ]);
+        return redirect()->back()->with('success','Thêm sản phẩm vào giỏ hàng thành công');
+    }
+
+    public function muangay($id){
+        $dbSp = SanPham_Model::select()->find($id);
+        $gia_goc = $dbSp->gia_goc;
+         if($dbSp->gia_sale != ''){
+             $gia_goc = $dbSp->gia_sale;
+         }
+         if($dbSp->id_khuyen_mai == 1){
+            $gia_chinh_thuc = $gia_goc;
+         }else{
+             $khuyen_mai = $gia_goc * ($dbSp->khuyenmai->gia_tri) / 100;
+            $gia_chinh_thuc = $gia_goc - $khuyen_mai;
+         }
+
+         Cart::add([
+            'id' => $id,
+            'name' => $dbSp->ten_san_pham,
+            'qty' => 1,
+            'price' => $gia_chinh_thuc,
+            'weight' => 0,
+            'options' => ['avatar' => $dbSp->hinh_anh]
+        ]);
+
+        return redirect(route('gioHang_get'));
     }
 }

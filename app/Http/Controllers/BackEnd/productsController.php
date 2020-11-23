@@ -10,6 +10,7 @@ use App\Model\KhuyenMai_Model;
 use App\Http\Requests\Backend\sanpham\them;
 use App\Model\SanPham_Model;
 use Carbon\Carbon;
+use App\Http\Requests\Backend\sanpham\update;
 
 
 
@@ -138,7 +139,7 @@ class productsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(update $request, $id)
     {
         $hinhanh = $request->hinh_anh;
         if ($request->hasFile('hinh_anhx')) {

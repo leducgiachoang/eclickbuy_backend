@@ -69,12 +69,12 @@
                             <div class="card-body">
                                 <table class="table table-borderless">
                                     <tr>
-                                        <th>Giá sản phẩm: </th>
-                                        <td>{{ number_format($db_chi_tiet->tong_tien, 2,'.', ',') }} <img width="22" src="images/dong.png" alt=""></td>
+                                        <th>Tạm tính: </th>
+                                        <td>{{ number_format($db_chi_tiet->tong_tien + (($db_chi_tiet->tong_tien)*($db_chi_tiet->giftcode->gia_tri)/100), 2,'.', ',') }} đ</td>
                                     </tr>
                                     <tr>
                                         <th>Phí vận chuyển: </th>
-                                        <td>30,000 <img width="22" src="images/dong.png" alt=""></td>
+                                        <td>30,000 đ</td>
                                     </tr>
                                     <tr>
                                         <th>Mã giảm giá: </th>
@@ -82,7 +82,8 @@
                                             @if ($db_chi_tiet->id_giftcode == 1)
                                             Không áp dụng
                                             @else
-                                            -{{ number_format(($db_chi_tiet->tong_tien)*($db_chi_tiet->giftcode->gia_tri)/100, 2,'.', ',') }} <img width="22" src="images/dong.png" alt="">
+                                            {{ $db_chi_tiet->giftcode->code }} (-{{ number_format(($db_chi_tiet->tong_tien)*($db_chi_tiet->giftcode->gia_tri)/100, 2,'.', ',') }} đ)
+
                                             @endif
                                         </td>
                                     </tr>
@@ -90,7 +91,7 @@
                                 </table>
                             </div>
                             <div class="card-footer">
-                                Tổng cộng: {{ number_format(($db_chi_tiet->tong_tien)+ 30000 - (($db_chi_tiet->tong_tien)*($db_chi_tiet->giftcode->gia_tri)/100), 2,'.', ',') }} <img width="22" src="images/dong.png" alt="">
+                                Tổng cộng: {{ number_format($db_chi_tiet->tong_tien, 2,'.', ',') }} đ
                             </div>
                         </div>
                     </div>
@@ -125,9 +126,8 @@
                     <th>Số lượng</th>
                     <th>Đơn giá</th>
                     <th>Tổng</th>
-                    <th>Thông số kỹ thuật</th>
-                    <th></th>
-                    <th></th>
+                    <th>Xem sản phẩm</th>
+
                 </tr>
             </thead>
             <tbody>
@@ -139,7 +139,6 @@
                     <td>{{ $chitiet->pivot->so_luong }}</td>
                     <td>{{ number_format($chitiet->pivot->don_gia, 3,'.', ',') }} <img width="22" src="images/dong.png" alt=""></td>
                     <td>{{ number_format($chitiet->pivot->don_gia*$chitiet->pivot->so_luong, 3,'.', ',') }} <img width="22" src="images/dong.png" alt=""></td>
-                    <th></th>
                     <th></th>
                 </tr>
                 <?php $a++ ?>

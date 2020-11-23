@@ -17,7 +17,7 @@ class DanhMucSanPham_controller extends Controller
     public function index()
     {
         $danhsach = DanhMucSanPham_Model::paginate(6);
-        return view('backEnd.danh_muc_san_pham.new',['danhsach'=>$danhsach]);
+        return view('backEnd.danh_muc_san_pham.new',['danhsach99'=>$danhsach]);
     }
 
     /**
@@ -74,9 +74,9 @@ class DanhMucSanPham_controller extends Controller
      */
     public function edit($id)
     {
-        $danhsach = DanhMucSanPham_Model::all();
+        $danhsach = DanhMucSanPham_Model::paginate(6);
         $show = DanhMucSanPham_Model::where('id',$id)->get();
-        return view('backEnd.danh_muc_san_pham.edit', ['dbedit'=> $show, 'danhsach'=>$danhsach]);
+        return view('backEnd.danh_muc_san_pham.edit', ['dbedit'=> $show, 'danhsach99'=>$danhsach]);
     }
 
     /**

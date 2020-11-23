@@ -216,7 +216,7 @@
                                 <div class="product-thumbnail">
                                     <a class="image_thumb scale_hover"
                                         href="{{ route('ChiTietSanPham',['ten_san_pham'=>$itesanham->ten_san_pham ]) }}"
-                                        title="Macbook Pro 2017 MPTR2">
+                                        title="{{ $itesanham->ten_san_pham }}">
                                         <img class="lazyload"
                                             src="../images/producs/{{ $itesanham->hinh_anh }}" alt="Macbook Pro 2017 MPTR2">
                                     </a>
@@ -226,7 +226,7 @@
 
                                         @else
                                         <span class="smart">
-                                            {{ $itesanham->khuyenmai->gia_tri }}%
+                                            -{{ $itesanham->khuyenmai->gia_tri }}%
                                         </span>
                                         @endif
 
@@ -252,14 +252,15 @@
                                 </div>
                                             <div class="product-info">
                                                 <h3 class="product-name"><a
-                                                        href="macbook-pro-2017-mptr2.html"
+                                                        href="{{ route('ChiTietSanPham',['ten_san_pham'=>$itesanham->ten_san_pham ]) }}"
                                                         title="Macbook Pro 2017 MPTR2">
                                                         {{ $itesanham->ten_san_pham }}</a></h3>
                                                 <div class="price-box">
-
+                                                    @if ($itesanham->gia_sale != '')
+                                                    {{ number_format($itesanham->gia_sale, 3,'.', ',') }}₫
+                                                    @else
                                                     {{ number_format($itesanham->gia_goc, 3,'.', ',') }}₫
-
-
+                                                    @endif
                                                 </div>
 
                                             </div>
@@ -292,16 +293,9 @@
 
     <script>
         $(document).ready(function(){
-            $('.add_to_cart').click(function(){
-                var $idprd = $(this).find('.val_id_product').val();
-                $.get('/gio-hang/them/'+ $idprd, function(data){
-                    $('#so_cart').html(data);
-                })
-            })
+            
 
-            $('#add_to_cart').click(function(){
-                alert('hello');
-            })
+
 
             $('#filter-duoi-2-000-000d').focus(function(){
                 var $id = $(this).val();

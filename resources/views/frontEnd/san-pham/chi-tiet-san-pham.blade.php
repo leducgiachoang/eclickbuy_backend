@@ -30,10 +30,6 @@
                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                 <div class="title_p">
                                     <h1 style="text-transform: uppercase" class="title-product">{{ $sanpham->ten_san_pham }}</h1>
-                                    <div class="reviews_details_product ">
-                                        <div class="sapo-product-reviews-badge sapo-product-reviews-badge-detail"
-                                            data-id="18703831"></div>
-                                    </div>
                                 </div>
 
                                 <div class="row">
@@ -43,7 +39,7 @@
 
                                             <div class="slider-big-video clearfix margin-bottom-20">
                                                 <div class="slider slider-for">
-                                                    <div title="Click để xem">
+                                                    <div>
 															<img src="../images/producs/{{ $sanpham->hinh_anh }}"
 																data-src="../images/producs/{{ $sanpham->hinh_anh }}"
 																alt="{{ $sanpham->ten_san_pham }}"
@@ -51,7 +47,7 @@
 																class="lazyload img-responsive mx-auto d-block">
                                                     </div>
 
-                                                    <div title="Click để xem">
+                                                    <div>
                                                         <img src="../images/producs/{{ $sanpham->hinh_anh1 }}"
                                                             data-src="../images/producs/{{ $sanpham->hinh_anh1 }}"
                                                             alt="{{ $sanpham->ten_san_pham }}"
@@ -59,7 +55,7 @@
                                                             class="lazyload img-responsive mx-auto d-block">
                                                 </div>
 
-                                                <div title="Click để xem">
+                                                <div>
                                                     <img src="../images/producs/{{ $sanpham->hinh_anh2 }}"
                                                         data-src="../images/producs/{{ $sanpham->hinh_anh2 }}"
                                                         alt="{{ $sanpham->ten_san_pham }}"
@@ -67,7 +63,7 @@
                                                         class="lazyload img-responsive mx-auto d-block">
                                             </div>
 
-                                            <div title="Click để xem">
+                                            <div>
                                                 <img src="../images/producs/{{ $sanpham->hinh_anh3 }}"
                                                     data-src="../images/producs/{{ $sanpham->hinh_anh3 }}"
                                                     alt="{{ $sanpham->ten_san_pham }}"
@@ -123,8 +119,7 @@
                                         </div>
                                     </div>
                                     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 details-pro">
-                                        <form enctype="multipart/form-data" id="add-to-cart-form" action="/cart/add"
-                                            method="post" class="form_background form-inline margin-bottom-0">
+                                        <div class="form_background form-inline margin-bottom-0">
                                             <div class="fw w_100">
                                                 <div class="price-box clearfix">
 
@@ -157,55 +152,71 @@
                                                 </div>
 
                                             </div>
-                                            <div class="form-product">
-                                                @if ($sanpham->id_khuyen_mai == 1)
+
+                                            @if (($sanpham->so_luong) == 0)
 
                                                 @else
-                                                <div class="box-promotion">
-                                                    <p class="fk-tit">Khuyến mãi đặc biệt <span>(Số lượng có
-                                                            hạn)</span></p>
-                                                    <div style="overflow: auto" class="fk-main">
-                                                        <?php echo $sanpham->khuyenmai->noi_dung_khuyen_mai ?>
-                                                    </div>
-                                                    <input name="properties[Khuyến mãi]" type="hidden" value="">
-                                                </div>
-                                                @endif
+                                                <form method="POST" action="{{ route('the_san_pham_cart_post') }}">
+                                                    @csrf
+                                                    <input type="hidden" name="id_san_pham" value="{{ $sanpham->id }}">
+                                                    <input type="hidden" name="ten_san_pham" value="{{ $sanpham->ten_san_pham }}">
+                                                    <input type="hidden" name="hinh_anh" value="{{ $sanpham->hinh_anh }}">
+                                                    <div class="form-product">
+                                                        @if ($sanpham->id_khuyen_mai == 1)
+
+                                                        @else
+                                                        <div class="box-promotion">
+                                                            <p class="fk-tit">Khuyến mãi đặc biệt <span>(Số lượng có
+                                                                    hạn)</span></p>
+                                                            <div style="overflow: auto" class="fk-main">
+                                                                <?php echo $sanpham->khuyenmai->noi_dung_khuyen_mai ?>
+                                                            </div>
+                                                            <input name="id_khuyen_mai" type="hidden" value="">
+                                                        </div>
+                                                        @endif
 
 
 
 
-                                                <div class="clearfix form-group ">
-                                                    <div class="custom custom-btn-number show">
-                                                        <label class="sl section">Số lượng:</label>
-                                                        <div
-                                                            class="custom input_number_product custom-btn-number form-control">
-                                                            <button class="btn_num num_1 button button_qty"
-                                                                onclick="var result = document.getElementById('qtym'); var qtypro = result.value; if( !isNaN( qtypro ) &amp;&amp; qtypro &gt; 1 ) result.value--;return false;"
-                                                                type="button"><i class="fas fa-minus"></i></button>
-                                                            <input type="text" id="qtym" name="quantity" value="1"
-                                                                maxlength="3" class="form-control prd_quantity"
-                                                                onkeypress="if ( isNaN(this.value + String.fromCharCode(event.keyCode) )) return false;"
-                                                                onchange="if(this.value == 0)this.value=1;">
-                                                            <button class="btn_num num_2 button button_qty"
-                                                                onclick="var result = document.getElementById('qtym'); var qtypro = result.value; if( !isNaN( qtypro )) result.value++;return false;"
-                                                                type="button"><i class="fas fa-plus"></i></button>
+                                                        <div class="clearfix form-group ">
+                                                            <div class="custom custom-btn-number show">
+                                                                <label class="sl section">Số lượng:</label>
+                                                                <div
+                                                                    class="custom input_number_product custom-btn-number form-control">
+                                                                    <button class="btn_num num_1 button button_qty"
+                                                                        onclick="var result = document.getElementById('qtym'); var qtypro = result.value; if( !isNaN( qtypro ) &amp;&amp; qtypro &gt; 1 ) result.value--;return false;"
+                                                                        type="button"><i class="fas fa-minus"></i></button>
+                                                                    <input type="text" id="qtym" name="quantity" value="1"
+                                                                        maxlength="3" class="form-control prd_quantity"
+                                                                        onkeypress="if ( isNaN(this.value + String.fromCharCode(event.keyCode) )) return false;"
+                                                                        onchange="if(this.value == 0)this.value=1;">
+                                                                    <button class="btn_num num_2 button button_qty"
+                                                                        onclick="var result = document.getElementById('qtym'); var qtypro = result.value; if( !isNaN( qtypro )) result.value++;return false;"
+                                                                        type="button"><i class="fas fa-plus"></i></button>
+                                                                </div>
+                                                            </div>
+                                                            <div class="btn-mua button_actions clearfix">
+
+
+                                                                <button type="submit"
+                                                                    class="btn btn_base normal_button btn_add_cart add_to_cart btn-cart">
+                                                                    <span class="txt-main text_1">Thêm vào giỏ hàng</span>
+                                                                </button>
+
+                                                                <button type="button"
+                                                                    class="btn fast btn_base btn_add_cart btn-cart">
+                                                                    <a style="color: white" href="{{ route('mua_ngay_get', ['id'=>$sanpham->id]) }}">
+                                                                    <span class="txt-main text_1">Mua ngay</span>
+                                                                </a>
+                                                                </button>
+
+
+                                                            </div>
                                                         </div>
                                                     </div>
-                                                    <div class="btn-mua button_actions clearfix">
+                                                </form>
+                                                @endif
 
-
-                                                        <button type="submit"
-                                                            class="btn btn_base normal_button btn_add_cart add_to_cart btn-cart">
-                                                            <span class="txt-main text_1">Thêm vào giỏ hàng</span>
-                                                        </button>
-                                                        <button type="submit"
-                                                            class="btn fast btn_base btn_add_cart btn-cart">
-                                                            <span class="txt-main text_1">Mua ngay</span>
-                                                        </button>
-
-                                                    </div>
-                                                </div>
-                                            </div>
                                             <div class="contact">Gọi đặt mua: <a href="tel:19006750">19006750</a>
                                                 (8:00 - 22:00)</div>
                                         </form>
@@ -252,22 +263,201 @@
 
                                 </div>
 
+                                <div class="section bg_white">
+
+                                    <style>
+                                        .sao-danh-gia i{
+                                            color: #FACA51;
+                                            font-size: 18px
+                                        }
+                                        .sao-danh-giax{
+                                            color: #FACA51;
+                                        }
+                                     </style>
+
+                                    <div class="product-tab e-tabs not-dqtab">
+                                        <ul class="tabs tabs-title clearfix">
+                                            <div class="tab-link active">
+                                                <h3>Đánh giá</h3>
+                                            </div>
+                                        </ul>
+                                        @if ($tongsao == 0)
+                                        <div class="alert alert-warning" role="alert">
+                                            Chưa có đánh giá về sản phẩm !
+                                          </div>
+                                        @else
+                                        <div class="tab-float">
+
+                                            <div class="tab-content active content_extab">
+                                                <div class="row">
+                                                    <div class="sao-danh-gia col-lg-12">
+                                                        <div class="row">
+                                                            <div class="col-3">
+                                                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                                                            </div>
+                                                            {{--  sao 5  --}}
+                                                            <div class="col-8">
+                                                                <div style="height: 10px;
+                                                                margin-top: 8px;" class="progress">
+                                                                    <div class="progress-bar bg-warning" role="progressbar" style="width: {{ $sao5*100/$tongsao }}%;" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+                                                                </div>
+
+
+                                                            </div>
+                                                            <div class="col-1">
+                                                                {{ $sao5 }}
+                                                            </div>
+                                                            {{--  sao 5  --}}
+
+                                                        </div>
+
+                                                    </div>
+                                                    <div class="sao-danh-gia col-lg-12">
+                                                        <div class="row">
+                                                            <div class="col-3">
+                                                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i>
+                                                            </div>
+                                                            {{--  sao 4  --}}
+                                                            <div class="col-8">
+                                                                <div style="height: 10px;
+                                                                margin-top: 8px;" class="progress">
+                                                                    <div class="progress-bar bg-warning" role="progressbar" style="width: {{ $sao4*100/$tongsao }}%;" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+                                                                </div>
+
+
+                                                            </div>
+                                                            <div class="col-1">
+                                                                {{ $sao4 }}
+                                                            </div>
+                                                            {{--  sao 4  --}}
+
+                                                        </div>
+                                                    </div>
+                                                    <div class="sao-danh-gia col-lg-12">
+                                                        <div class="row">
+                                                            <div class="col-3">
+                                                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i>
+                                                            </div>
+                                                            {{--  sao 3  --}}
+                                                            <div class="col-8">
+                                                                <div style="height: 10px;
+                                                                margin-top: 8px;" class="progress">
+                                                                    <div class="progress-bar bg-warning" role="progressbar" style="width: {{ $sao3*100/$tongsao }}%;" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+                                                                </div>
+
+
+                                                            </div>
+                                                            <div class="col-1">
+                                                                {{ $sao3 }}
+                                                            </div>
+                                                            {{--  sao 3  --}}
+                                                        </div>
+                                                    </div>
+                                                    <div class="sao-danh-gia col-lg-12">
+                                                        <div class="row">
+                                                            <div class="col-3">
+                                                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i>
+                                                            </div>
+                                                            {{--  sao 2  --}}
+                                                            <div class="col-8">
+                                                                <div style="height: 10px;
+                                                                margin-top: 8px;" class="progress">
+                                                                    <div class="progress-bar bg-warning" role="progressbar" style="width: {{ $sao2*100/$tongsao }}%;" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+                                                                </div>
+
+
+                                                            </div>
+                                                            <div class="col-1">
+                                                                {{ $sao2 }}
+                                                            </div>
+                                                            {{--  sao 2  --}}
+
+                                                        </div>
+                                                    </div>
+                                                    <div class="sao-danh-gia col-lg-12">
+                                                        <div class="row">
+                                                            <div class="col-3">
+                                                                <i class="fas fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i>
+                                                            </div>
+                                                            {{--  sao 1  --}}
+                                                            <div class="col-8">
+                                                                <div style="height: 10px;
+                                                                margin-top: 8px;" class="progress">
+                                                                    <div class="progress-bar bg-warning" role="progressbar" style="width: {{ $sao1*100/$tongsao }}%;" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+                                                                </div>
+
+
+                                                            </div>
+                                                            <div class="col-1">
+                                                            {{ $sao1 }}
+                                                            </div>
+
+                                                            {{--  sao 1  --}}
+
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="sao-danh-gia col-lg-12">
+                                                        <div class="row">
+                                                            <div class="col-3">
+                                                                {{ $tongsao }} Đánh giá
+                                                            </div>
+
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <h5>Nhận xét sản phẩm</h5>
+
+
+
+                                                @foreach ($dbdanhgias as $dbdanhgia)
+
+
+                                                <div style="display: flex;border-bottom: 1px solid #e9e9e9; padding-top: 15px">
+                                                    <div style="flex: 1"> <img style="width: 40px;height: 40px;border-radius: 50%;" src="../images/user/jpg15.jpg" alt=""> </div>
+                                                    <div style="flex: 9">
+                                                        <div class="sao-danh-giax">
+                                                            @if ($dbdanhgia->so_sao == 1)
+                                                            <i class="fas fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i>
+                                                            @elseif($dbdanhgia->so_sao == 2)
+                                                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i>
+                                                            @elseif($dbdanhgia->so_sao == 3)
+                                                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i>
+                                                            @elseif($dbdanhgia->so_sao == 4)
+                                                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i>
+                                                            @else
+                                                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+
+                                                            @endif
+                                                        </div>
+                                                        <div>
+                                                            <div>
+                                                                Bởi {{ $dbdanhgia->taikhoan->ho_ten }} <img width="15" src="../images/okmua.png" alt="" srcset=""><i style="color:#4CAF50">Chứng nhận đã mua hàng</i>
+                                                            </div>
+                                                            <div style="font-size: 20px">
+                                                                {{ $dbdanhgia->noi_dung }}
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                @endforeach
+
+                                            </div>
+                                        </div>
+                                        @endif
+                                    </div>
+
+                                </div>
+
                         </div>
 
                         <div class="col-xl-4 col-lg-4">
                             <div class="specifications margin-bottom-20">
                                 <h2 class="fs-dttop">Thông số kỹ thuật</h2>
-                                <div class="fs-tsright">
-                                    <ul>
-                                        <li><label>Màn hình :</label>6.23 inches, 1520 x 720 Pixel</li>
-                                        <li><label>Camera trước :</label>16.0 MP</li>
-                                        <li><label>Camera sau :</label>13 MP và 2 MP (2 camera)</li>
-                                        <li><label>RAM :</label>3 GB</li>
-                                        <li><label>Bộ nhớ trong :</label>32 GB</li>
-                                        <li><label>CPU :</label>Qualcomm Snapdragon 450, 8, 8xCortex A53 1.8GHz</li>
-                                        <li><label>GPU :</label>Adreno 506</li>
-                                        <li><label>Dung lượng pin :</label>4000 mAh battery</li>
-                                    </ul>
+                                <div style="height: 220px;
+                                overflow: hidden;" class="fs-tsright">
+                                    <?php echo $sanpham->thong_so_ky_thuat ?>
                                 </div>
                                 <button type="button" class="btn btn-primary" data-toggle="modal"
                                     data-target="#specifications">
@@ -293,26 +483,6 @@
                                     </div>
                                 </div>
                             </div>
-
-                            <div class="section bg_white">
-
-                                <div class="product-tab e-tabs not-dqtab">
-                                    <ul class="tabs tabs-title clearfix">
-                                        <div class="tab-link active">
-                                            <h3>Đánh giá</h3>
-                                        </div>
-                                    </ul>
-                                    <div class="tab-float">
-
-                                        <div class="tab-content active content_extab">
-                                            hello
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </div>
-
-
 
 
                         </div>
@@ -350,9 +520,13 @@
                                                 src="../images/producs/{{ $sanphamcungloai->hinh_anh }}" alt="{{ $sanphamcungloai->ten_san_pham }}">
                                         </a>
 
-                                        <span class="smart">-
-                                            6%
+                                        @if ($sanphamcungloai->id_khuyen_mai == 1)
+
+                                        @else
+                                        <span class="smart">
+                                            -{{ $sanphamcungloai->khuyenmai->gia_tri }}%
                                         </span>
+                                        @endif
 
                                         <div class="action">
                                             <input type="hidden" name="variantId"

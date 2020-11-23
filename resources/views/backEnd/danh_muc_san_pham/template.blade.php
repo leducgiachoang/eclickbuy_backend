@@ -33,7 +33,7 @@
                         <tbody>
                             <div>
                                 <?php $a=1 ?>
-                            @foreach ($danhsach as $item)
+                            @foreach ($danhsach99 as $item)
                             <tr>
                                 <td>{{ $a }}</td>
                                 <td>{{ $item->ten_danh_muc }}</td>
@@ -55,7 +55,7 @@
             </div>
             </div>
             <div class="card-footer">
-                {{ $danhsach->links() }}
+                {{ $danhsach99->links() }}
             </div>
         </div>
 

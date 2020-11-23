@@ -47,7 +47,7 @@ class them extends FormRequest
             'gia_goc.integer'=> 'Kiểu dữ liệu phải là số',
             'gia_goc.min'=> 'Vui lòng nhập giá trên 1000đ',
             'hinh_anh.required'=>'Vui lòng không được để trống !',
-            'image.image'=> 'Vui lòng chọn định dạng ảnh',
+            'hinh_anh.image'=> 'Vui lòng chọn định dạng ảnh',
             'id_danh_muc.required'=>'Vui lòng không được để trống !',
             'id_thuong_hieu.required'=>'Vui lòng không được để trống !',
             'id_khuyen_mai.required'=>'Vui lòng không được để trống !',

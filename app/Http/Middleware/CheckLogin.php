@@ -19,7 +19,7 @@ class CheckLogin
         if(Auth::check()){
             return $next($request);
         }else{
-            return redirect('tai-khoan/dang-nhap')->with('danger','Thông Báo! Bạn chưa đăng đăng nhập. Vui lòng đăng nhập và thử lại');
+            return redirect(route('dang-nhap'))->with('danger','Thông Báo! Bạn chưa đăng đăng nhập. Vui lòng đăng nhập và thử lại');
         }
 
     }

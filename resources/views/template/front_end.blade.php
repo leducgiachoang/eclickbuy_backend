@@ -6,7 +6,9 @@
 	<meta name='revisit-after' content='2 days'>
 	<meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <base href="{{ asset('') }}">
-	<title>EClickBuy </title>
+    <title>EClickBuy </title>
+
+    <link rel="shortcut icon" href="images/ovo.png">
 	<meta name="keywords" content="Cập nhật sau">
 
 
@@ -147,6 +149,7 @@
                                             @else
                                         	<a class="btnx" href="{{route('dashboard')}}">Quản lí</a>
                                             <a class="btnx" href="">Hồ sơ</a>
+                                            <a class="btnx" href="{{route('DonHangCuaToi_get')}}">Đơn hàng của tôi</a>
                                             <a class="btnx" href="{{route('dang-xuat')}}">Đăng xuất</a>
                                             @endif
                                             {{-- @if(isset(Auth::user()->vai_tro)) --}}
@@ -181,142 +184,7 @@
 
 						<div id="menu_header_menu" class="menu_all_site menu_index_site col-lg-3 col-md-3">
 							<ul class="ul_menu site-nav-vetical">
-								<li class="nav_item lev-1 lv1 li_check">
-									<a href="dien-thoai-may-tinh-bang.html" title="Điện thoại - Máy tính bảng">Điện
-										thoại - Máy tính bảng
-										<i class="fa fa-chevron-right"></i>
-									</a>
 
-									<ul class="ul_content_right_1 row">
-
-
-										<li class="nav_item lv2 col-lg-fix-5 col-md-fix-5 col-sm-12 col-xs-12">
-											<a href="dien-thoai-may-tinh-bang.html" title="Thương hiệu">Thương hiệu</a>
-											<ul class="ul_content_right_2">
-
-												<li class="nav_item lv3"><a href="dien-thoai-may-tinh-bang.html"
-														title="Samsung">Samsung</a></li>
-
-												<li class="nav_item lv3"><a href="dien-thoai-may-tinh-bang.html"
-														title="Oppo">Oppo</a></li>
-
-												<li class="nav_item lv3"><a href="dien-thoai-may-tinh-bang.html"
-														title="Iphone">Iphone</a></li>
-
-												<li class="nav_item lv3"><a href="dien-thoai-may-tinh-bang.html"
-														title="Sony">Sony</a></li>
-
-												<li class="nav_item lv3"><a href="dien-thoai-may-tinh-bang.html"
-														title="Xiaomi">Xiaomi</a></li>
-
-											</ul>
-										</li>
-
-
-
-										<li class="nav_item lv2 col-lg-fix-5 col-md-fix-5 col-sm-12 col-xs-12">
-											<a href="dien-thoai-may-tinh-bang.html" title="Samsung Galaxy">Samsung
-												Galaxy</a>
-											<ul class="ul_content_right_2">
-
-												<li class="nav_item lv3"><a href="dien-thoai-may-tinh-bang.html"
-														title="Galaxy S20+/S20 Ultra">Galaxy S20+/S20 Ultra</a></li>
-
-												<li class="nav_item lv3"><a href="dien-thoai-may-tinh-bang.html"
-														title="Note 10 Life/10+">Note 10 Life/10+</a></li>
-
-												<li class="nav_item lv3"><a href="dien-thoai-may-tinh-bang.html"
-														title="Galaxy S10+">Galaxy S10+</a></li>
-
-												<li class="nav_item lv3"><a href="dien-thoai-may-tinh-bang.html"
-														title="Galaxy A series">Galaxy A series</a></li>
-
-												<li class="nav_item lv3"><a href="dien-thoai-may-tinh-bang.html"
-														title="Galaxy Ford">Galaxy Ford</a></li>
-
-												<li class="nav_item lv3"><a href="dien-thoai-may-tinh-bang.html"
-														title="Galaxy Z Flip">Galaxy Z Flip</a></li>
-
-											</ul>
-										</li>
-
-
-
-										<li class="nav_item lv2 col-lg-fix-5 col-md-fix-5 col-sm-12 col-xs-12">
-											<a href="dien-thoai-may-tinh-bang.html" title="Iphone chính hãng">Iphone
-												chính hãng</a>
-											<ul class="ul_content_right_2">
-
-												<li class="nav_item lv3"><a href="dien-thoai-may-tinh-bang.html"
-														title="Iphone 6S/6S Plus">Iphone 6S/6S Plus</a></li>
-
-												<li class="nav_item lv3"><a href="dien-thoai-may-tinh-bang.html"
-														title="Iphone 7/7 Plus">Iphone 7/7 Plus</a></li>
-
-												<li class="nav_item lv3"><a href="dien-thoai-may-tinh-bang.html"
-														title="Iphone 8/8 Plus">Iphone 8/8 Plus</a></li>
-
-												<li class="nav_item lv3"><a href="dien-thoai-may-tinh-bang.html"
-														title="Iphone X/XS/XS Max">Iphone X/XS/XS Max</a></li>
-
-												<li class="nav_item lv3"><a href="dien-thoai-may-tinh-bang.html"
-														title="Iphone 11/11 Pro">Iphone 11/11 Pro</a></li>
-
-											</ul>
-										</li>
-
-
-
-										<li class="nav_item lv2 col-lg-fix-5 col-md-fix-5 col-sm-12 col-xs-12">
-											<a href="dien-thoai-may-tinh-bang.html" title="Giá tiền">Giá tiền</a>
-											<ul class="ul_content_right_2">
-
-												<li class="nav_item lv3"><a href="dien-thoai-may-tinh-bang.html"
-														title="Từ 3 - 6 triệu">Từ 3 - 6 triệu</a></li>
-
-												<li class="nav_item lv3"><a href="dien-thoai-may-tinh-bang.html"
-														title="Từ 6 - 10 triệu">Từ 6 - 10 triệu</a></li>
-
-												<li class="nav_item lv3"><a href="dien-thoai-may-tinh-bang.html"
-														title="Từ 10 - 15 triệu">Từ 10 - 15 triệu</a></li>
-
-												<li class="nav_item lv3"><a href="dien-thoai-may-tinh-bang.html"
-														title="Trên 15 triệu">Trên 15 triệu</a></li>
-
-											</ul>
-										</li>
-
-
-
-										<li class="nav_item lv2 col-lg-fix-5 col-md-fix-5 col-sm-12 col-xs-12">
-											<a href="dien-thoai-may-tinh-bang.html" title="Máy tính bảng">Máy tính
-												bảng</a>
-											<ul class="ul_content_right_2">
-
-												<li class="nav_item lv3"><a href="dien-thoai-may-tinh-bang.html"
-														title="Samsung">Samsung</a></li>
-
-												<li class="nav_item lv3"><a href="dien-thoai-may-tinh-bang.html"
-														title="Ipad">Ipad</a></li>
-
-												<li class="nav_item lv3"><a href="dien-thoai-may-tinh-bang.html"
-														title="Asus">Asus</a></li>
-
-												<li class="nav_item lv3"><a href="dien-thoai-may-tinh-bang.html"
-														title="Xiaomi">Xiaomi</a></li>
-
-												<li class="nav_item lv3"><a href="dien-thoai-may-tinh-bang.html"
-														title="Huawei">Huawei</a></li>
-
-											</ul>
-										</li>
-
-
-
-
-
-									</ul>
-								</li>
 
                                 @foreach ($danhmucs as $danhmuc)
 								<li class="lev-1 lv1 li_check">
@@ -406,184 +274,6 @@
 
 								<i class="fa fa-plus"></i>
 								<ul class="level0" style="display:none;">
-
-									<li class="level1 ">
-										<a href="dien-thoai-may-tinh-bang.html"> <span>Điện thoại - Máy tính bảng</span>
-										</a>
-
-										<i class="fa fa-plus"></i>
-										<ul class="level1" style="display:none;">
-
-											<li class="level2 ">
-												<a href="dien-thoai-may-tinh-bang.html"><span>Thương hiệu</span></a>
-
-												<i class="fa fa-plus"></i>
-												<ul class="level2" style="display:none;">
-
-													<li class="level3 ">
-														<a href="dien-thoai-may-tinh-bang.html"><span>Samsung</span></a>
-													</li>
-
-													<li class="level3 ">
-														<a href="dien-thoai-may-tinh-bang.html"><span>Oppo</span></a>
-													</li>
-
-													<li class="level3 ">
-														<a href="dien-thoai-may-tinh-bang.html"><span>Iphone</span></a>
-													</li>
-
-													<li class="level3 ">
-														<a href="dien-thoai-may-tinh-bang.html"><span>Sony</span></a>
-													</li>
-
-													<li class="level3 ">
-														<a href="dien-thoai-may-tinh-bang.html"><span>Xiaomi</span></a>
-													</li>
-
-												</ul>
-
-											</li>
-
-											<li class="level2 ">
-												<a href="dien-thoai-may-tinh-bang.html"><span>Samsung Galaxy</span></a>
-
-												<i class="fa fa-plus"></i>
-												<ul class="level2" style="display:none;">
-
-													<li class="level3 ">
-														<a href="dien-thoai-may-tinh-bang.html"><span>Galaxy S20+/S20
-																Ultra</span></a>
-													</li>
-
-													<li class="level3 ">
-														<a href="dien-thoai-may-tinh-bang.html"><span>Note 10
-																Life/10+</span></a>
-													</li>
-
-													<li class="level3 ">
-														<a href="dien-thoai-may-tinh-bang.html"><span>Galaxy
-																S10+</span></a>
-													</li>
-
-													<li class="level3 ">
-														<a href="dien-thoai-may-tinh-bang.html"><span>Galaxy A
-																series</span></a>
-													</li>
-
-													<li class="level3 ">
-														<a href="dien-thoai-may-tinh-bang.html"><span>Galaxy
-																Ford</span></a>
-													</li>
-
-													<li class="level3 ">
-														<a href="dien-thoai-may-tinh-bang.html"><span>Galaxy Z
-																Flip</span></a>
-													</li>
-
-												</ul>
-
-											</li>
-
-											<li class="level2 ">
-												<a href="dien-thoai-may-tinh-bang.html"><span>Iphone chính
-														hãng</span></a>
-
-												<i class="fa fa-plus"></i>
-												<ul class="level2" style="display:none;">
-
-													<li class="level3 ">
-														<a href="dien-thoai-may-tinh-bang.html"><span>Iphone 6S/6S
-																Plus</span></a>
-													</li>
-
-													<li class="level3 ">
-														<a href="dien-thoai-may-tinh-bang.html"><span>Iphone 7/7
-																Plus</span></a>
-													</li>
-
-													<li class="level3 ">
-														<a href="dien-thoai-may-tinh-bang.html"><span>Iphone 8/8
-																Plus</span></a>
-													</li>
-
-													<li class="level3 ">
-														<a href="dien-thoai-may-tinh-bang.html"><span>Iphone X/XS/XS
-																Max</span></a>
-													</li>
-
-													<li class="level3 ">
-														<a href="dien-thoai-may-tinh-bang.html"><span>Iphone 11/11
-																Pro</span></a>
-													</li>
-
-												</ul>
-
-											</li>
-
-											<li class="level2 ">
-												<a href="dien-thoai-may-tinh-bang.html"><span>Giá tiền</span></a>
-
-												<i class="fa fa-plus"></i>
-												<ul class="level2" style="display:none;">
-
-													<li class="level3 ">
-														<a href="dien-thoai-may-tinh-bang.html"><span>Từ 3 - 6
-																triệu</span></a>
-													</li>
-
-													<li class="level3 ">
-														<a href="dien-thoai-may-tinh-bang.html"><span>Từ 6 - 10
-																triệu</span></a>
-													</li>
-
-													<li class="level3 ">
-														<a href="dien-thoai-may-tinh-bang.html"><span>Từ 10 - 15
-																triệu</span></a>
-													</li>
-
-													<li class="level3 ">
-														<a href="dien-thoai-may-tinh-bang.html"><span>Trên 15
-																triệu</span></a>
-													</li>
-
-												</ul>
-
-											</li>
-
-											<li class="level2 ">
-												<a href="dien-thoai-may-tinh-bang.html"><span>Máy tính bảng</span></a>
-
-												<i class="fa fa-plus"></i>
-												<ul class="level2" style="display:none;">
-
-													<li class="level3 ">
-														<a href="dien-thoai-may-tinh-bang.html"><span>Samsung</span></a>
-													</li>
-
-													<li class="level3 ">
-														<a href="dien-thoai-may-tinh-bang.html"><span>Ipad</span></a>
-													</li>
-
-													<li class="level3 ">
-														<a href="dien-thoai-may-tinh-bang.html"><span>Asus</span></a>
-													</li>
-
-													<li class="level3 ">
-														<a href="dien-thoai-may-tinh-bang.html"><span>Xiaomi</span></a>
-													</li>
-
-													<li class="level3 ">
-														<a href="dien-thoai-may-tinh-bang.html"><span>Huawei</span></a>
-													</li>
-
-												</ul>
-
-											</li>
-
-										</ul>
-
-									</li>
-
                                     @foreach ($danhmucs as $danhmuc)
                                     <li class="level1">
                                         <a href="{{ route('DanhSachById_get',['id'=>$danhmuc->ten_danh_muc]) }}">
@@ -869,7 +559,17 @@
 				</div>
 			</footer>
 		</div>
-	</div>
+    </div>
+    <script>
+        $(document).ready(function(){
+            $('.add_to_cart').click(function(){
+                var $idprd = $(this).find('.val_id_product').val();
+                $.get('/gio-hang/them/'+ $idprd, function(data){
+                    $('#so_cart').html(data);
+                });
+            });
+        });
+    </script>
 
 
 

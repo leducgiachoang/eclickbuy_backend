@@ -160,23 +160,7 @@
 								</section>
 							</div>
 						</article>
-						<div class="field__input-btn-wrapper field__input-btn-wrapper--vertical hide-on-desktop">
-							<button type="submit" class="btn btn-checkout spinner" data-bind-class="{&#39;spinner--active&#39;: isSubmitingCheckout}" data-bind-disabled="isSubmitingCheckout || isLoadingReductionCode">
-								<span class="spinner-label">ĐẶT HÀNG</span>
-							</button>
 
-							<a href="https://eco-shop-1.mysapo.net/cart" class="previous-link">
-								<i class="previous-link__arrow">❮</i>
-								<span class="previous-link__content">Quay về giỏ hàng</span>
-							</a>
-
-						</div>
-
-						<div id="common-alert" data-tg-refresh="refreshError">
-
-
-							<div class="alert alert--danger hide-on-desktop hide" data-bind-show="!isSubmitingCheckout &amp;&amp; isSubmitingCheckoutError" data-bind="submitingCheckoutErrorMessage">Có lỗi xảy ra khi xử lý. Vui lòng thử lại</div>
-						</div>
 					</div>
 
 
@@ -252,7 +236,7 @@
 											<div class="field">
 												<div class="field__input-btn-wrapper">
 													<div class="field__input-wrapper">
-														<input placeholder="Mã khuyến mãi" class="field__input" name="code" id="reductionCode" type="text">
+														<input placeholder="Mã khuyến mãi" class="field__input" name="code_gift" id="reductionCode" type="text">
 													</div>
 													<button class="field__input-btn btn spinner btn--disabled" id="button_add_gift" type="button">
 														<span class="spinner-label">Áp dụng</span>
@@ -284,7 +268,7 @@
                                                                         setTimeout(hideda, 2000);
                                                                     }else{
                                                                         var $thongbaoda = $('.thongbaoGiftSu').text('Áp dụng mã khuyến mãi thành công');
-                                                                        $('#reductionCode').prop('disabled', true);
+                                                                        $('#reductionCode').prop('readonly', true);
                                                                         var hideda = function(){
                                                                             $thongbaoda.hide();
                                                                         }
@@ -349,7 +333,7 @@
 
 													<span id="tongcongId" class="payment-due__price"><?php  echo number_format((int) $tongtien + 30000,2,",","."); ?>₫</span>
 
-                                                    <input id="tongcongIdInput" type="text" name="tong_tien" value="{{ (int) $tongtien + 30000 }}">
+                                                    <input id="tongcongIdInput" type="hidden" name="tong_tien" value="{{ (int) $tongtien + 30000 }}">
                                                 </td>
 											</tr>
 										</tfoot>

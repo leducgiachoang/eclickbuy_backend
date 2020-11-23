@@ -20,11 +20,11 @@ class CheckAdmin
             if($user->vai_tro == 1){
                 return $next($request);
             }else{
-                return redirect('tai-khoan/dang-nhap')->with('danger','Vui lòng đăng nhập tài khoản Admin để tiến hành quản lý trang website !');
+                return redirect(route('dang-nhap'))->with('danger','Vui lòng đăng nhập tài khoản Admin để tiến hành quản lý trang website !');
             }
 
         }else{
-            return redirect('tai-khoan/dang-nhap')->with('danger','Vui lòng đăng nhập tài khoản Admin để tiến hành quản lý trang website !');
+            return redirect(route('dang-nhap'))->with('danger','Vui lòng đăng nhập tài khoản Admin để tiến hành quản lý trang website !');
         }
     }
 }
