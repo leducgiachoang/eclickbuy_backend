@@ -69,7 +69,6 @@
                                 <select name="vai_tro" class="form-control input-sm m-bot15">
                                     <option value="0">Mặc Định</option>
                                     <option value="1">Nhân Viên</option>
-                                    <option value="2">Admin</option>
                                 </select>
                             </div>
                             <div class="form-group">

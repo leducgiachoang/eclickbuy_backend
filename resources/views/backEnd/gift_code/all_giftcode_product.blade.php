@@ -1,10 +1,10 @@
 @extends('template.backend')
 @section('container')
-<div class="container" style="width:100%">
-    <div class="row" style="font-size: 14px">
+<div class="" style="width:100%;text-align: center;" >
+    <div class="row" style="font-size: 16px">
             <div class="panel panel-default">
                 <div class="panel-heading" style="text-align: center">
-                    Liệt kê thương hiệu sản phẩm
+                    Liệt kê Mã GiftCode
                 </div><br>
                 <div class="table-responsive">
                     <?php
@@ -23,39 +23,27 @@
                                     </label>
                                 </th>
                                 <th>Số TT</th>
-                                <th>Tên thương hiệu</th>
-                                <th>Hình ảnh</th>
-                                <th>Mô tả</th>
-                                <th>Tình trạng</th>
+                                <th>Mã GiftCode</th>
+                                <th>Giá Trị</th>
+                                <th>Ngày Bắt Đầu</th>
+                                <th>Ngày Kết Thúc</th>
                                 <th>Chỉnh sửa</th>
                             </tr>
                         </thead>
-                        <tbody>
-                            @foreach($all_brand_product as $key =>$brand_pro)
+                        <tbody style="font-size: 14px">
+                            @foreach($all_giftcode_product as $key =>$all_giftcode)
                             <tr>
                                 <td><label class="i-checks m-b-none"><input type="checkbox" name="post[]"><i></i></label></td>
-                                <td>{{$brand_pro->id}}</td>
-                                <td>{{$brand_pro->ten_thuong_hieu}}</td>
-                                <td><img src="images/brand_product/{{$brand_pro->hinh_anh}}" alt="" height="120" width="100"></td>
-                                <td>{{$brand_pro->mo_ta}}</td>
-                                <td><span class="text-ellipsis">
-                                        <?php
-                                        if ($brand_pro->status == 0) {
-                                        ?>
-                                            <a href="{{ route('unactive-brand-product',['id'=> $brand_pro->id]) }}"><span class="badge badge-success">Ẩn</span></a>
-                                        <?php
-                                        } else {
-                                        ?>
-                                            <a href="{{ route('active-brand-product',['id'=> $brand_pro->id]) }}"><span class="badge badge-primary">Hiển thị</span></a>
-                                        <?php
-                                        }
-                                        ?>
-                                    </span></td>
+                                <td>{{$all_giftcode->id}}</td>
+                                <td>{{$all_giftcode->code}}</td>
+                                <td>{{$all_giftcode->gia_tri}} %</td>
+                                <td>{{$all_giftcode->ngay_bat_dau}}</td>
+                                <td>{{$all_giftcode->ngay_ket_thuc}}</td>
                                 <td>
-                                    <a href="{{ route('edit-brand-product',['id'=> $brand_pro->id]) }}" class="active" ui-toggle-class="">
-                                        <i class="fas fa-edit"></i></a>
-                                    <a onclick="return confirm('Bạn muốn xóa thương hiệu này hả ?')" href="{{ route('delete-brand-product',['id'=> $brand_pro->id]) }}" class="active" ui-toggle-class="">
-                                        <i class="fa fa-times text-danger text"></i></a>
+                                <a href="{{ route('edit-giftcode-product',['id'=> $all_giftcode->id]) }}" class="active" ui-toggle-class="">
+                                <i class="fas fa-edit"></i></a>
+                                <a onclick="return confirm('Bạn muốn xóa khuyến mãi này hả ?')" href="{{ route('delete-giftcode-product',['id'=> $all_giftcode->id]) }}" class="active" ui-toggle-class="">
+                                <i class="fa fa-times text-danger text"></i></a>
                                 </td>
                             </tr>
                             @endforeach

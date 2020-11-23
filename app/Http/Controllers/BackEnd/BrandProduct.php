@@ -17,7 +17,7 @@ class BrandProduct extends Controller
     {
         $all_brand_product = DB::table('thuong_hieu')->orderBy('id', 'desc')->get();
         $manager_brand = view('backEnd.thuong_hieu_san_pham.all_brand_product')->with('all_brand_product', $all_brand_product);
-        return view('template.backend')->with('bachEnd.thuong_hieu-san_pham.all_brand_product', $manager_brand);
+        return view('template.backend')->with('backEnd.thuong_hieu_san_pham.all_brand_product', $manager_brand);
     }
     public function save_brand_product(Request $request)
     {
@@ -29,10 +29,10 @@ class BrandProduct extends Controller
 
             ],
             [
-                'brand_product_name.required' => 'Bạn chưa nhập tên danh mục',
-                'brand_product_name.unique' => 'Tên danh mục đã tồn tại',
-                'brand_product_name.min' => 'Tên danh mục ít nhất 1 kí tự',
-                'brand_product_name.max' => 'Tên danh mục tối đa 100 kí tự'
+                'brand_product_name.required' => 'Bạn chưa nhập tên thương hiệu',
+                'brand_product_name.unique' => 'Tên thương hiệu đã tồn tại',
+                'brand_product_name.min' => 'Tên thương hiệu ít nhất 1 kí tự',
+                'brand_product_name.max' => 'Tên thương hiệu tối đa 100 kí tự'
             ]
         );
         $data['ten_thuong_hieu'] = $request->brand_product_name;
@@ -85,6 +85,19 @@ class BrandProduct extends Controller
     public function update_brand_product(Request $request,$id)
     {
         $data = array();
+        $this->validate(
+            $request,
+            [   //name ở form                            table       name colum table
+                'brand_product_name' => 'required|unique:thuong_hieu,ten_thuong_hieu|min:1|max:100',
+
+            ],
+            [
+                'brand_product_name.required' => 'Bạn chưa nhập tên thương hiệu',
+                'brand_product_name.unique' => 'Tên thương hiệu đã tồn tại',
+                'brand_product_name.min' => 'Tên thương hiệu ít nhất 1 kí tự',
+                'brand_product_name.max' => 'Tên thương hiệu tối đa 100 kí tự'
+            ]
+        );
         $data['ten_thuong_hieu'] = $request->brand_product_name;
         $data['mo_ta'] = $request->brand_product_desc;
         $data['status'] = $request->brand_product_status;

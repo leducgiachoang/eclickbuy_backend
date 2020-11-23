@@ -148,8 +148,10 @@
 											<a href="{{route('dang-ki')}}">Đăng ký</a>
                                             @else
                                         	<a class="btnx" href="{{route('dashboard')}}">Quản lí</a>
-                                            <a class="btnx" href="">Hồ sơ</a>
                                             <a class="btnx" href="{{route('DonHangCuaToi_get')}}">Đơn hàng của tôi</a>
+
+                                            <a class="btnx" href="{{route('ho-so-tai-khoan',['id'=> Auth::user()->id]) }}">Hồ sơ</a>
+
                                             <a class="btnx" href="{{route('dang-xuat')}}">Đăng xuất</a>
                                             @endif
                                             {{-- @if(isset(Auth::user()->vai_tro)) --}}

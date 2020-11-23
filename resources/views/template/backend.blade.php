@@ -111,6 +111,49 @@
                 </li>
 
                 <li>
+                    <a href="#sale" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                        <i class="fas fa-weight"></i>
+                        Khuyến mãi
+                    </a>
+                    <ul class="collapse list-unstyled" id="sale">
+                        <li>
+                            <a href="{{ route('add-sale-product') }}">Thêm mới</a>
+                        </li>
+                        <li>
+                            <a href="{{ route('all-sale-product') }}">Danh Sách</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#giftcode" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                        <i class="fas fa-gift"></i>
+                        GiftCode
+                    </a>
+                    <ul class="collapse list-unstyled" id="giftcode">
+                        <li>
+                            <a href="{{ route('add-giftcode-product') }}">Thêm mới</a>
+                        </li>
+                        <li>
+                            <a href="{{ route('all-giftcode-product') }}">Danh Sách</a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="#slider" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                        <i class="fas fa-sliders-h"></i>
+                        Slider
+                    </a>
+                    <ul class="collapse list-unstyled" id="slider">
+                        <li>
+                            <a href="{{ route('view-page-slider') }}">Thêm mới</a>
+                        </li>
+                        <li>
+                            <a href="{{ route('list-page-slider') }}">Danh sách</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
                     <a href="#">
                         <i class="fas fa-briefcase"></i>
                         About
@@ -280,7 +323,7 @@
                         Activity Log
                       </a>
                       <div class="dropdown-divider"></div>
-                      <a class="dropdown-item" href="" data-toggle="modal" data-target="#logoutModal">
+                      <a class="dropdown-item" href="{{route('dang-xuat')}}" data-toggle="modal" data-target="#logoutModal">
                         <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                         Logout
                       </a>

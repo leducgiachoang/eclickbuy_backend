@@ -21,6 +21,11 @@
                         <div class="form-group">
                             <label for="exampleInputEmail1">Tên thương hiệu</label>
                             <input type="text" name="brand_product_name" class="form-control" value="{{$edit_value->ten_thuong_hieu}}" placeholder="Tên thương hiệu">
+                            @if($errors->has('brand_product_name'))
+							    <div class="alert alert-danger" role="alert">
+								<strong>{{$errors->first('brand_product_name')}}</strong>
+							    </div>
+		                    @endif
                         </div>
                         <div class="form-group">
                             <label for="exampleInputEmail1">Hình ảnh</label>

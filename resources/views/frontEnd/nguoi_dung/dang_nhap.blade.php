@@ -29,7 +29,7 @@
                             <div class="wpx" style="margin-bottom: 80px">
                                 <h1 class="title_heads a-center"><span>Đăng nhập</span></h1>
                                 <span class="block a-center dkm margin-top-10">Nếu bạn chưa có tài khoản, <a
-                                        href="register.html" class="btn-link-style btn-register">đăng ký tại
+                                        href="{{route('dang-ki')}}" class="btn-link-style btn-register">đăng ký tại
                                         đây</a></span>
 
                                 <div id="login" class="section">

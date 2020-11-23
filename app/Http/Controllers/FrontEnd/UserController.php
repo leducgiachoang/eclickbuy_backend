@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\DB;
+use App\Model\NguoiDungModel;
 use Session;
 session_start();
 
@@ -91,7 +92,7 @@ class UserController extends Controller
     public function logout()
     {
         Auth::logout();
-        return redirect()->back();
+        return view('frontEnd.nguoi_dung.dang_nhap');
     }
     public function verify($code,$email)
     {
@@ -103,7 +104,7 @@ class UserController extends Controller
         )->first();
         if(!$user){
             Session::put('message_front_end', 'Xin lỗi đường dẫn không hợp lệ');
-            return redirect('tai-khoan/dang-nhap');
+            return redirect('tai-khoan/dang-nhap-tai-khoan');
         }else{
             $user = DB::table('tai_khoan')->where(
                 [
@@ -113,7 +114,42 @@ class UserController extends Controller
             )->update(['status'=>1]);
 
             Session::put('message_front_end', 'Kích hoạt tài khoản thành công');
-            return redirect('tai-khoan/dang-nhap');
+            return redirect('tai-khoan/dang-nhap-tai-khoan');
         }
+    }
+    public function profile($id){
+        $profile_user = DB::table('tai_khoan')->where('id', $id)->get();
+        $manager_user = view('frontEnd.nguoi_dung.ho_so')->with('profile_user', $profile_user);
+        return view('template.front_End')->with('frontEnd.nguoi_dung.ho_so', $manager_user);
+    }
+    public function update_profile(Request $request,$id)
+    {
+        $data = array();
+        $request->validate(
+            [
+                'ho_ten'=> 'required|min:5|max:50',
+            ],
+            [
+                'ho_ten.required'=> 'Vui lòng nhập Họ và Tên',
+
+        ]);
+        $data['ho_ten'] = $request->ho_ten;
+        $data['ngay_sinh'] = $request->ngay_sinh;
+        $data['password'] = bcrypt($request->password);
+        $get_image = $request->file('anh_dai_dien');
+        if ($get_image) {
+            $get_name_image = $get_image->getClientOriginalExtension();
+            $name_image = current(explode('.', $get_name_image));
+
+            $new_image = $name_image . rand(0, 99) . '.' . $get_image->getClientOriginalExtension();
+            $get_image->move('images/user/', $new_image);
+            $data['anh_dai_dien'] = $new_image;
+            DB::table('tai_khoan')->where('id', $id)->update($data);
+            Session::put('message', 'Cập nhật thông tin thành công');
+            return redirect()->back();
+        }
+        DB::table('tai_khoan')->where('id', $id)->update($data);
+        Session::put('message', 'Cập nhật thông tin thành công');
+        return redirect()->back();
     }
 }

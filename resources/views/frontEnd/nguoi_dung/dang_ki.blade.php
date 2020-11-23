@@ -12,7 +12,7 @@
                                 <div class="wpx">
                                     <h1 class="title_heads a-center"><span>Đăng ký</span></h1>
                                     <span class="block a-center dkm margin-top-10">Đã có tài khoản, đăng nhập <a
-                                            href="login.html" class="btn-link-style btn-register">tại
+                                            href="{{route('dang-nhap')}}" class="btn-link-style btn-register">tại
                                             đây</a></span>
                                     <div id="login" class="section">
                                         <form accept-charset="utf-8" action="{{route('dang-ki')}}"

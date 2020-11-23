@@ -124,4 +124,5 @@ class UserController extends Controller
         Session::put('message', 'Sửa người dùng thành công');
         return redirect()->back();
     }
+
 }
