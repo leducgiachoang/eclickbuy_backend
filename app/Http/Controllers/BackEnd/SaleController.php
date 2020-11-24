@@ -16,7 +16,7 @@ class SaleController extends Controller
         return view('backEnd.khuyen_mai.add_sale_product');
     }
     public function all_sale_product(){
-        $all_sale_product = DB::table('khuyen_mai')->orderBy('id', 'desc')->get();
+        $all_sale_product = DB::table('khuyen_mai')->orderBy('id', 'desc')->paginate(10);
         $manager_sale = view('backEnd.khuyen_mai.all_sale_product')->with('all_sale_product', $all_sale_product);
         return view('template.backend')->with('backEnd.khuyen_mai.all_sale_product', $manager_sale);
     }

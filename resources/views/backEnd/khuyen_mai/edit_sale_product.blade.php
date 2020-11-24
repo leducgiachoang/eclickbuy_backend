@@ -20,8 +20,10 @@
                         <form role="form" action="{{route('update-sale-product',['id'=> $edit_sale->id])}}" method="post" enctype="multipart/form-data">
                             @csrf
                             <div class="form-group">
-                                <label for="exampleInputEmail1">Nội Dung Khuyến Mãi</label>
-                                <input type="text" name="noi_dung_khuyen_mai" class="form-control" value="{{$edit_sale->noi_dung_khuyen_mai}}">
+                                <div class="form-group">
+                                    <label for="exampleInputPassword1">Nội Dung Khuyến Mãi</label>
+                                    <textarea style="resize:none" rows="5" name="noi_dung_khuyen_mai" class="form-control" id="exampleInputEmail1">{{$edit_sale->noi_dung_khuyen_mai}}</textarea>
+                                </div>
                                 @if($errors->has('noi_dung_khuyen_mai'))
 							    <div class="alert alert-danger" role="alert">
 								<strong>{{$errors->first('noi_dung_khuyen_mai')}}</strong>

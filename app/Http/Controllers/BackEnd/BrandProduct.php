@@ -15,7 +15,7 @@ class BrandProduct extends Controller
     }
     public function all_brand_product()
     {
-        $all_brand_product = DB::table('thuong_hieu')->orderBy('id', 'desc')->get();
+        $all_brand_product = DB::table('thuong_hieu')->orderBy('id', 'desc')->paginate(10);
         $manager_brand = view('backEnd.thuong_hieu_san_pham.all_brand_product')->with('all_brand_product', $all_brand_product);
         return view('template.backend')->with('backEnd.thuong_hieu_san_pham.all_brand_product', $manager_brand);
     }
@@ -61,7 +61,7 @@ class BrandProduct extends Controller
     public function delete_brand_product($id)
     {
         DB::table('thuong_hieu')->where('id', $id)->delete();
-        Session::put('message', 'Xóa sản phẩm thành công');
+        Session::put('message', 'Xóa thương hiệu thành công');
         return redirect()->back();
     }
     public function unactive_brand_product($id)
@@ -88,12 +88,11 @@ class BrandProduct extends Controller
         $this->validate(
             $request,
             [   //name ở form                            table       name colum table
-                'brand_product_name' => 'required|unique:thuong_hieu,ten_thuong_hieu|min:1|max:100',
+                'brand_product_name' => 'required|min:1|max:100',
 
             ],
             [
                 'brand_product_name.required' => 'Bạn chưa nhập tên thương hiệu',
-                'brand_product_name.unique' => 'Tên thương hiệu đã tồn tại',
                 'brand_product_name.min' => 'Tên thương hiệu ít nhất 1 kí tự',
                 'brand_product_name.max' => 'Tên thương hiệu tối đa 100 kí tự'
             ]

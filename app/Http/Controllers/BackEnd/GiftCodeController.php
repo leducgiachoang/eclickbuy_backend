@@ -17,7 +17,7 @@ class giftcodeController extends Controller
         return view('backEnd.gift_code.add_giftcode_product');
     }
     public function all_giftcode_product(){
-        $all_giftcode_product = DB::table('giftcode')->orderBy('id', 'desc')->get();
+        $all_giftcode_product = DB::table('giftcode')->orderBy('id', 'desc')->paginate(10);
         $manager_giftcode = view('backEnd.gift_code.all_giftcode_product')->with('all_giftcode_product', $all_giftcode_product);
         return view('template.backend')->with('backEnd.gift_code.all_giftcode_product', $manager_giftcode);
     }
