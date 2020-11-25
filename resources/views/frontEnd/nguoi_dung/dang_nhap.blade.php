@@ -85,8 +85,9 @@
 
                                 <div class="h_recover" style="display:none;">
                                     <div id="recover-password" class="form-signup page-login">
-                                        <form accept-charset="utf-8" action="/account/recover"
+                                    <form accept-charset="utf-8" action="{{route('reset-password')}}"
                                             id="recover_customer_password" method="post">
+                                            @csrf
                                             <input name="FormType" type="hidden"
                                                 value="recover_customer_password">
                                             <input name="utf8" type="hidden" value="true">
@@ -98,7 +99,7 @@
                                                     <input type="email"
                                                         pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,63}$"
                                                         class="form-control form-control-lg" value=""
-                                                        name="Email" id="recover-email" placeholder="Email"
+                                                        name="email" id="recover-email" placeholder="Email"
                                                         required="">
                                                 </fieldset>
                                             </div>

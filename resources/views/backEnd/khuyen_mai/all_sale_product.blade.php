@@ -16,7 +16,7 @@
             <thead>
                 <tr>
                     <th>Số TT</th>
-                    <th>Nội Dung Khuyến Mãi</th>
+                    <th>Giá trị</th>
                     <th>Chỉnh sửa</th>
                 </tr>
             </thead>
