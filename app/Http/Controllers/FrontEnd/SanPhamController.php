@@ -49,10 +49,15 @@ class SanPhamController extends Controller
         foreach ($sanphambygia as $sanphambygiab) {
 
             if($sanphambygiab->gia_sale){
-                $gia = number_format($sanphambygiab->gia_sale, 3,'.',',');
+                $gia = number_format($sanphambygiab->gia_sale, 0,'.',',');
             }else{
-                $gia = number_format($sanphambygiab->gia_goc, 3,'.',',');
+                $gia = number_format($sanphambygiab->gia_goc, 0,'.',',');
             }
+
+            if($sanphambygiab->gia_sale == true){
+                $giagoc = number_format($sanphambygiab->gia_goc, 0,'.', '.');
+            }
+
             echo '<div class="col-6 col-sm-6 col-lg-3 col-lg-fix-5 product-col item-border no-padding">
             <div class="item_product_main">
 
@@ -80,6 +85,9 @@ class SanPhamController extends Controller
                                 title="'.$sanphambygiab->ten_san_pham.'">'.
                                  $sanphambygiab->ten_san_pham .'</a></h3>
                         <div class="price-box">'.$gia.'₫
+                        <span class="compare-price">
+                            '.$giagoc.'₫
+                        </div>
                         </div>
 
                     </div>
@@ -94,9 +102,12 @@ class SanPhamController extends Controller
         $sanphambygia = SanPham_Model::where('id_danh_muc', $id)->whereBetween('gia_goc', [0, 2000000])->get();
         foreach ($sanphambygia as $sanphambygiab) {
             if($sanphambygiab->gia_sale){
-                $gia = number_format($sanphambygiab->gia_sale, 3,'.',',');
+                $gia = number_format($sanphambygiab->gia_sale, 0,'.',',');
             }else{
-                $gia = number_format($sanphambygiab->gia_goc, 3,'.',',');
+                $gia = number_format($sanphambygiab->gia_goc, 0,'.',',');
+            }
+            if($sanphambygiab->gia_sale == true){
+                $giagoc = number_format($sanphambygiab->gia_goc, 0,'.', '.');
             }
             echo '<div class="col-6 col-sm-6 col-lg-3 col-lg-fix-5 product-col item-border no-padding">
             <div class="item_product_main">
@@ -126,6 +137,9 @@ class SanPhamController extends Controller
                                 title="'.$sanphambygiab->ten_san_pham.'">'.
                                  $sanphambygiab->ten_san_pham .'</a></h3>
                                  <div class="price-box">'.$gia.'₫
+                                 <span class="compare-price">
+                            '.$giagoc.'₫
+                        </div>
                         </div>
 
                     </div>
@@ -139,9 +153,12 @@ class SanPhamController extends Controller
         $sanphambygia = SanPham_Model::where('id_danh_muc', $id)->whereBetween('gia_goc', [2000000, 4000000])->get();
         foreach ($sanphambygia as $sanphambygiab) {
             if($sanphambygiab->gia_sale){
-                $gia = number_format($sanphambygiab->gia_sale, 3,'.',',');
+                $gia = number_format($sanphambygiab->gia_sale, 0,'.',',');
             }else{
-                $gia = number_format($sanphambygiab->gia_goc, 3,'.',',');
+                $gia = number_format($sanphambygiab->gia_goc, 0,'.',',');
+            }
+            if($sanphambygiab->gia_sale == true){
+                $giagoc = number_format($sanphambygiab->gia_goc, 0,'.', '.');
             }
             echo '<div class="col-6 col-sm-6 col-lg-3 col-lg-fix-5 product-col item-border no-padding">
             <div class="item_product_main">
@@ -171,6 +188,9 @@ class SanPhamController extends Controller
                                 title="Macbook Pro 2017 MPTR2">'.
                                  $sanphambygiab->ten_san_pham .'</a></h3>
                                  <div class="price-box">'.$gia.'₫
+                                 <span class="compare-price">
+                            '.$giagoc.'₫
+                        </div>
                         </div>
 
                     </div>
@@ -185,9 +205,12 @@ class SanPhamController extends Controller
         $sanphambygia = SanPham_Model::where('id_danh_muc', $id)->whereBetween('gia_goc', [4000000, 7000000])->get();
         foreach ($sanphambygia as $sanphambygiab) {
             if($sanphambygiab->gia_sale){
-                $gia = number_format($sanphambygiab->gia_sale, 3,'.',',');
+                $gia = number_format($sanphambygiab->gia_sale, 0,'.',',');
             }else{
-                $gia = number_format($sanphambygiab->gia_goc, 3,'.',',');
+                $gia = number_format($sanphambygiab->gia_goc, 0,'.',',');
+            }
+            if($sanphambygiab->gia_sale == true){
+                $giagoc = number_format($sanphambygiab->gia_goc, 0,'.', '.');
             }
             echo '<div class="col-6 col-sm-6 col-lg-3 col-lg-fix-5 product-col item-border no-padding">
             <div class="item_product_main">
@@ -216,6 +239,9 @@ class SanPhamController extends Controller
                                 title="Macbook Pro 2017 MPTR2">'.
                                  $sanphambygiab->ten_san_pham .'</a></h3>
                                  <div class="price-box">'.$gia.'₫
+                                 <span class="compare-price">
+                            '.$giagoc.'₫
+                        </div>
                         </div>
 
                     </div>
@@ -230,9 +256,12 @@ class SanPhamController extends Controller
         $sanphambygia = SanPham_Model::where('id_danh_muc', $id)->whereBetween('gia_goc', [7000000, 13000000])->get();
         foreach ($sanphambygia as $sanphambygiab) {
             if($sanphambygiab->gia_sale){
-                $gia = number_format($sanphambygiab->gia_sale, 3,'.',',');
+                $gia = number_format($sanphambygiab->gia_sale, 0,'.',',');
             }else{
-                $gia = number_format($sanphambygiab->gia_goc, 3,'.',',');
+                $gia = number_format($sanphambygiab->gia_goc, 0,'.',',');
+            }
+            if($sanphambygiab->gia_sale == true){
+                $giagoc = number_format($sanphambygiab->gia_goc, 0,'.', '.');
             }
             echo '<div class="col-6 col-sm-6 col-lg-3 col-lg-fix-5 product-col item-border no-padding">
             <div class="item_product_main">
@@ -261,6 +290,9 @@ class SanPhamController extends Controller
                                 title="Macbook Pro 2017 MPTR2">'.
                                  $sanphambygiab->ten_san_pham .'</a></h3>
                                  <div class="price-box">'.$gia.'₫
+                                 <span class="compare-price">
+                            '.$giagoc.'₫
+                        </div>
                         </div>
 
                     </div>
@@ -272,12 +304,15 @@ class SanPhamController extends Controller
     //5
     public function filter_tren13_000_000d($id)
     {
-        $sanphambygia = SanPham_Model::where('id_danh_muc', $id)->where('gia_goc','>',  2000000)->get();
+        $sanphambygia = SanPham_Model::where('id_danh_muc', $id)->where('gia_goc','>', 13000000)->get();
         foreach ($sanphambygia as $sanphambygiab) {
             if($sanphambygiab->gia_sale){
-                $gia = number_format($sanphambygiab->gia_sale, 3,'.',',');
+                $gia = number_format($sanphambygiab->gia_sale, 0,'.',',');
             }else{
-                $gia = number_format($sanphambygiab->gia_goc, 3,'.',',');
+                $gia = number_format($sanphambygiab->gia_goc, 0,'.',',');
+            }
+            if($sanphambygiab->gia_sale == true){
+                $giagoc = number_format($sanphambygiab->gia_goc, 0,'.', '.');
             }
             echo '<div class="col-6 col-sm-6 col-lg-3 col-lg-fix-5 product-col item-border no-padding">
             <div class="item_product_main">
@@ -306,6 +341,9 @@ class SanPhamController extends Controller
                                 title="Macbook Pro 2017 MPTR2">'.
                                  $sanphambygiab->ten_san_pham .'</a></h3>
                                  <div class="price-box">'.$gia.'₫
+                                 <span class="compare-price">
+                            '.$giagoc.'₫
+                        </div>
                         </div>
 
                     </div>
@@ -319,9 +357,12 @@ class SanPhamController extends Controller
         $sanphambygia = SanPham_Model::where('id_danh_muc', $id)->get();
         foreach ($sanphambygia as $sanphambygiab) {
             if($sanphambygiab->gia_sale){
-                $gia = number_format($sanphambygiab->gia_sale, 3,'.',',');
+                $gia = number_format($sanphambygiab->gia_sale, 0,'.',',');
             }else{
-                $gia = number_format($sanphambygiab->gia_goc, 3,'.',',');
+                $gia = number_format($sanphambygiab->gia_goc, 0,'.',',');
+            }
+            if($sanphambygiab->gia_sale == true){
+                $giagoc = number_format($sanphambygiab->gia_goc, 0,'.', '.');
             }
             echo '<div class="col-6 col-sm-6 col-lg-3 col-lg-fix-5 product-col item-border no-padding">
             <div class="item_product_main">
@@ -350,6 +391,9 @@ class SanPhamController extends Controller
                                 title="'.$sanphambygiab->ten_san_pham.'">'.
                                  $sanphambygiab->ten_san_pham .'</a></h3>
                                  <div class="price-box">'.$gia.'₫
+                                 <span class="compare-price">
+                            '.$giagoc.'₫
+                        </div>
                         </div>
 
                     </div>
@@ -361,10 +405,15 @@ class SanPhamController extends Controller
     public function chi_tiet_san_pham($ten_san_pham){
         $danhmucs = DanhMucSanPham_Model::all();
         $sanPhamd = SanPham_Model::where('ten_san_pham', $ten_san_pham)->get();
+
         foreach($sanPhamd as $sp){
             $spIdDm = $sp->id_danh_muc;
             $sp_id = $sp->id;
+            $so_luot_xem = $sp->so_luot_xem;
         }
+        SanPham_Model::where('ten_san_pham', $ten_san_pham)->update([
+            'so_luot_xem' => $so_luot_xem + 1,
+        ]);
         $sao1 = DanhGiaSanPham_model::where([
             'so_sao'=> 1,
             'id_san_pham'=> $sp_id
@@ -407,6 +456,31 @@ class SanPhamController extends Controller
             'tongsao' => $tongsao,
             'dbdanhgias' => $dbdanhgias
             ]);
+    }
+
+    public function TimKiemSanPham(Request $request){
+        $thuonghieus = ThuongHieuSanPham_Model::inRandomOrder()->get();
+        $key = $request->keyword;
+        $ten = 'Từ khóa tìm kiếm "'.$request->keyword .'"';
+        $id_danh_muc = $request->id_danh_muc;
+        if($id_danh_muc != ''){
+            $SanPhamByKeyWord = SanPham_Model::where('id_danh_muc', $id_danh_muc)
+            ->orWhere('ten_san_pham', 'like', "%$key%")
+            ->orWhere('mo_ta', 'like', "%$key%")
+            ->orWhere('thong_so_ky_thuat', 'like', "%$key%")
+            ->orWhere('hinh_anh', 'like', "%$key%")->get();
+        }else{
+            $SanPhamByKeyWord = SanPham_Model::where('ten_san_pham', 'like', "%$key%")
+            ->orWhere('mo_ta', 'like', "%$key%")
+            ->orWhere('thong_so_ky_thuat', 'like', "%$key%")
+            ->orWhere('hinh_anh', 'like', "%$key%")->get();
+        }
+        return view('frontEnd.san-pham.tim-kiem-san-pham', [
+            'thuonghieus' => $thuonghieus,
+            'tenth' => $ten,
+            'sanhams' => $SanPhamByKeyWord,
+            'keyword' => $request->keyword,
+        ]);
     }
 
 

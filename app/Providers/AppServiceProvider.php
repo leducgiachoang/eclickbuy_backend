@@ -4,6 +4,7 @@ namespace App\Providers;
 use App\Model\DanhMucSanPham_Model;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\View;
+use App\Model\sliderShow;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -25,7 +26,12 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         $danhmucs = DanhMucSanPham_Model::all();
-        view::share('danhmucs', $danhmucs);
+        $sliderShows  = sliderShow::all();
+        
+        view::share([
+            'danhmucs'=> $danhmucs,
+            'sliderShows'=> $sliderShows
+        ]);
 
 
     }

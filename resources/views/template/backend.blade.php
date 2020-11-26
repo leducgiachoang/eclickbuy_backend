@@ -23,8 +23,19 @@
     <script src="../ckeditor/ckeditor.js"></script>
 
 </head>
+<style>
+    .components{
+        height: 600px; overflow: auto
+    }
+    .components::-webkit-scrollbar {
+        width: 0px;
+        background-color: #F5F5F5;
+    }
 
-<body>
+
+</style>
+
+<body style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif">
 
     <div class="wrapper">
         <!-- Sidebar  -->
@@ -35,7 +46,7 @@
 
             <ul class="list-unstyled components">
                 <li>
-                    <a href="{{ route('dashboard') }}"><i class="fas fa-fw fa-tachometer-alt"></i> Dashboard</a>
+                    <a href="{{ route('dashboard') }}"><i class="fas fa-fw fa-tachometer-alt"></i> Thống kê</a>
                 </li>
                 <hr class="sidebar-divider">
                 <li class="active">
@@ -173,9 +184,9 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="{{ route('DanhGia_list_get') }}">
                         <i class="fas fa-paper-plane"></i>
-                        Contact
+                        Đánh giá
                     </a>
                 </li>
 

@@ -19,12 +19,12 @@
 	<link href="../css/home/responsive.scss.css" rel="stylesheet" type="text/css">
 
     <link href="../css/account_oder_style.scss.css" rel="stylesheet" type="text/css">
-    <script src="../js/home.js"></script>
+
 
 
 	<script src="../js/home.js"></script>
     <link href="../css/account_oder_style.scss.css" rel="stylesheet" type="text/css">
-    <script src="../js/home.js"></script>
+
 
 
 </head>
@@ -55,55 +55,22 @@
 				<div class="col-xl-9 col-lg-10 col-md-12 col-sm-12 col-12">
 					<div class="col-search-engine hidden-991">
 						<div class="header_search">
-							<form class="input-group search-bar" action="/search" method="get" role="search">
+							<form class="input-group search-bar" action="{{ route('TimKiemSanPham_post') }}" method="post">
+                                @csrf
 								<div class="collection-selector hidden-xs hidden-sm">
-									<div class="search_text">Chọn danh mục</div>
-									<div id="search_info" class="list_search" style="display: none;">
+                                    <select class="search_text custom-select form-control" name="id_danh_muc" placeholder="Chọn danh mục" id="">
+                                        <option value="" class="search_item selected">Tất cả</option>
+                                        @foreach ($danhmucs as $danhmuc)
+                                        <option style="height: 27px" value="{{ $danhmuc->id }}" class="search_item">{{ $danhmuc->ten_danh_muc }} </option>
+                                        @endforeach
+                                    </select>
 
-										<div class="search_item" data-coll-id="2299263" title="Phụ kiện">Phụ kiện</div>
-
-										<div class="search_item" data-coll-id="2299262" title="Kỹ thuật số">Kỹ thuật số
-										</div>
-
-										<div class="search_item" data-coll-id="2299261" title="Thiết bị văn phòng">Thiết
-											bị văn phòng</div>
-
-										<div class="search_item" data-coll-id="2299260" title="Gia dụng - Thiết bị bếp">
-											Gia dụng - Thiết bị bếp</div>
-
-										<div class="search_item" data-coll-id="2299259" title="Điều hoà nhiệt độ">Điều
-											hoà nhiệt độ</div>
-
-										<div class="search_item" data-coll-id="2299258" title="Tivi - Loa âm thanh">Tivi
-											- Loa âm thanh</div>
-
-										<div class="search_item" data-coll-id="2299257" title="Máy giặt - Máy sấy">Máy
-											giặt - Máy sấy</div>
-
-										<div class="search_item" data-coll-id="2299243" title="Laptop - Laptop gaming">
-											Laptop - Laptop gaming</div>
-
-										<div class="search_item" data-coll-id="2299242"
-											title="Điện thoại - Máy tính bảng">Điện thoại - Máy tính ...</div>
-
-										<div class="search_item" data-coll-id="2299241" title="Sản phẩm khuyến mãi">Sản
-											phẩm khuyến mãi</div>
-
-										<div class="search_item" data-coll-id="2299240" title="Sản phẩm mới">Sản phẩm
-											mới</div>
-
-										<div class="search_item" data-coll-id="2299239" title="Sản phẩm nổi bật">Sản
-											phẩm nổi bật</div>
-
-										<div class="liner_search"></div>
-										<div class="search_item active" data-coll-id="0">Tất cả</div>
-									</div>
 								</div>
-								<input type="search" name="query" value="" placeholder="Bạn cần tìm gì hôm nay... "
-									class="input-group-field st-default-search-input search-text" autocomplete="off"
+								<input type="search" name="keyword"  placeholder="Bạn cần tìm gì hôm nay... "
+									class="input-group-field"
 									required="">
 								<span class="input-group-btn">
-									<button class="btn icon-fallback-text">
+									<button type="submit" class="btn icon-fallback-text">
 										<img src="../images/icon/i_search.png"
 											alt="">
 									</button>
@@ -114,8 +81,9 @@
 					<div class="rightcart">
 						<div class="cartsearch">
 							<div class="searchhd hidden-md">
-								<form action="/search" method="get" class="input-group search-bar" role="search">
-									<input type="text" name="query" value="" autocomplete="off" required=""
+								<form action="{{ route('TimKiemSanPham_post') }}" method="post" class="input-group search-bar" role="search">
+									@csrf
+									<input type="text" name="keyword" value="" autocomplete="off" required=""
 										placeholder="Bạn cần tìm gì hôm nay..." class="input-group-field auto-search">
 									<button type="submit" class="visible_index btn icon-fallback-text">
 										<img src="../images/icon/i_search.png"
@@ -147,7 +115,9 @@
 								            <a class="btnx" href="{{route('dang-nhap')}}">Đăng nhập</a>
 											<a href="{{route('dang-ki')}}">Đăng ký</a>
                                             @else
-                                        	<a class="btnx" href="{{route('dashboard')}}">Quản lí</a>
+                                            @if(Auth::user()->vai_tro == 1)
+                                            <a class="btnx" href="{{route('dashboard')}}">Quản lí trang website</a>
+                                            @endif
                                             <a class="btnx" href="{{route('DonHangCuaToi_get')}}">Đơn hàng của tôi</a>
 
                                             <a class="btnx" href="{{route('ho-so-tai-khoan',['id'=> Auth::user()->id]) }}">Hồ sơ</a>
@@ -323,16 +293,91 @@
 					<div class="row">
 						<div class="col-xl-3">
                         </div>
+                        <style>
+                            .box_slider{
+                                position: relative;
+                            }
+                            .nut_slidershow button{
+                                background: none;
+                                border: none;
+                                font-size: 25px;
+                                color: rgba(216, 214, 214, 0.74);
+                                transition: 0.6s
+                            }
+                            .nut_slidershow button:hover{
+                                color: white
+                            }
+                            .nut_slidershow{
+                                position: absolute;
+                                top: 200px;
+                                left: 0;
+                                right: 0;
+                                text-align: center;
+                                display: flex;
+                                justify-content: space-between;
+                                width: 98%;
+
+                            }
+                            .text_header_slider{
+                                text-align: center;
+                                position: absolute;
+                                bottom: 10px;
+                                color: white;
+                                margin: auto;
+                                width: 100%;
+                            }
+                            .sliderShow_img{
+                                height: 500px;
+                                width: 100%;
+                            }
+
+                            @media only screen and (max-width: 739px){
+                                .nut_slidershow{
+                                    position: absolute;
+                                    top: 160px;
+                                    left: 0;
+                                    right: 0;
+                                    text-align: center;
+                                    display: flex;
+                                    justify-content: space-around;
+                                    width: 100%;
+
+                                }
+                                .sliderShow_img {
+                                    height: 200px;
+                                    width: 100%;
+                                }
+                            }
+                        </style>
 
 
-						<div id="banner_header_menu" class="col-xl-9 padding-left-0">
-                            <div style="overflow: hidden;
-                            height: 402px;
-                            width: 100%;">
-                                <img width="100%" height="100%" src="https://c.wallhere.com/images/28/c6/ef27f2cc88f1547e76713b511769-1582587.jpg!d" alt="">
-
+						<div id="banner_header_menu" class="box_slider col-xl-9 padding-left-0">
+                            <div class="slidershows">
+                                @foreach ($sliderShows as $sliderShow)
+                                <div>
+                                    <img class="sliderShow_img" src="../images/slider/{{ $sliderShow->hinh_anh }}" alt="">
+                                    <div class="text_header_slider">
+                                        {{ $sliderShow->noi_dung_hinh_anh }}
+                                    </div>
+                                </div>
+                                @endforeach
                             </div>
-						</div>
+                            <div class="nut_slidershow">
+                                <button class="" id="prev_buttom_slider"><i class="fas fa-chevron-left"></i></button>
+                                <button class="" id="next_buttom_slider"><i class="fas fa-chevron-right"></i></button>
+                            </div>
+                        </div>
+                        <script>
+                            $(document).ready(function(){
+                                $('.slidershows').slick({
+                                    infinite: true,
+                                    slidesToShow: 1,
+                                    slidesToScroll: 1,
+                                    nextArrow: '#next_buttom_slider',
+                                    prevArrow: '#prev_buttom_slider'
+                                  });
+                            });
+                        </script>
 
 					</div>
 				</div>
@@ -341,14 +386,20 @@
 
 <div class="container">
     @if (session('success'))
-    <div class="alert alert-success">
-     {{ session('success') }}
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        {{ session('success') }}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
     </div>
     @endif
 
     @if (session('danger'))
-    <div class="alert alert-danger">
-     {{ session('danger') }}
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        {{ session('danger') }}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
     </div>
     @endif
 </div>
@@ -359,7 +410,7 @@
 			<footer class="footer">
 				<div class="site-footer">
 					<div class="mid-footer section">
-						<div class="container">
+						{{--  <div class="container">
 							<div class="getmail getmail_top section">
 								<div class="row">
 									<div class="col-lg-5 col-md-12 col-sm-12 col-xs-12">
@@ -401,7 +452,7 @@
 									</div>
 								</div>
 							</div>
-						</div>
+						</div>  --}}
 						<div class="container">
 							<div class="row">
 								<div class="col-xs-12 col-sm-12 col-md-6 col-lg-4">
@@ -518,20 +569,13 @@
 									</div>
 								</div>
 
-								<div class="col-lg-12">
-									<div class="left_title clearfix">
-										<h3>
-											Chấp nhận thanh toán:
-										</h3>
-										<img class="lazyload"
-											src="" alt="EClickBuy">
-									</div>
-								</div>
+
 							</div>
 						</div>
 
 					</div>
-
+<hr style="padding: 0;
+margin: 0;">
 					<div class="bg-footer-bottom copyright clearfix">
 						<div class="container">
 							<div class="inner clearfix">
@@ -539,14 +583,14 @@
 									<div id="copyright" class="col-lg-12 a-center fot_copyright">
 										<span class="wsp">
 
-											<span class="mobile">© Bản quyền thuộc về <b>Awesome Team</b>
+											<span class="mobile">© Bản quyền thuộc về <b>EclickBuy</b>
 												<span class="dash hidden-xs">|</span>
 											</span>
 
 											<span class="opacity1">Cung cấp bởi</span>
 
-											<a href="index-5.htm?utm_campaign=cpn:site_khach_hang-plm:footer&utm_source=site_khach_hang&utm_medium=referral&utm_content=fm:text_link-km:-sz:&utm_term=&campaign=site_khach_hang"
-												rel="nofollow" title="Sapo" target="_blank">Sapo</a>
+											<a href=""
+												rel="nofollow" title="Sapo" target="_blank">TEAM ONE FPT POLYTECHNIC</a>
 
 										</span>
 									</div>

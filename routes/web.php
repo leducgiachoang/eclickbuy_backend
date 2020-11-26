@@ -58,6 +58,11 @@ Route::group(['prefix' => 'admin', 'namespace' => 'BackEnd', 'middleware'=>'Chec
         Route::post('update-brand-product/{id}', 'BrandProduct@update_brand_product')->name('update-brand-product');
     });
 
+    Route::group(['prefix' => 'danh-gia'], function () {
+        Route::get('danh-sach', 'DanhGia_controller@index')->name('DanhGia_list_get');
+        Route::get('xoa/{id}', 'DanhGia_controller@destroy')->name('XoaDanhGia_get');
+    });
+
     //sale product
     Route::group(['prefix' => 'khuyen-mai-san-pham'], function () {
         Route::get('add-sale-product', 'SaleController@add_sale_product')->name('add-sale-product');
@@ -152,6 +157,7 @@ Route::group(['prefix' => 'gio-hang', 'namespace'=> 'FrontEnd'], function() {
 
 Route::group(['prefix' => 'san-pham', 'namespace'=>'FrontEnd'], function() {
     Route::get('/{ten_san_pham}','SanPhamController@chi_tiet_san_pham')->name('ChiTietSanPham');
+    Route::post('tim-kiem-san-pham', 'SanPhamController@TimKiemSanPham')->name('TimKiemSanPham_post');
 
 
     Route::group(['prefix' => 'ajax'], function () {
@@ -161,6 +167,15 @@ Route::group(['prefix' => 'san-pham', 'namespace'=>'FrontEnd'], function() {
         Route::get('filter-7-000-000d-13-000-000d/{id}', 'SanPhamController@filter_7_000_000d_13_000_000d');
         Route::get('filter-tren13-000-000d/{id}', 'SanPhamController@filter_tren13_000_000d');
         Route::get('tat-ca/{id}', 'SanPhamController@tat_ca');
+        Route::get('sap-xep/{kieu}/{id}','SanPhamController@sap_xep');
+    });
+});
+
+Route::group(['prefix' => 'thuong-hieu', 'namespace'=>'FrontEnd'], function () {
+    Route::get("/{thuong_hieu}", 'ThuongHieu_controller@ThuongHieuById')->name('ThuongHieu_get_Id');
+
+    Route::group(['prefix' => 'ajax'], function () {
+        Route::get('/{giax}/{id}', 'ThuongHieu_controller@SanPhanByGia');
         Route::get('sap-xep/{kieu}/{id}','SanPhamController@sap_xep');
     });
 });
@@ -183,7 +198,12 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 
-Route::group(['prefix' => 'don-hang', 'namespace'=> 'FrontEnd'], function () {
+Route::group(['prefix' => 'don-hang', 'namespace'=> 'FrontEnd', 'middleware'=>'CheckLogin'], function () {
 Route::get('don-hang-cua-toi', 'HoaDon_controller@donhangcuatoi')->name('DonHangCuaToi_get');
 Route::get('chi-tiet-don-hang-cua-toi/{id}', 'HoaDon_controller@ChiTietDonHangCuaToi')->name('ChiTietDonHangCuaToi_get');
+Route::get('don-hang-cua-toi/{id}', 'HoaDon_controller@DonHangCuaToiByid')->name('DonHangCuaToibyid');
+Route::post('gui-danh-gia','HoaDon_controller@Guidanhgia')->name('GuiDanhGia_post');
+Route::get('kiem-tra-don-hang','HoaDon_controller@KiemTraDonHang')->name('KiemTraDonHang_get');
+Route::post('kiem-tra-don-hang','HoaDon_controller@KiemTraDonHang_post')->name('KiemTraDonHang_post');
+Route::post('huy-don-hang', 'HoaDon_controller@huydonhang')->name('huydonhang_post');
 });

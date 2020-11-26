@@ -529,19 +529,23 @@
                                         @endif
 
                                         <div class="action">
-                                            <input type="hidden" name="variantId"
-                                            value="34652405">
-                                            <button class="hidden-xs btn-buy btn-cart btn btn-views left-to add_to_cart active "
-                                                title="Thêm vào giỏ hàng">
-                                                <i
-                                                    class="fas fa-shopping-basket iconcart"></i>
-                                            </button>
+                                        @if ($sanphamcungloai->so_luong <= 0)
 
-                                            <a title="Xem nhanh" href="{{ route('ChiTietSanPham',['ten_san_pham'=> $sanphamcungloai->ten_san_pham ]) }}"
-                                                data-handle="{{ $sanphamcungloai->ten_san_pham }}"
-                                                class="xem_nhanh btn right-to quick-view btn-views hidden-xs hidden-sm hidden-md">
-                                                <i class="fas fa-search-plus"></i>
-                                            </a>
+                                        @else
+                                        <button class="hidden-xs btn-buy btn-cart btn btn-views left-to add_to_cart active"
+                                            title="Thêm vào giỏ hàng" data-toggle="modal" data-target="#exampleModal">
+                                            <input type="hidden" class="val_id_product" value="{{ $sanphamcungloai->id }}">
+                                            <i class="fas fa-shopping-basket iconcart"></i>
+                                        </button>
+                                        @endif
+
+
+                                        <a title="Xem nhanh"
+                                            href="{{ route('ChiTietSanPham',['ten_san_pham'=>$sanphamcungloai->ten_san_pham ]) }}"
+                                            data-handle="macbook-pro-2017-mptr2"
+                                            class="xem_nhanh btn right-to quick-view btn-views hidden-xs hidden-sm hidden-md">
+                                            <i class="fas fa-search-plus"></i>
+                                        </a>
 
                                         </div>
                                     </div>
@@ -550,13 +554,13 @@
                                                 title="{{ $sanphamcungloai->ten_san_pham }}">{{ $sanphamcungloai->ten_san_pham }}</a></h3>
                                         <div class="price-box">
                                             @if (($sanphamcungloai->gia_sale) != '')
-                                            {{ number_format($sanphamcungloai->gia_sale, 0,'.', '.') }}
+                                            {{ number_format($sanphamcungloai->gia_sale, 0,'.', '.') }}₫
                                             @else
-                                            {{ number_format($sanphamcungloai->gia_goc, 0,'.', '.') }}
+                                            {{ number_format($sanphamcungloai->gia_goc, 0,'.', '.') }}₫
                                             @endif
                                             <span class="compare-price">
                                                 @if (($sanphamcungloai->gia_sale) == true)
-                                                {{ number_format($sanphamcungloai->gia_goc, 0,'.', '.') }}
+                                                {{ number_format($sanphamcungloai->gia_goc, 0,'.', '.') }}₫
                                                 @else
 
                                                 @endif

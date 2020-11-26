@@ -73,7 +73,7 @@ class UserController extends Controller
         $data['status'] = '0';
         $data['anh_dai_dien'] = 'e5809db818346b4be5-1.gif';
         $email = $data['email'];
-        $code = bcrypt(md5($request->_token));
+        $code = bcrypt(md5(time() . $request->email));
         $data['code'] = $code;
         DB::table('tai_khoan')->insert($data);
          $url = route('kich-hoat', ['code' => $code, 'email' => $request->email]);
@@ -94,12 +94,12 @@ class UserController extends Controller
         Auth::logout();
         return view('frontEnd.nguoi_dung.dang_nhap');
     }
-    public function verify($code,$email)
+    public function verify(Request $request)
     {
         $user = DB::table('tai_khoan')->where(
             [
-                'code' => $code,
-                'email' => $email,
+                'code' => $request->code,
+                'email' => $request->email,
             ]
         )->first();
         if(!$user){
@@ -108,8 +108,8 @@ class UserController extends Controller
         }else{
             $user = DB::table('tai_khoan')->where(
                 [
-                    'code' => $code,
-                    'email' => $email,
+                'code' => $request->code,
+                'email' => $request->email,
                 ]
             )->update(['status'=>1]);
 

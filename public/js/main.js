@@ -1,7 +1,7 @@
 window.awe = window.awe || {};
 awe.init = function () {
 	awe.showPopup();
-	awe.hidePopup();	
+	awe.hidePopup();
 };
 $(document).ready(function ($) {
 	"use strict";
@@ -12,14 +12,14 @@ $(document).ready(function ($) {
 });
 
 $('.dropdown-toggle').click(function() {
-	$(this).parent().toggleClass('open'); 	
-}); 
+	$(this).parent().toggleClass('open');
+});
 $('.close-pop').click(function() {
 	$('#popup-cart').removeClass('opencart');
 	$('body').removeClass('opacitycart');
 });
-$(document).on('click','.overlay, .close-popup, .btn-continue, .fancybox-close', function() {   
-	hidePopup('.awe-popup'); 	
+$(document).on('click','.overlay, .close-popup, .btn-continue, .fancybox-close', function() {
+	hidePopup('.awe-popup');
 	setTimeout(function(){
 		$('.loading').removeClass('loaded-content');
 	},500);
@@ -35,10 +35,10 @@ function awe_lazyloadImage() {
 
 function awe_showLoading(selector) {
 	var loading = $('.loader').html();
-	$(selector).addClass("loading").append(loading); 
+	$(selector).addClass("loading").append(loading);
 }  window.awe_showLoading=awe_showLoading;
 function awe_hideLoading(selector) {
-	$(selector).removeClass("loading"); 
+	$(selector).removeClass("loading");
 	$(selector + ' .loading-icon').remove();
 }  window.awe_hideLoading=awe_hideLoading;
 function awe_showPopup(selector) {
@@ -50,8 +50,8 @@ function awe_hidePopup(selector) {
 awe.hidePopup = function (selector) {
 	$(selector).removeClass('active');
 }
-$(document).on('click','.overlay, .close-window, .btn-continue, .fancybox-close', function() {   
-	awe.hidePopup('.awe-popup'); 
+$(document).on('click','.overlay, .close-window, .btn-continue, .fancybox-close', function() {
+	awe.hidePopup('.awe-popup');
 	setTimeout(function(){
 		$('.loading').removeClass('loaded-content');
 	},500);
@@ -62,19 +62,19 @@ if (wDWs < 1199) {
 	/*Remove html mobile*/
 	$('.quickview-product').remove();
 }
-function awe_convertVietnamese(str) { 
+function awe_convertVietnamese(str) {
 	str= str.toLowerCase();
-	str= str.replace(/à|á|ạ|ả|ã|â|ầ|ấ|ậ|ẩ|ẫ|ă|ằ|ắ|ặ|ẳ|ẵ/g,"a"); 
-	str= str.replace(/è|é|ẹ|ẻ|ẽ|ê|ề|ế|ệ|ể|ễ/g,"e"); 
-	str= str.replace(/ì|í|ị|ỉ|ĩ/g,"i"); 
-	str= str.replace(/ò|ó|ọ|ỏ|õ|ô|ồ|ố|ộ|ổ|ỗ|ơ|ờ|ớ|ợ|ở|ỡ/g,"o"); 
-	str= str.replace(/ù|ú|ụ|ủ|ũ|ư|ừ|ứ|ự|ử|ữ/g,"u"); 
-	str= str.replace(/ỳ|ý|ỵ|ỷ|ỹ/g,"y"); 
-	str= str.replace(/đ/g,"d"); 
+	str= str.replace(/à|á|ạ|ả|ã|â|ầ|ấ|ậ|ẩ|ẫ|ă|ằ|ắ|ặ|ẳ|ẵ/g,"a");
+	str= str.replace(/è|é|ẹ|ẻ|ẽ|ê|ề|ế|ệ|ể|ễ/g,"e");
+	str= str.replace(/ì|í|ị|ỉ|ĩ/g,"i");
+	str= str.replace(/ò|ó|ọ|ỏ|õ|ô|ồ|ố|ộ|ổ|ỗ|ơ|ờ|ớ|ợ|ở|ỡ/g,"o");
+	str= str.replace(/ù|ú|ụ|ủ|ũ|ư|ừ|ứ|ự|ử|ữ/g,"u");
+	str= str.replace(/ỳ|ý|ỵ|ỷ|ỹ/g,"y");
+	str= str.replace(/đ/g,"d");
 	str= str.replace(/!|@|%|\^|\*|\(|\)|\+|\=|\<|\>|\?|\/|,|\.|\:|\;|\'| |\"|\&|\#|\[|\]|~|$|_/g,"-");
 	str= str.replace(/-+-/g,"-");
-	str= str.replace(/^\-+|\-+$/g,""); 
-	return str; 
+	str= str.replace(/^\-+|\-+$/g,"");
+	return str;
 } window.awe_convertVietnamese=awe_convertVietnamese;
 function awe_category(){
 	$('.nav-category .fa-angle-right').click(function(e){
@@ -88,7 +88,7 @@ function awe_category(){
 } window.awe_category=awe_category;
 
 
-function awe_backtotop() { 
+function awe_backtotop() {
 	$(window).scroll(function() {
 		$(this).scrollTop() > 200 ? $('.backtop').addClass('show') : $('.backtop').removeClass('show')
 	});
@@ -111,31 +111,31 @@ function awe_tab() {
 			$(this).addClass('current');
 			$(this).closest('.e-tabs').find("#"+tab_id).addClass('current');
 
-		});    
+		});
 	});
 } window.awe_tab=awe_tab;
 $('.dropdown-toggle').click(function() {
-	$(this).parent().toggleClass('open'); 	
-}); 
+	$(this).parent().toggleClass('open');
+});
 $('.btn-close').click(function() {
 	$(this).parents('.dropdown').toggleClass('open');
-}); 
+});
 $(document).on('keydown','#qty, .number-sidebar',function(e){-1!==$.inArray(e.keyCode,[46,8,9,27,13,110,190])||/65|67|86|88/.test(e.keyCode)&&(!0===e.ctrlKey||!0===e.metaKey)||35<=e.keyCode&&40>=e.keyCode||(e.shiftKey||48>e.keyCode||57<e.keyCode)&&(96>e.keyCode||105<e.keyCode)&&e.preventDefault()});
 $(document).on('click','.qtyplus',function(e){
-	e.preventDefault();   
-	fieldName = $(this).attr('data-field'); 
+	e.preventDefault();
+	fieldName = $(this).attr('data-field');
 	var currentVal = parseInt($('input[data-field='+fieldName+']').val());
-	if (!isNaN(currentVal)) { 
+	if (!isNaN(currentVal)) {
 		$('input[data-field='+fieldName+']').val(currentVal + 1);
 	} else {
 		$('input[data-field='+fieldName+']').val(0);
 	}
 });
 $(document).on('click','.qtyminus',function(e){
-	e.preventDefault(); 
+	e.preventDefault();
 	fieldName = $(this).attr('data-field');
 	var currentVal = parseInt($('input[data-field='+fieldName+']').val());
-	if (!isNaN(currentVal) && currentVal > 1) {          
+	if (!isNaN(currentVal) && currentVal > 1) {
 		$('input[data-field='+fieldName+']').val(currentVal - 1);
 	} else {
 		$('input[data-field='+fieldName+']').val(1);
@@ -155,111 +155,111 @@ $('.opacity_menu').click(function(e){
 	$('.wrapmenu_right').removeClass('open_sidebar_menu');
 	$('.opacity_menu').removeClass('open_opacity');
 });
-$(".menubar_pc").click(function(){ 
+$(".menubar_pc").click(function(){
 	$('.wrapmenu_full').slideToggle('fast');
 	$('.wrapmenu_full, .cloed').toggleClass('open_menu');
 	$('.dqdt-sidebar, .open-filters').removeClass('openf')
 });
-$(".cloed").click(function(){ 
+$(".cloed").click(function(){
 	$(this).toggleClass('open_menu');
 	$('.wrapmenu_full').slideToggle('fast');
 });
-$(".opacity_menu").click(function(){ 
+$(".opacity_menu").click(function(){
 	$('.opacity_menu').removeClass('open_opacity');
 });
 if ($('.dqdt-sidebar').hasClass('openf')) {
 	$('.wrapmenu_full').removeClass('open_menu');
-} 
+}
 $('.ul_collections li > .fa').click(function(){
 	$(this).parent().toggleClass('current');
 	$(this).toggleClass('fa-angle-down fa-angle-right');
 	$(this).next('ul').slideToggle("fast");
 	$(this).next('div').slideToggle("fast");
 });
-$('.searchion').mouseover(function() {
-	$('.searchmini input').focus();                    
-})
+// $('.searchion').mouseover(function() {
+// 	$('.searchmini input').focus();
+// })
 $('.quenmk').on('click', function() {
 	$('#login').toggleClass('hidden');
 	$('.h_recover').slideToggle();
 });
 $('a[data-toggle="collapse"]').click(function(e){
-	if ($(window).width() >= 767) { 
-		// Should prevent the collapsible and default anchor linking 
+	if ($(window).width() >= 767) {
+		// Should prevent the collapsible and default anchor linking
 		// behavior for screen sizes equal or larger than 768px.
 		e.preventDefault();
 		e.stopPropagation();
-	}    
+	}
 });
 
 
 /********************************************************
 Search header
 ********************************************************/
-$('body').click(function(event) {
-	if (!$(event.target).closest('.collection-selector').length) {
-		$('.list_search').css('display','none');
-	};
-});
+// $('body').click(function(event) {
+// 	if (!$(event.target).closest('.collection-selector').length) {
+// 		$('.list_search').css('display','none');
+// 	};
+// });
 /* top search */
 
-$('.search_text').click(function(){
-	$(this).next().slideToggle(200);
-	$('.list_search').show();
-})
+// $('.search_text').click(function(){
+// 	$(this).next().slideToggle(200);
+// 	$('.list_search').show();
+// })
 
-$('.list_search .search_item').on('click', function (e) {
-	$('.list_search').hide();
+// $('.list_search .search_item').on('click', function (e) {
+// 	$('.list_search').hide();
 
-	var optionSelected = $(this);
-
-
-	var title = optionSelected.text();
+// 	var optionSelected = $(this);
 
 
-	$('.search_text').text(title);
+// 	var title = optionSelected.text();
 
 
-	$(".search-text").focus();
-	optionSelected.addClass('active').siblings().removeClass('active');
-
-});
+// 	$('.search_text').text(title);
 
 
-$('.header_search form button').click(function(e) {
-	e.preventDefault();
-	var textmm = $('.search-text').val();
-	if (textmm != '') {
-	searchCollection();
-	setSearchStorage('.header_search form');
-	} else {
-		alert('bạn chưa nhập nội dung tìm kiếm');
-	}
+// 	$(".search-text").focus();
+// 	optionSelected.addClass('active').siblings().removeClass('active');
 
-});
+// });
 
-$('#mb_search').click(function(){
-	$('.mb_header_search').slideToggle('fast');
-});
+
+// $('.header_search form button').click(function(e) {
+// 	e.preventDefault();
+// 	var textmm = $('.search-text').val();
+// 	if (textmm != '') {
+// 	searchCollection();
+// 	setSearchStorage('.header_search form');
+// 	} else {
+// 		alert('bạn chưa nhập nội dung tìm kiếm');
+// 	}
+
+// });
+
+// $('#mb_search').click(function(){
+// 	$('.mb_header_search').slideToggle('fast');
+// });
 
 $('.fi-title.drop-down').click(function(){
 	$(this).toggleClass('opentab');
 });
 
-function searchCollection() {
-	var collectionId = $('.list_search .search_item.active').attr('data-coll-id');
-	var vl = $('.header form input').val();
-	var searchVal = $('.header_search input[type="search"]').val();
-	var url = '';
-	if(collectionId == 0 || vl == '') {
-		url = '/search?q='+ searchVal;
-	}
-	else {
-		url = '/search?q=collections:'+ collectionId +' AND name:' + searchVal;
+// function searchCollection() {
+// 	var collectionId = $('.list_search .search_item.active').attr('data-coll-id');
+// 	var vl = $('.header form input').val();
+// 	var searchVal = $('.header_search input[type="search"]').val();
+// 	var url = '';
+// 	if(collectionId == 0 || vl == '') {
+// 		url = '/search?q='+ searchVal;
+// 	}
+// 	else {
+// 		url = '/search?q=collections:'+ collectionId +' AND name:' + searchVal;
 
-	}
-	window.location=url;
-}
+// 	}
+// 	window.location=url;
+// }
 /*** Search Storage ****/
 
 function setSearchStorage(form_id) {
@@ -316,7 +316,7 @@ $('.ul_menu .lev-1').click(function(e){
 		$('.ul_menu .ul_content_right_1').css('min-height', divHeight);
 	}
 });
-window.onload = function(e){ 
+window.onload = function(e){
 	var lil = $('.ul_menu .lev-1').length;
 	var vw = $(window).width();
 	if(lil < 9 && vw < 1500 && vw > 1200){

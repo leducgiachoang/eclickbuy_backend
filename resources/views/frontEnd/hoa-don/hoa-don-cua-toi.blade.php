@@ -1,5 +1,8 @@
 @extends('frontEnd.hoa-don.template')
 @section('Mydon_hang_template')
+@if ($dbHoaDonsByid_count != 0)
+
+
 @foreach ($dbHoaDon as $dbHoaDonx)
 <div style="margin-bottom: 10px" class="card">
     <div class="bg-light text-dark card-header">
@@ -49,4 +52,12 @@
 
 @endforeach
 {{ $dbHoaDon->links() }}
+
+@else
+<h4 style="text-align: center">Không có đơn hàng nào
+<br/>
+    <a href="/"><button type="button" class="btn btn-success"><i class="fas fa-shopping-cart"></i> Tiếp tục mua sắm</button></a>
+</h4>
+
+@endif
 @endsection

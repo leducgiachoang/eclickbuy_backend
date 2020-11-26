@@ -19,11 +19,18 @@ class homeController extends Controller
      */
     public function index()
     {
-        $san_pham_da_ban = ChiTietHoaDon_Model_h::count();
+        $dbSanPham = SanPham_Model::all();
+        $san_pham_da_ban = ChiTietHoaDon_Model_h::sum('so_luong');
         $cout_tien = DonHang_Model::sum('tong_tien');
         $cout_tk = NguoiDungModel::count();
         $cout_sp = SanPham_Model::count();
-        return view('backEnd.dashboard', ['count_tk'=>$cout_tk, 'count_tien'=> $cout_tien, 'count_product'=> $cout_sp, 'san_pham_da_ban'=> $san_pham_da_ban]);
+        return view('backEnd.dashboard', [
+            'count_tk'=>$cout_tk,
+            'count_tien'=> $cout_tien,
+            'count_product'=> $cout_sp,
+            'san_pham_da_ban'=> $san_pham_da_ban,
+            'san_phams' => $dbSanPham,
+            ]);
     }
 
     /**

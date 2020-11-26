@@ -9,6 +9,11 @@ class SanPham_Model extends Model
     protected $table = 'san_pham';
     public $timestamps = false;
 
+    public function chitiethoadon()
+    {
+        return $this->hasOne('App\Model\ChiTietHoaDon_Model_h', 'id_san_pham', 'id');
+    }
+
 
     public function khuyenmai()
     {

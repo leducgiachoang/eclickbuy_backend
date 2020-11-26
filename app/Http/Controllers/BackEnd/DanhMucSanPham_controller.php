@@ -50,7 +50,7 @@ class DanhMucSanPham_controller extends Controller
         $store->ten_danh_muc = $request->ten_danh_muc;
         $store->hinh_anh = $hinhanh;
         $store->save();
-        return redirect()->back();
+        return redirect()->back()->with('success', 'Thêm mới danh mục thành công');;
     }
 
     /**
@@ -108,7 +108,7 @@ class DanhMucSanPham_controller extends Controller
         ]
         );
 
-        return redirect()->back();
+        return redirect()->back()->with('success', 'Cập nhập danh mục thành công');;
     }
 
     /**

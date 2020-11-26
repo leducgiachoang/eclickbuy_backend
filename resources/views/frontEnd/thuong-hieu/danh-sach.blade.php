@@ -99,7 +99,7 @@
                                             <span>
                                                 <label data-filter="2-000-000d"
                                                     for="filter-duoi-2-000-000d">
-                                                    <input name="gia" type="radio" id="filter-duoi-2-000-000d" value="{{ $id_danh_muc }}">
+                                                    <input name="gia" type="radio" id="filter-duoi-2-000-000d" value="{{ $id_thuong_hieu }}">
                                                     <i class="fa"></i>
                                                     Dưới 2 triệu
                                                 </label>
@@ -112,7 +112,7 @@
                                             <span>
                                                 <label data-filter="4-000-000d"
                                                     for="filter-2-000-000d-4-000-000d">
-                                                    <input name="gia" type="radio" id="filter-2-000-000d-4-000-000d" value="{{ $id_danh_muc }}">
+                                                    <input name="gia" type="radio" id="filter-2-000-000d-4-000-000d" value="{{ $id_thuong_hieu }}">
                                                     <i class="fa"></i>
                                                     Từ 2 triệu - 4 triệu
                                                 </label>
@@ -125,7 +125,7 @@
                                             <span>
                                                 <label data-filter="7-000-000d"
                                                     for="filter-4-000-000d-7-000-000d">
-                                                    <input name="gia" type="radio" id="filter-4-000-000d-7-000-000d" value="{{ $id_danh_muc }}">
+                                                    <input name="gia" type="radio" id="filter-4-000-000d-7-000-000d" value="{{ $id_thuong_hieu }}">
                                                     <i class="fa"></i>
                                                     Từ 4 triệu - 7 triệu
                                                 </label>
@@ -138,7 +138,7 @@
                                             <span>
                                                 <label data-filter="13-000-000d"
                                                     for="filter-7-000-000d-13-000-000d">
-                                                    <input name="gia" type="radio" id="filter-7-000-000d-13-000-000d" value="{{ $id_danh_muc }}">
+                                                    <input name="gia" type="radio" id="filter-7-000-000d-13-000-000d" value="{{ $id_thuong_hieu }}">
                                                     <i class="fa"></i>
                                                     Từ 7 triệu - 13 triệu
                                                 </label>
@@ -149,7 +149,7 @@
                                             <span>
                                                 <label data-filter="13-000-000d"
                                                     for="filter-tren13-000-000d">
-                                                    <input name="gia" type="radio" id="filter-tren13-000-000d" value="{{ $id_danh_muc }}">
+                                                    <input name="gia" type="radio" id="filter-tren13-000-000d" value="{{ $id_thuong_hieu }}">
                                                     <i class="fa"></i>
                                                     Trên 13 triệu
                                                 </label>
@@ -161,7 +161,7 @@
                                             <span>
                                                 <label data-filter="tat-ca"
                                                     for="tat-ca">
-                                                    <input style="display: none" name="gia" type="radio" id="tat-ca" value="{{ $id_danh_muc }}">
+                                                    <input style="display: none" name="gia" type="radio" id="tat-ca" value="{{ $id_thuong_hieu }}">
                                                     <i class="fas fa-times"></i>
                                                     Mặc định
                                                 </label>
@@ -233,16 +233,12 @@
 
                                     <div class="action">
 
-                                        @if ($itesanham->so_luong <= 0)
 
-                                        @else
                                         <button class="hidden-xs btn-buy btn-cart btn btn-views left-to add_to_cart active"
                                             title="Thêm vào giỏ hàng" data-toggle="modal" data-target="#exampleModal">
                                             <input type="hidden" class="val_id_product" value="{{ $itesanham->id }}">
                                             <i class="fas fa-shopping-basket iconcart"></i>
                                         </button>
-                                        @endif
-
 
 
                                         <a title="Xem nhanh"
@@ -307,38 +303,38 @@
 
             $('#filter-duoi-2-000-000d').focus(function(){
                 var $id = $(this).val();
-                $.get('/san-pham/ajax/filter-duoi-2-000-000d/'+ $id, function(data){
+                $.get('/thuong-hieu/ajax/filter-duoi-2-000-000d/'+ $id, function(data){
                     $('#show_product').html(data);
                 });
             });
 
             $('#filter-2-000-000d-4-000-000d').focus(function(){
                 var $id = $(this).val();
-                $.get('/san-pham/ajax/filter-2-000-000d-4-000-000d/'+ $id, function(data){
+                $.get('/thuong-hieu/ajax/filter-2-000-000d-4-000-000d/'+ $id, function(data){
                     $('#show_product').html(data);
                 });
             });
             $('#filter-4-000-000d-7-000-000d').focus(function(){
                 var $id = $(this).val();
-                $.get('/san-pham/ajax/filter-4-000-000d-7-000-000d/'+ $id, function(data){
+                $.get('/thuong-hieu/ajax/filter-4-000-000d-7-000-000d/'+ $id, function(data){
                     $('#show_product').html(data);
                 });
             });
             $('#filter-7-000-000d-13-000-000d').focus(function(){
                 var $id = $(this).val();
-                $.get('/san-pham/ajax/filter-7-000-000d-13-000-000d/'+ $id, function(data){
+                $.get('/thuong-hieu/ajax/filter-7-000-000d-13-000-000d/'+ $id, function(data){
                     $('#show_product').html(data);
                 });
             });
             $('#filter-tren13-000-000d').focus(function(){
                 var $id = $(this).val();
-                $.get('/san-pham/ajax/filter-tren13-000-000d/'+ $id, function(data){
+                $.get('/thuong-hieu/ajax/filter-tren13-000-000d/'+ $id, function(data){
                     $('#show_product').html(data);
                 });
             });
             $('#tat-ca').click(function(){
                 var $id = $(this).val();
-                $.get('/san-pham/ajax/tat-ca/'+ $id, function(data){
+                $.get('/thuong-hieu/ajax/tat-ca/'+ $id, function(data){
                     $('#show_product').html(data);
                 });
             });
@@ -346,49 +342,49 @@
             {{-- sắp xếp --}}
 
             $('#mac-dinh').click(function(){
-                var $id = {{ $id_danh_muc }};
-                $.get('/san-pham/ajax/sap-xep/mac_dinh/'+ $id, function(data){
+                var $id = {{ $id_thuong_hieu }};
+                $.get('/thuong-hieu/ajax/sap-xep/mac_dinh/'+ $id, function(data){
                     $('#show_product').html(data);
                 });
             });
 
             $('#a-z').click(function(){
-                var $id = {{ $id_danh_muc }};
-                $.get('/san-pham/ajax/sap-xep/a_z/'+ $id, function(data){
+                var $id = {{ $id_thuong_hieu }};
+                $.get('/thuong-hieu/ajax/sap-xep/a_z/'+ $id, function(data){
                     $('#show_product').html(data);
                 });
             });
 
             $('#z-a').click(function(){
-                var $id = {{ $id_danh_muc }};
-                $.get('/san-pham/ajax/sap-xep/z_a/'+ $id, function(data){
+                var $id = {{ $id_thuong_hieu }};
+                $.get('/thuong-hieu/ajax/sap-xep/z_a/'+ $id, function(data){
                     $('#show_product').html(data);
                 });
             });
 
             $('#gia-tang').click(function(){
-                var $id = {{ $id_danh_muc }};
-                $.get('/san-pham/ajax/sap-xep/gia_tang/'+ $id, function(data){
+                var $id = {{ $id_thuong_hieu }};
+                $.get('/thuong-hieu/ajax/sap-xep/gia_tang/'+ $id, function(data){
                     $('#show_product').html(data);
                 });
             });
 
             $('#gia-giam').click(function(){
-                var $id = {{ $id_danh_muc }};
-                $.get('/san-pham/ajax/sap-xep/gia_giam/'+ $id, function(data){
+                var $id = {{ $id_thuong_hieu }};
+                $.get('/thuong-hieu/ajax/sap-xep/gia_giam/'+ $id, function(data){
                     $('#show_product').html(data);
                 });
             });
 
             $('#hang-moi').click(function(){
-                var $id = {{ $id_danh_muc }};
-                $.get('/san-pham/ajax/sap-xep/hang_moi/'+ $id, function(data){
+                var $id = {{ $id_thuong_hieu }};
+                $.get('/thuong-hieu/ajax/sap-xep/hang_moi/'+ $id, function(data){
                     $('#show_product').html(data);
                 });
             });
             $('#hang-cu').click(function(){
-                var $id = {{ $id_danh_muc }};
-                $.get('/san-pham/ajax/sap-xep/hang_cu/'+ $id, function(data){
+                var $id = {{ $id_thuong_hieu }};
+                $.get('/thuong-hieu/ajax/sap-xep/hang_cu/'+ $id, function(data){
                     $('#show_product').html(data);
                 });
             });

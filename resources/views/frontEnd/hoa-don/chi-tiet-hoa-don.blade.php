@@ -10,7 +10,7 @@
             Đặt ngày: {{ date("d".' \T\h\á\n\g'." m". ' \N\ă\m'." Y", strtotime($dbHoaDonByid->ngay_tao)) }}
         </div>
         <div class="float-right">
-            <h5>Tổng cộng: {{ number_format($dbHoaDonByid->tong_tien, 2,'.', ',') }} đ</h5>
+            <h6>Tổng cộng: {{ number_format($dbHoaDonByid->tong_tien, 2,'.', ',') }} đ</h6>
         </div>
     </div>
     <div class="card-body p-0">
@@ -38,6 +38,17 @@
                             <span class="badge badge-pill badge-success">Đơn hàng đã giao</span>
                             @endif
                         </td>
+                        @if ($numberTinhTrang == 4)
+                        <td>
+                            <button type="button" class="buttom_get_id_sp_danhgia btn btn-outline-dark" data-toggle="modal" data-target="#exampleModal">
+                                <i class="fas fa-comment-dots"></i> Đánh giá
+                                <input type="hidden" class="id_sp_danhgia" value="{{ $sanphamx->id }}">
+                            </button>
+                        </td>
+                        @else
+
+                        @endif
+
 
                       </tr>
                       @endforeach
@@ -47,6 +58,18 @@
 
         </div>
     </div>
+    @if ($numberTinhTrang == 0)
+    <div class="card-footer p-0">
+        <form method="POST" action="{{ route('huydonhang_post') }}">
+            @csrf
+            <input type="hidden" name="id_hoa_don" value="{{ $dbHoaDonByid->id }}">
+            <button type="submit" class="btn btn-outline-secondary  btn-lg btn-block"><i class="fas fa-trash-alt"></i> Hủy đơn hàng </button>
+        </form>
+    </div>
+    @else
+
+    @endif
+
 </div>
 
 <div style="margin-top: 10px" class="row">
@@ -75,11 +98,17 @@
             </div>
             <div class="card-body">
                 <ul style="padding: 0">
-                    <li><strong>Phí vận chuyển: 30.000đ</strong></li>
-                    <li><strong>Khuyến mãi: </strong>{{ $dbHoaDonByid->giftcode->code }} <span class="badge badge-primary badge-pill">-{{ $dbHoaDonByid->giftcode->gia_tri}}%</span></li>
-                    <li>Tổng cộng: {{ number_format($dbHoaDonByid->tong_tien, 2,'.', ',') }} đ</li>
+                    <li><strong>Phí vận chuyển: </strong>30.000đ</li>
+                    <li><strong>Khuyến mãi: </strong>
+                        @if ($dbHoaDonByid->id_giftcode == 1)
+                        <span class="badge badge-primary badge-pill">Không áp dụng</span>
+                        @else
+                        {{ $dbHoaDonByid->giftcode->code }} <span class="badge badge-primary badge-pill">-{{ $dbHoaDonByid->giftcode->gia_tri}}%</span>
+                        @endif
+                    </li>
+                    <li><strong>Tổng cộng:</strong> {{ number_format($dbHoaDonByid->tong_tien, 2,'.', ',') }} đ</li>
                     <hr>
-                    <li><strong>Hình thức thanh toán: </strong></li>
+                    <li><strong>Hình thức thanh toán: </strong>Thanh toán khi nhận hàng</li>
                 </ul>
             </div>
         </div>

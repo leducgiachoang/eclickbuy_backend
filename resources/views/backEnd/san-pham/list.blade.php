@@ -45,7 +45,7 @@
                     </td>
                     <td>
                         <a class="btn btn-outline-success" href="{{ route('chinh_san_pham_get', ['id'=> $db_sp->id]) }}"><i class="fas fa-edit"></i></a>
-                        <a class="btn btn-warning" href="{{ route('xoa_san_pham', ['id'=> $db_sp->id]) }}"><i class="fas fa-trash-alt"></i></a>
+                        <a class="btn btn-warning" onclick="return confirm('Bạn có chắc muốn xóa sản phẩm này?')" href="{{ route('xoa_san_pham', ['id'=> $db_sp->id]) }}"><i class="fas fa-trash-alt"></i></a>
                     </td>
                 </tr>
                 <?php $a++ ?>

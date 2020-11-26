@@ -1,14 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\FrontEnd;
+namespace App\Http\Controllers\BackEnd;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Model\SanPham_Model;
-use App\Model\DanhMucSanPham_Model;
-use App\Model\sliderShow;
+use App\Model\DanhGiaSanPham_model;
 
-class homePage extends Controller
+class DanhGia_controller extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,34 +15,11 @@ class homePage extends Controller
      */
     public function index()
     {
+        $dbDanhGia = DanhGiaSanPham_model::paginate(15);
 
-        $SPbyid1 = SanPham_Model::where('id_danh_muc', 1)->limit(8)->get();
-        $SPbyid1random= SanPham_Model::where('id_danh_muc', 1)->limit(1)->inRandomOrder()->get();
-
-        $SPbyid2 = SanPham_Model::where('id_danh_muc', 2)->limit(10)->get();
-        $SPbyid2z= SanPham_Model::where('id_danh_muc', 2)->limit(1)->get();
-
-        $SPbyid3 = SanPham_Model::where('id_danh_muc', 3)->limit(10)->get();
-        $SPbyid3z= SanPham_Model::where('id_danh_muc', 3)->limit(1)->get();
-
-        $SPbyid4 = SanPham_Model::where('id_danh_muc', 4)->limit(10)->get();
-        $SPbyid4z= SanPham_Model::where('id_danh_muc', 4)->limit(1)->get();
-
-        $slideshow = sliderShow::all();
-        return view('frontEnd.pages.home',[
-            'SPbyid1s'=>$SPbyid1,
-            'SPbyid1randoms'=> $SPbyid1random,
-            'SPbyid2s'=> $SPbyid2,
-            'SPbyid2z'=> $SPbyid2z,
-
-            'SPbyid3s'=> $SPbyid3,
-            'SPbyid3z'=> $SPbyid3z,
-
-            'SPbyid4s'=> $SPbyid4,
-            'SPbyid4z'=> $SPbyid4z,
-            'sliderShows'=> $slideshow
+        return view('backEnd.danh-gia.danhsach',[
+            'danhGias' => $dbDanhGia
         ]);
-
     }
 
     /**
@@ -110,6 +85,7 @@ class homePage extends Controller
      */
     public function destroy($id)
     {
-        //
+        DanhGiaSanPham_model::where('id', $id)->delete();
+        return redirect()->back()->with('success', 'Xóa sản phẩm thành công');
     }
 }
