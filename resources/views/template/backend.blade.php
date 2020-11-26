@@ -50,21 +50,10 @@
                 </li>
                 <hr class="sidebar-divider">
                 <li class="active">
-                    <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                    <a href="/">
                         <i class="fas fa-home"></i>
-                        Home
+                        Trang chủ
                     </a>
-                    <ul class="collapse list-unstyled" id="homeSubmenu">
-                        <li>
-                            <a href="#">Home 1</a>
-                        </li>
-                        <li>
-                            <a href="#">Home 2</a>
-                        </li>
-                        <li>
-                            <a href="#">Home 3</a>
-                        </li>
-                    </ul>
                 </li>
                 <li>
                     <a href="#category_product" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
@@ -151,46 +140,6 @@
                 </li>
 
                 <li>
-                    <a href="#slider" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
-                        <i class="fas fa-sliders-h"></i>
-                        Slider
-                    </a>
-                    <ul class="collapse list-unstyled" id="slider">
-                        <li>
-                            <a href="{{ route('view-page-slider') }}">Thêm mới</a>
-                        </li>
-                        <li>
-                            <a href="{{ route('list-page-slider') }}">Danh sách</a>
-                        </li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="#">
-                        <i class="fas fa-briefcase"></i>
-                        About
-                    </a>
-
-                </li>
-                <li>
-                    <a href="#">
-                        <i class="fas fa-image"></i>
-                        Portfolio
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <i class="fas fa-question"></i>
-                        FAQ
-                    </a>
-                </li>
-                <li>
-                    <a href="{{ route('DanhGia_list_get') }}">
-                        <i class="fas fa-paper-plane"></i>
-                        Đánh giá
-                    </a>
-                </li>
-
-                <li>
                     <a href="#hoa_don" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
                         <i class="fas fa-shopping-cart"></i>
                         Đơn hàng
@@ -206,6 +155,29 @@
                         <li><a href="{{ route('DonHangGetId', ['id'=> 4]) }}">Đơn hàng đã giao</a></li>
                     </ul>
                 </li>
+
+                <li>
+                    <a href="#slider" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                        <i class="fas fa-sliders-h"></i>
+                        Slider
+                    </a>
+                    <ul class="collapse list-unstyled" id="slider">
+                        <li>
+                            <a href="{{ route('view-page-slider') }}">Thêm mới</a>
+                        </li>
+                        <li>
+                            <a href="{{ route('list-page-slider') }}">Danh sách</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="{{ route('DanhGia_list_get') }}">
+                        <i class="fas fa-paper-plane"></i>
+                        Đánh giá
+                    </a>
+                </li>
+
+
             </ul>
 
             <ul class="list-unstyled CTAs">
@@ -325,14 +297,7 @@
                         <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                         Profile
                       </a>
-                      <a class="dropdown-item" href="#">
-                        <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-                        Settings
-                      </a>
-                      <a class="dropdown-item" href="#">
-                        <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
-                        Activity Log
-                      </a>
+                      
                       <div class="dropdown-divider"></div>
                       <a class="dropdown-item" href="{{route('dang-xuat')}}" data-toggle="modal" data-target="#logoutModal">
                         <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>

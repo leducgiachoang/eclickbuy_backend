@@ -9,10 +9,8 @@
                     <div class="row">
                         <div class="page-login pagecustome clearfix">
                             <div class="wpx" style="margin-bottom: 80px">
-                                <h1 class="title_heads a-center"><span>Đăng nhập</span></h1>
-                                <span class="block a-center dkm margin-top-10">Nếu bạn chưa có tài khoản, <a
-                                        href="{{route('dang-ki')}}" class="btn-link-style btn-register">đăng ký tại
-                                        đây</a></span>
+                                <h1 class="title_heads a-center"><span>Thay đổi mật khẩu</span></h1>
+                                <span class="block a-center dkm margin-top-10">Vui lòng điền đầy đủ thông tin để tiến hành đổi mật khẩu</span>
 
                                 <div id="login" class="section">
                                 <form accept-charset="utf-8" action="{{route('update-password')}}" id="customer_login"
