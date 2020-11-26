@@ -69,7 +69,7 @@ class UserController extends Controller
     }
     public function all_user()
     {
-        $all_user = DB::table('tai_khoan')->orderBy('id', 'desc')->get();
+        $all_user = DB::table('tai_khoan')->orderBy('id', 'desc')->paginate(10);
         $manager_all_user = view('backEnd.tai_khoan.all_user')->with('all_user', $all_user);
         return view('template.backend')->with('bachEnd.tai_khoan.all_user', $manager_all_user);
     }

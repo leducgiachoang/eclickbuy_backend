@@ -189,7 +189,12 @@ Route::group(['prefix' => 'tai-khoan', 'namespace' => 'FrontEnd'], function () {
     Route::post('dang-ki-tai-khoan', 'UserController@register')->name('dang-ki');
     Route::get('verify/{code}/{email}', 'UserController@verify')->name('kich-hoat');
     Route::get('ho-so/{id}', 'UserController@profile')->name('ho-so-tai-khoan');
-    Route::post('update-profile/{id}', 'UserController@update_profile')->name('update-profile');
+    Route::post('cap-nha-ho-so{id}', 'UserController@update_profile')->name('update-profile');
+    Route::get('cap-nhat-mat-khau', 'UserController@view_update_password')->name('view-update-password');
+    Route::post('cap-nhat-mat-khau', 'UserController@update_password')->name('update-password');
+    Route::post('quen-mat-khau', 'UserController@reset_password')->name('reset-password');
+    Route::get('lay-lai-mat-khau/{code}/{email}', 'UserController@LayLaiMatKhau')->name('LayLaiMatKhau_get');
+    Route::post('cap-nhap-mk-khi-quen','UserController@CapNhatMatKhauKhiQuen')->name('CapNhatMatKhauKhiQuen_post');
 });
 
 

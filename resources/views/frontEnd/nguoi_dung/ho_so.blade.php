@@ -8,7 +8,7 @@
         <ul class="nav">
           <li class="nav-item"><a class="nav-link px-2 active" href="./overview.html"><i class="fa fa-fw fa-bar-chart mr-1"></i><span>Overview</span></a></li>
           <li class="nav-item"><a class="nav-link px-2" href="./users.html"><i class="fa fa-fw fa-th mr-1"></i><span>CRUD</span></a></li>
-          <li class="nav-item"><a class="nav-link px-2" href="./settings.html"><i class="fa fa-fw fa-cog mr-1"></i><span>Settings</span></a></li>
+        <li class="nav-item"><a class="nav-link px-2" href="{{route('view-update-password')}}"><i class="fa fa-fw fa-cog mr-1"></i><span>Đổi mật khẩu</span></a></li>
         </ul>
       </div>
     </div>
@@ -110,17 +110,7 @@
                             </div>
                           </div>
                           <div class="row">
-                            <div class="col-12 col-sm-6 mb-3">
-                              <div class="row">
-                                <div class="col">
-                                  <div class="form-group">
-                                    <label>Mật Khẩu Mới</label>
-                                    <input class="form-control" name="password" type="password" value="{{$pro_user->password}}" >
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                            <div class="col-12 col-sm-5 offset-sm-1 mb-3">
+                            <div class="col-12 col-sm-5">
                               <div class="row">
                                 <div class="col">
                                     <div class="form-group">

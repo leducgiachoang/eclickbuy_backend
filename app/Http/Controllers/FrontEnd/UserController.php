@@ -131,11 +131,9 @@ class UserController extends Controller
             ],
             [
                 'ho_ten.required'=> 'Vui lòng nhập Họ và Tên',
-
         ]);
         $data['ho_ten'] = $request->ho_ten;
         $data['ngay_sinh'] = $request->ngay_sinh;
-        $data['password'] = bcrypt($request->password);
         $get_image = $request->file('anh_dai_dien');
         if ($get_image) {
             $get_name_image = $get_image->getClientOriginalExtension();
@@ -151,5 +149,104 @@ class UserController extends Controller
         DB::table('tai_khoan')->where('id', $id)->update($data);
         Session::put('message', 'Cập nhật thông tin thành công');
         return redirect()->back();
+    }
+    public function view_update_password(){
+        return view('frontEnd.nguoi_dung.doi_mat_khau');
+    }
+    public function update_password(Request $request)
+    {
+        $request->validate(
+            [
+                'password_now'=> 'required|min:6',
+                'password_new'=>'required|min:6',
+                're_password_new'=>'required|same:password_new',
+            ],
+            [
+                'password_now.required'=> 'Vui lòng nhập mật khẩu hiện tại',
+                'password_now.min'=> 'Vui lòng nhập mật khẩu tối thiểu 6 kí tự',
+                'password_new.min'=>'Vui lòng nhập mật khẩu mới tối thiểu 6 kí tự',
+                'password_new.required'=>'Vui lòng nhập mật khẩu',
+                're_password_new.same'=> 'Vui lòng nhập lại cho đúng mật khẩu',
+                're_password.required'=> 'Vui lòng nhập mật khẩu mới',
+                'password.min'=> 'Mật khẩu ít nhất 6 kí tự',
+        ]);
+        $password_now = $request->password_now;
+        if (Auth::attempt(['email' => Auth::user()->email, 'password' => $password_now])) {
+            $user = DB::table('tai_khoan')->where('id',Auth::user()->id)->update(['password' => bcrypt($request->password_new),]);
+            return redirect()->back()->with('success','Đổi mật khẩu thành công');
+        }else {
+            return redirect()->back()->with('danger','Mật khẩu cũ chưa chính xác, vui lòng nhập lại');
+        }
+
+    }
+    public function reset_password(Request $request)
+    {
+        $user = DB::table('tai_khoan')->where(
+            [
+                'email' => $request->email,
+            ]
+        )->first();
+        if(!$user){
+            Session::put('message_front_end', 'Email không tồn tại, Vui lòng kiểm tra lại');
+            return redirect('tai-khoan/dang-nhap-tai-khoan');
+        }else{
+            $nguoidung =  NguoiDungModel::where('email',$request->email)->get();
+            foreach($nguoidung as $nguoidungx){
+                $ho_ten = $nguoidungx->ho_ten;
+            }
+            $code = bcrypt(md5(time().$request->email));
+            NguoiDungModel::where('email',$request->email)->update([
+                'code'=>$code
+            ]);
+            $url = route('LayLaiMatKhau_get', ['code'=> $code, 'email'=>$request->email]);
+
+            $data = [
+                'link' => $url,
+                'ten'=> $ho_ten
+            ];
+            $email = $request->email;
+
+            Mail::send('mail.quen-mat-khau', $data, function ($message) use ($email) {
+                $message->to($email, 'Lấy lại mật khẩu')->subject('Xin chào bạn, đây là tin nhắn kích hoạt từ EClickbuy');
+            });
+            Session::put('message_front_end', 'Thông báo! Vui lòng kiểm tra email để tiến hành lấy lại mật khẩu');
+            return redirect('tai-khoan/dang-nhap-tai-khoan');
+        }
+
+    }
+    public function LayLaiMatKhau(Request $request){
+        $code = $request->code;
+        $email = $request->email;
+        $checkUser = NguoiDungModel::where([
+            'code'=> $code,
+            'email'=> $email
+        ])->first();
+        if(!$checkUser){
+            return view('frontEnd.nguoi_dung.dang_nhap')->with('danger', 'Đường dẫn không hợp lệ, Vui lòng thử lại sau');
+        }else{
+            return view('frontEnd.nguoi_dung.doimk_khi_quenmk', ['code'=> $code, 'email'=> $email])->with('success', 'Xác nhận thành công. Vui lòng nhập lại mật khẩu mới');
+        }
+
+    }
+
+    public function CapNhatMatKhauKhiQuen(Request $request){
+        $request->validate(
+            [
+                'password_new'=>'required|min:6',
+                're_password_new'=>'required|same:password_new',
+            ],
+            [
+                'password_new.min'=>'Vui lòng nhập mật khẩu mới tối thiểu 6 kí tự',
+                'password_new.required'=>'Vui lòng nhập mật khẩu',
+                're_password_new.same'=> 'Vui lòng nhập lại cho đúng mật khẩu',
+                're_password.required'=> 'Vui lòng nhập mật khẩu mới'
+        ]);
+        $updatePassUser = NguoiDungModel::where([
+            'code' => $request->code,
+            'email'=> $request->email
+        ])->update([
+            'password'=> bcrypt($request->password_new)
+        ]);
+        return view('frontEnd.nguoi_dung.dang_nhap')->with('success','Thay đổi mật khẩu thành công');
     }
 }
