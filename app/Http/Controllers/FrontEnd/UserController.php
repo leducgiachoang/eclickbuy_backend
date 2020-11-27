@@ -74,9 +74,10 @@ class UserController extends Controller
         $data['anh_dai_dien'] = 'e5809db818346b4be5-1.gif';
         $email = $data['email'];
         $code = bcrypt(md5(time() . $request->email));
-        $data['code'] = $code;
+        $codexx = preg_replace("/\\//","",$code);
+        $data['code'] = $codexx;
         DB::table('tai_khoan')->insert($data);
-         $url = route('kich-hoat', ['code' => $code, 'email' => $request->email]);
+         $url = route('kich-hoat', ['code' => $codexx, 'email' => $request->email]);
         $data = [
             'link' => $url,
             'ten'=> $request->ho_ten

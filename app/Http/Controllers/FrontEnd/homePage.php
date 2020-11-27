@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use App\Model\SanPham_Model;
 use App\Model\DanhMucSanPham_Model;
 use App\Model\sliderShow;
+use App\Model\GiftCode_Model;
+use Illuminate\Support\Carbon;
 
 class homePage extends Controller
 {
@@ -55,6 +57,26 @@ class homePage extends Controller
     public function create()
     {
         //
+    }
+
+    public function gioiThieu(){
+        return view('frontEnd.pages.gioi-thieu');
+    }
+    public function ChinhSachBaoHanh(){
+        return view('frontEnd.pages.chinh-sach-bao-hanh');
+    }
+    public function LienHe(){
+        return view('frontEnd.pages.lien-he');
+    }
+    public function HuongDanMuaHang(){
+        return view('frontEnd.pages.huong-dan-mua-hang');
+    }
+    public function ChinhSachGiaoHang(){
+        return view('frontEnd.pages.chinh-sach-giao-hang');
+    }
+    public function MaGiamGia(){
+        $dbGiftCode = GiftCode_Model::where('ngay_ket_thuc', '>=', Carbon::now('Asia/Ho_Chi_Minh'))->get();
+        return view('frontEnd.pages.ma-giam-gia', ['dbGiftCodes'=> $dbGiftCode]);
     }
 
     /**

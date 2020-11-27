@@ -15,6 +15,14 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', 'FrontEnd\homePage@index')->name('homepage');
 
+Route::get('gioi-thieu', 'FrontEnd\homePage@gioiThieu')->name('pageGioiThieu');
+Route::get('chinh-sach-bao-hang', 'FrontEnd\homePage@ChinhSachBaoHanh')->name('ChinhSachBaoHanh');
+Route::get('lien-he', 'FrontEnd\homePage@LienHe')->name('LienHe_page');
+Route::get('huong-dan-mua-hang', 'FrontEnd\homePage@HuongDanMuaHang')->name('HuongDanMuaHang');
+Route::get('chinh-sach-giao-hang', 'FrontEnd\homePage@ChinhSachGiaoHang')->name('ChinhSachGiaoHang');
+Route::get('ma-giam-gia', 'FrontEnd\homePage@MaGiamGia')->name('MaGiamGia_get');
+
+
 
 Route::get('/admin', function () {
     return redirect(route('dashboard'));

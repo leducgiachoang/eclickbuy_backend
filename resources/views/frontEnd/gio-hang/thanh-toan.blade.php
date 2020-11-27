@@ -35,9 +35,7 @@
 						<div class="logo logo--left ">
 
 		<h1 class="shop__name">
-			<a href="#">
-				Electronic Click Buy
-			</a>
+			Thanh toán
 		</h1>
 
 </div>
@@ -68,7 +66,10 @@
 														Email
 													</label>
 													<input placeholder="Email" name="email" id="email" type="email" class="field__input" data-bind="email" value="{{ Auth::user()->email }}">
-												</div>
+                                                    @error('email')
+                                                    <div style="background: moccasin;font-weight: 600;color: red;" class="alert alert-danger">{{ $message }}</div>
+                                                    @enderror
+                                                </div>
 
 											</div>
 
@@ -77,7 +78,10 @@
 											<div class="field " data-bind-class="{&#39;field--show-floating-label&#39;: billing.name}">
 												<div class="field__input-wrapper">
 													<label for="billingName">Họ và tên</label>
-													<input placeholder="Họ và tên" name="ho_ten" id="billingName" type="text" class="field__input" data-bind="billing.name" value="{{ Auth::user()->ho_ten }}">
+                                                    <input placeholder="Họ và tên" name="ho_ten" id="billingName" type="text" class="field__input" data-bind="billing.name" value="{{ Auth::user()->ho_ten }}">
+                                                    @error('ho_ten')
+                                                    <div style="background: moccasin;font-weight: 600;color: red;" class="alert alert-danger">{{ $message }}</div>
+                                                    @enderror
 												</div>
 
 											</div>
@@ -87,7 +91,10 @@
 													<label for="billingPhone">
 														Số điện thoại (tùy chọn)
 													</label>
-													<input placeholder="Số điện thoại" name="so_dien_thoai" id="billingPhone" type="tel" class="field__input" data-bind="billing.phone" value="{{ Auth::user()->so_dien_thoai }}">
+                                                    <input placeholder="Số điện thoại" name="so_dien_thoai" id="billingPhone" type="tel" class="field__input" data-bind="billing.phone" value="{{ Auth::user()->so_dien_thoai }}">
+                                                    @error('so_dien_thoai')
+                                                    <div style="background: moccasin;font-weight: 600;color: red;" class="alert alert-danger">{{ $message }}</div>
+                                                    @enderror
 												</div>
 
 											</div>
@@ -96,9 +103,12 @@
 											<div class="field " data-bind-class="{&#39;field--show-floating-label&#39;: billing.address}">
 												<div class="field__input-wrapper">
 													<label for="dia_chi_noi_nhan ">
-														Địa chỉ (tùy chọn)
+														Địa chỉ giao hàng
                                                     </label>
                                                     <textarea placeholder="Địa chỉ người nhận" name="dia_chi_noi_nhan" required id="" class="field__input" cols="30" rows="10"></textarea>
+                                                    @error('dia_chi_noi_nhan')
+                                                    <div style="background: moccasin;font-weight: 600;color: red;" class="alert alert-danger">{{ $message }}</div>
+                                                    @enderror
 												</div>
 
 											</div>
@@ -142,7 +152,7 @@
 														<span class="radio__label__primary">Thanh toán khi giao hàng (COD)</span>
 														<span class="radio__label__accessory">
 															<span class="radio__label__icon">
-																<i class="payment-icon payment-icon--4"></i>
+																<i class="fas fa-shipping-fast"></i>
 															</span>
 														</span>
 													</label>

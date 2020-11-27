@@ -13,6 +13,7 @@ use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
 use App\Model\ChiTietHoaDon_Model_h;
 use Illuminate\Support\Facades\Mail;
+use App\Http\Requests\thanhtoan_requesst;
 
 
 class GioHangController extends Controller
@@ -128,14 +129,14 @@ class GioHangController extends Controller
         return view('frontEnd.gio-hang.thanh-toan');
     }
     public function giftCode($code){
-        $checkGift = GiftCode_Model::where('code', $code)->first();
+        $checkGift = GiftCode_Model::where('code', $code)->where('ngay_bat_dau', '<=', Carbon::now('Asia/Ho_Chi_Minh'))->where('ngay_ket_thuc', '>=', Carbon::now('Asia/Ho_Chi_Minh'))->first();
         if(!$checkGift){
             echo '';
         }else{
             echo $checkGift->gia_tri;
         }
     }
-    public function thanhtoan_post(Request $request){
+    public function thanhtoan_post(thanhtoan_requesst $request){
         if($request->code_gift == ''){
             $id_giftcode = 1;
         }else{

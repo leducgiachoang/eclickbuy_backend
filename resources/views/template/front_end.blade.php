@@ -179,7 +179,7 @@
 						<div class="item">
 							<i class="fas fa-gift"></i>
 							<span class="info">
-								<span>Sản phẩm khuyến mãi</span>
+								<span><a href="{{ route('MaGiamGia_get') }}">Săn mã giảm giá</a></span>
 							</span>
 						</div>
 
@@ -467,20 +467,18 @@
 										<div class="collapse" id="collapseListMenu01">
 											<ul class="list-menu">
 
-												<li class="li_menu"><a href="index.htm" title="Trang chủ">Trang chủ</a>
+												<li class="li_menu"><a href="/" title="Trang chủ">Trang chủ</a>
 												</li>
 
-												<li class="li_menu"><a href="gioi-thieu.html" title="Giới thiệu">Giới
+												<li class="li_menu"><a href="{{ route('pageGioiThieu') }}" title="Giới thiệu">Giới
 														thiệu</a></li>
+                                                <li class="li_menu"><a href="{{ route('LienHe_page') }}" title="Liên hệ">Liên hệ</a></li>
 
-												<li class="li_menu"><a href="collections/all.html" title="Sản phẩm">Sản
-														phẩm</a></li>
+                                                </li>
 
-												<li class="li_menu"><a href="tin-tuc.html" title="Tin tức">Tin tức</a>
-												</li>
 
-												<li class="li_menu"><a href="lien-he.html" title="Liên hệ">Liên hệ</a>
-												</li>
+
+
 
 											</ul>
 										</div>
@@ -498,19 +496,16 @@
 										<div class="collapse" id="collapseListMenu02">
 											<ul class="list-menu">
 
-												<li class="li_menu"><a href="index.htm" title="Trang chủ">Trang chủ</a>
-												</li>
 
-												<li class="li_menu"><a href="gioi-thieu.html" title="Giới thiệu">Giới
-														thiệu</a></li>
+												<li class="li_menu"><a href="{{ route('ChinhSachBaoHanh') }}" title="Giới thiệu">
+                                                Chính sách bảo hành
+                                                </a></li>
 
-												<li class="li_menu"><a href="collections/all.html" title="Sản phẩm">Sản
-														phẩm</a></li>
+                                                <li class="li_menu"><a href="{{ route('ChinhSachGiaoHang') }}" title="Chính sách giao hàng">
+                                                Chính sách giao hàng
+                                                </a></li>
+                                                <li class="li_menu"><a href="{{ route('HuongDanMuaHang') }}" title="Hướng dẫn mua hàng">Hướng dẫn mua hàng</a></li>
 
-												<li class="li_menu"><a href="tin-tuc.html" title="Tin tức">Tin tức</a>
-												</li>
-
-												<li class="li_menu"><a href="lien-he.html" title="Liên hệ">Liên hệ</a>
 												</li>
 
 											</ul>
