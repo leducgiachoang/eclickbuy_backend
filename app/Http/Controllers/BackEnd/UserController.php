@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\BackEnd;
+
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -8,6 +9,7 @@ use Illuminate\Support\Facades\Redirect;
 use Carbon\Carbon;
 use Hash;
 use Session;
+
 session_start();
 
 class UserController extends Controller
@@ -22,50 +24,57 @@ class UserController extends Controller
         $dt = Carbon::now('Asia/Ho_Chi_Minh');
         $request->validate(
             [
-                'ho_ten'=> 'required|min:5|max:50',
-                'so_dien_thoai'=>'required|unique:tai_khoan,so_dien_thoai',
-                'email'=> 'required|email|unique:tai_khoan,email',
-                'password'=> 'required|min:6',
-                're_password'=>'required|same:password',
+                'ho_ten' => 'required|min:5|max:50',
+                'so_dien_thoai' => 'required|unique:tai_khoan,so_dien_thoai',
+                'email' => 'required|email|unique:tai_khoan,email',
+                'password' => 'required|min:6',
+                're_password' => 'required|same:password',
             ],
             [
-                'ho_ten.required'=> 'Vui lòng nhập Họ và Tên',
-                'ho_ten.min'=> 'Vui lòng nhập Họ và Tên ít nhất 5 kí tự',
-                'ho_ten.max'=> 'Vui lòng nhập Họ và Tên không quá 50 kí tự',
-                'so_dien_thoai.required'=>'Số điện thoại không được để trống',
-                'so_dien_thoai.unique'=> 'Số điện thoại này đã có người đăng ký đã có người sử dụng',
-                'email.required'=> 'Vui lòng nhập Email',
-                'email.email'=> 'Không đúng định dạng Email',
-                'email.unique'=> 'Email đã có người sử dụng',
-                'password.required'=> 'Vui lòng nhập mật khẩu',
-                're_password.same'=> 'Mật khẩu không giống nhau',
-                're_password.required'=> 'Vui lòng nhập xác nhận lại mật khẩu',
-                'password.min'=> 'Mật khẩu ít nhất 6 kí tự',
-        ]);
+                'ho_ten.required' => 'Vui lòng nhập Họ và Tên',
+                'ho_ten.min' => 'Vui lòng nhập Họ và Tên ít nhất 5 kí tự',
+                'ho_ten.max' => 'Vui lòng nhập Họ và Tên không quá 50 kí tự',
+                'so_dien_thoai.required' => 'Số điện thoại không được để trống',
+                'so_dien_thoai.unique' => 'Số điện thoại này đã có người đăng ký đã có người sử dụng',
+                'email.required' => 'Vui lòng nhập Email',
+                'email.email' => 'Không đúng định dạng Email',
+                'email.unique' => 'Email đã có người sử dụng',
+                'password.required' => 'Vui lòng nhập mật khẩu',
+                're_password.same' => 'Mật khẩu không giống nhau',
+                're_password.required' => 'Vui lòng nhập xác nhận lại mật khẩu',
+                'password.min' => 'Mật khẩu ít nhất 6 kí tự',
+            ]
+        );
         $data['ho_ten'] = $request->ho_ten;
         $data['so_dien_thoai'] = $request->so_dien_thoai;
         $data['email'] = $request->email;
         $data['password'] = bcrypt($request->password);
         $data['vai_tro'] = $request->vai_tro;
         $data['ngay_sinh'] = $request->ngay_sinh;
+        $ngay_sinh = $data['ngay_sinh'];
         $data['status'] = $request->trang_thai;
         $data['ngay_tao'] = $dt;
-        $get_image = $request->file('anh_dai_dien');
-        if ($get_image) {
-            $get_name_image = $get_image->getClientOriginalExtension();
-            $name_image = current(explode('.', $get_name_image));
+        if ($ngay_sinh > $dt) {
+            Session::put('message', 'Vui lòng nhập lại ngày sinh');
+            return redirect()->back();
+        } else {
+            $get_image = $request->file('anh_dai_dien');
+            if ($get_image) {
+                $get_name_image = $get_image->getClientOriginalExtension();
+                $name_image = current(explode('.', $get_name_image));
 
-            $new_image = $name_image . rand(0, 99) . '.' . $get_image->getClientOriginalExtension();
-            $get_image->move('images/user/', $new_image);
-            $data['anh_dai_dien'] = $new_image;
+                $new_image = $name_image . rand(0, 99) . '.' . $get_image->getClientOriginalExtension();
+                $get_image->move('images/user/', $new_image);
+                $data['anh_dai_dien'] = $new_image;
+                DB::table('tai_khoan')->insert($data);
+                Session::put('message', 'Thêm người dùng thành công');
+                return redirect()->back();
+            }
+            $data['anh_dai_dien'] = '';
             DB::table('tai_khoan')->insert($data);
             Session::put('message', 'Thêm người dùng thành công');
             return redirect()->back();
         }
-        $data['anh_dai_dien'] = '';
-        DB::table('tai_khoan')->insert($data);
-        Session::put('message', 'Thêm người dùng thành công');
-        return redirect()->back();
     }
     public function all_user()
     {
@@ -97,7 +106,7 @@ class UserController extends Controller
         Session::put('message', 'Vô hiệu hóa người dùng thành công');
         return redirect()->back();
     }
-    public function update_user(Request $request,$id)
+    public function update_user(Request $request, $id)
     {
         $data = array();
         $data['ho_ten'] = $request->ho_ten;
@@ -119,10 +128,8 @@ class UserController extends Controller
             Session::put('message', 'Sửa người dùng thành công');
             return redirect()->back();
         }
-        $data['anh_dai_dien'] = '';
         DB::table('tai_khoan')->where('id', $id)->update($data);
         Session::put('message', 'Sửa người dùng thành công');
         return redirect()->back();
     }
-
 }

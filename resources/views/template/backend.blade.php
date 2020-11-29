@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="../css/backend_css.css">
     <link rel="stylesheet" href="../css/sb-admin-2.min.css">
     <link rel="stylesheet" href="../css/style4.css">
+    <script src="../js/jquery.number.min.js"></script>
 
     <!-- Font Awesome JS -->
     <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
@@ -199,17 +200,7 @@
                     <span>MENU</span>
                 </button>
 
-                <!-- Topbar Search -->
-                <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
-                  <div class="input-group">
-                    <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
-                    <div class="input-group-append">
-                      <button class="btn btn-primary" type="button">
-                        <i class="fas fa-search fa-sm"></i>
-                      </button>
-                    </div>
-                  </div>
-                </form>
+
 
                 <!-- Topbar Navbar -->
                 <ul class="navbar-nav ml-auto">
@@ -297,7 +288,7 @@
                         <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                         Profile
                       </a>
-                      
+
                       <div class="dropdown-divider"></div>
                       <a class="dropdown-item" href="{{route('dang-xuat')}}" data-toggle="modal" data-target="#logoutModal">
                         <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
@@ -348,6 +339,8 @@
 
         });
     </script>
+
+
 
     @yield('script')
 

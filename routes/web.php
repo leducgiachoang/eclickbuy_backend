@@ -139,6 +139,12 @@ Route::group(['prefix' => 'admin', 'namespace' => 'BackEnd', 'middleware'=>'Chec
         Route::post('chinh-sua/{id}', 'SliderController@update_slider_product')->name('update-slider');
 
     });
+    //seach ajax
+    Route::group(['prefix' => 'tim-kiem'], function () {
+        Route::post('tim-kiem-danh-muc', 'SearchController@searchPost')->name('search-category');
+        Route::post('tim-kiem-san-pham', 'SearchController@searchProduct')->name('search-product');
+        Route::post('tim-kiem-nguoi-dung', 'SearchController@searchUser')->name('search-user');
+    });
 });
 
 
