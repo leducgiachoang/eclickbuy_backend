@@ -30,10 +30,13 @@
 
 </head>
 
+
 <body class="preloading">
     <div style="display: flex; position: fixed; top: 0;left: 0;right: 0;bottom: 0;" id="preload" class="preload-container text-center">
         <img style="margin: auto" width="400" src="../images/logo1.gif" alt="">
     </div>
+
+<body>
     <!-- Load Facebook SDK for JavaScript -->
       <div id="fb-root"></div>
       <script>
@@ -645,7 +648,9 @@ margin: 0;">
 
 	<script src="../js/index.js" type="text/javascript"></script>
 
-	<script src="../js/main.js" type="text/javascript"></script>
+    <script src="../js/main.js" type="text/javascript"></script>
+
+
 
 
 	<script type='text/javascript'>

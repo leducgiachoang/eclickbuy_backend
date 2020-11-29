@@ -29,7 +29,7 @@
                         </div>
                         <div class="form-group">
                             <label for="exampleInputPassword1">Nội Dung</label>
-                            <textarea style="resize:none" rows="5" name="noi_dung_hinh_anh" class="form-control" id="exampleInputEmail1" placeholder="Mô tả thương hiệu"></textarea>
+                            <textarea style="resize:none" rows="5" name="noi_dung_hinh_anh" class="form-control" id="exampleInputEmail1" placeholder="Mô tả Slider"></textarea>
                         </div>
                         <button type="submit" name="add_slider_product" class="btn btn-info">Thêm Slider</button>
                     </form>
