@@ -27,7 +27,7 @@ class thanhtoan_requesst extends FormRequest
         return [
             'email'  => 'required|email',
             'ho_ten' => 'required',
-            'so_dien_thoai' => 'required',
+            'so_dien_thoai' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|min:10|max:11',
             'dia_chi_noi_nhan' => 'required|min: 20',
         ];
     }
@@ -38,6 +38,10 @@ class thanhtoan_requesst extends FormRequest
             'email.email'=> 'Vui lòng điền đúng định dạng email',
             'ho_ten.required'=> 'Vui lòng điền họ tên của người nhận hàng!',
             'so_dien_thoai.required'=> 'Vui lòng điền số điện thoại',
+            'so_dien_thoai.regex'=> 'Vui lòng nhập đúng định dạng số điện thoại',
+            'so_dien_thoai.min'=> 'Vui lòng nhập đúng định dạng số điện thoại',
+            'so_dien_thoai.max'=> 'Vui lòng nhập đúng định dạng số điện thoại',
+            'so_dien_thoai.numeric'=> 'Vui lòng nhập đúng định dạng số điện thoại',
             'dia_chi_noi_nhan.required'=> 'Vui lòng điện địa chỉ nhận hàng',
             'dia_chi_noi_nhan.min'=> 'Bạn vui lòng điền đầy đủ tất cả chi tiết địa chỉ nhận hàng'
         ];

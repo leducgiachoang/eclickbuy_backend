@@ -10,7 +10,7 @@
         .content {
             background-color: rgb(255, 255, 255);
             padding: 20px;
-            color: black;
+            color: rgb(255, 255, 255);
         }
 
         .text {
@@ -36,8 +36,8 @@
 </head>
 
 <body style="width: 100%;margin: -8px auto;border: 2px solid black;">
-    <header style="background-color: black;padding: 15px;">
-        <p style="text-align: center;"><img src="https://lh3.googleusercontent.com/BzZJ0eZ5OIDlPIPhgPn_9soqXYymq6qk8f3EViaYUf5-r8IogDqRIqeSwn9wfQ-U9K8QqVQh0gRMdgDOhVdChVtDPkdJ5goL7FC-8PSN4G9AxgrdNULJv_jfyJ1hJWAH-vW0Nomy9kEjuvuiWmgVPmDITJkG69MwIAVU5MQwYRcO3WodvnqgTlVkeSWLTagY24liNMSCmACLr8-OO4QDeD9rY9TvtDGS_SMIR8Nts_iyDN3iJsEn1fg6Rpppy23pVQS7OWFA_4WY20fyMiFvQkvT8npgJcW06zDjKT-2zdqDTKDpexzFE4XdAmAEvVwxKdMDszKl2ZJj8lHarJNKBhUrT7nOn5rCIZrf5fRDnS0mnQrV0dn-1eS8iI2w8odytNMOLXmGizyYFRMabao4L-b6pK6eJgxtrYQIeCRsK6_EvsfrXviS4eQdQ8ji3F0B3syaweEUIet8nxXA39HeuYC7HVu0E-OlTQIWDNOE5XbTdsb5VCbvUTxHdGPuTSqzmtBVh0Gj68KGk_19gdSZ8zY6h03QHG-p6BdnQvKD1VIU6ls340JO9qf7jJRo9R_cUaM0DV_H8GbrQQzkltIv9C4xorxY1KdbUWggfZTJCA_hDo6u88nNM90bXYqL7G-2yrmbRmRRUlDuQfMWM4_AxAFlx0ARx8-QN5dSvELPDbU99FUrlFBr4TrKY7yAAw=w246-h52-no?authuser=0" alt=""></p>
+    <header style="background-color: rgb(255, 255, 255);padding: 15px;">
+        <p style="text-align: center;"><img src="https://lh3.googleusercontent.com/NGRLoXoVCRdI5NE_lIrVtpGATZ8BCKNMaQyXB64nDbd09FoGD-EGr_8LhiINDsisk5CRT1RvjT5DuoYtfP8rXzib7BUXGrPL9aRKtAQRtZ6l9FIaGzSe7wQUxocSvwYLvFtKrOKKu1aFKY40i0CLon_u5HdqF-mWKtm0h65EsXOWerrJXdpNPIC0Dbziyop79gKmIGK3fHJuPd9KLYbBYEVgJ9IF75dYyC6qPb3STizNghbZ4EGrixxXsvYlDLAZbiQkRkMKsGqgwnHGFuwUdvYsCInMPCOOpkaev9-Nsd2mNgOPKmc22_kqzsk48I57Lh3bxgQhuHkyTZo_ooM_4RcCrINpD-_4wAcixhRuLI0ZOig1LXHAPO8_hBq5zGs2rGkcPsy7mYi5yuB4eFxJrGyt-MnAaOJwtFFnJ5QVmAFZhvpMkrhfrx9yc6i_NCyDXcxeFFuaTmt3bwXS-JtuLG1C0bwvgqoUOs8samxPUgkmuolQ-hOB0yPIogGhVFz3s5gNQmnAy2CWX4iLM-Ei2PPTZf0tjyT11ddS9BiJaGAqF2C1qQKCYw7cw7lGJHLipHavS1VvbsokV3l1Jy7w3cC9elZfcyLdHgHmeymJM9CDVbH7hHQNxt74vFPnBFXdswqPm7OFDTTlFlTmz-4_7bix4mh8H9SLryRsGZtnlifUwJfAhwKPbIwggY_yY5c=w1920-h688-no?authuser=0" alt=""></p>
     </header>
     <div class="content">
 

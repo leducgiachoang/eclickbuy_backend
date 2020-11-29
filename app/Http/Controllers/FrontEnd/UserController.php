@@ -128,12 +128,13 @@ class UserController extends Controller
         $data = array();
         $request->validate(
             [
-                'ho_ten'=> 'required|min:5|max:50',
+                'ho_ten'=> 'required|min:5|max:50'
             ],
             [
-                'ho_ten.required'=> 'Vui lòng nhập Họ và Tên',
+                'ho_ten.required'=> 'Vui lòng nhập Họ và Tên'
         ]);
         $data['ho_ten'] = $request->ho_ten;
+        $data['so_dien_thoai'] = $request->so_dien_thoai;
         $data['ngay_sinh'] = $request->ngay_sinh;
         $get_image = $request->file('anh_dai_dien');
         if ($get_image) {

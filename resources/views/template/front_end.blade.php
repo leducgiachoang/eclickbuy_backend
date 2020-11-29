@@ -24,12 +24,41 @@
 
 	<script src="../js/home.js"></script>
     <link href="../css/account_oder_style.scss.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="../css/home/load.css">
 
 
 
 </head>
 
-<body>
+<body class="preloading">
+    <div style="display: flex; position: fixed; top: 0;left: 0;right: 0;bottom: 0;" id="preload" class="preload-container text-center">
+        <img style="margin: auto" width="400" src="../images/logo1.gif" alt="">
+    </div>
+    <!-- Load Facebook SDK for JavaScript -->
+      <div id="fb-root"></div>
+      <script>
+        window.fbAsyncInit = function() {
+          FB.init({
+            xfbml            : true,
+            version          : 'v9.0'
+          });
+        };
+
+        (function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = 'https://connect.facebook.net/vi_VN/sdk/xfbml.customerchat.js';
+        fjs.parentNode.insertBefore(js, fjs);
+      }(document, 'script', 'facebook-jssdk'));</script>
+
+      <!-- Your Chat Plugin code -->
+      <div class="fb-customerchat"
+        attribution=setup_tool
+        page_id="101432048487497"
+  logged_in_greeting="Xin chào! Tôi có thể giúp gì cho bạn ?"
+  logged_out_greeting="Xin chào! Tôi có thể giúp gì cho bạn ?">
+      </div>
 	<div class="opacity_menu"></div>
 	{{--  <div class="tophead clearfix">
 		<div class="header_banner_top d-none d-sm-block d-md-block d-lg-block ">
@@ -657,7 +686,12 @@ margin: 0;">
           </div>
         </div>
       </div>
-
+      <script type="text/javascript">
+        $(window).load(function() {
+            $('body').removeClass('preloading');
+            $('#preload').delay(1000).fadeOut('fast');
+        });
+    </script>
 </body>
 
 </html>

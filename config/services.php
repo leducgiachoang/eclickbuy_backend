@@ -30,4 +30,16 @@ return [
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
 
+    'facebook' => [
+        'client_id' => env('FACEBOOK_APP_ID'),
+        'client_secret' => env('FACEBOOK_APP_SECRET'),
+        'redirect' => env('FACEBOOK_APP_CALLBACK_URL'),
+    ],
+
+    'google' => [
+        'client_id' => '1046142682656-8k5u70q1llik8rsf801ng68f3vpnmsr1.apps.googleusercontent.com',
+        'client_secret' => '1rzVNr43_pLGK7L-vuDV7LhF',
+        'redirect' => 'https://eclickbuy.com:1301/callback/google',
+      ],
+
 ];

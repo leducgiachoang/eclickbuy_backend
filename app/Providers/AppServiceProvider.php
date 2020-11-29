@@ -27,7 +27,7 @@ class AppServiceProvider extends ServiceProvider
     {
         $danhmucs = DanhMucSanPham_Model::all();
         $sliderShows  = sliderShow::all();
-        
+
         view::share([
             'danhmucs'=> $danhmucs,
             'sliderShows'=> $sliderShows

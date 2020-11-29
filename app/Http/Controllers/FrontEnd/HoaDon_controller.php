@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Model\ChiTietHoaDon_Model_h;
 use App\Model\DanhGiaSanPham_model;
 use App\Model\DonHang_Model;
+use App\Model\SanPham_Model;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Carbon;
@@ -78,6 +79,13 @@ class HoaDon_controller extends Controller
         DonHang_Model::where('id',$request->id_hoa_don)->update([
             'tinh_trang'=>2
         ]);
+        $dbChitiet = ChiTietHoaDon_Model_h::where('id_hoa_don', $request->id_hoa_don)->get();
+        foreach($dbChitiet as $db){
+            $dbSp = SanPham_Model::where('id', $db->id_san_pham)->first();
+            SanPham_Model::where('id', $db->id_san_pham)->update([
+                'so_luong'=> $dbSp->so_luong + $db->so_luong,
+            ]);
+        }
         return redirect()->back()->with('success', 'Hủy đơn hàng thành công!');
     }
 }

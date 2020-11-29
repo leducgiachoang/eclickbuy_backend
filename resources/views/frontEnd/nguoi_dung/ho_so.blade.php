@@ -3,11 +3,10 @@
 <div class="container"><br>
 <div class="row flex-lg-nowrap">
   <div class="col-12 col-lg-auto mb-3" style="width: 200px;">
-    <div class="card p-3">
+    <div class="card p-0">
       <div class="e-navlist e-navlist--active-bg">
         <ul class="nav">
-          <li class="nav-item"><a class="nav-link px-2 active" href="./overview.html"><i class="fa fa-fw fa-bar-chart mr-1"></i><span>Overview</span></a></li>
-          <li class="nav-item"><a class="nav-link px-2" href="./users.html"><i class="fa fa-fw fa-th mr-1"></i><span>CRUD</span></a></li>
+          <li class="nav-item"><a class="nav-link px-2" href="{{ route('DonHangCuaToi_get') }}"><i class="fa fa-fw fa-th mr-1"></i><span>Đơn hàng của tôi</span></a></li>
         <li class="nav-item"><a class="nav-link px-2" href="{{route('view-update-password')}}"><i class="fa fa-fw fa-cog mr-1"></i><span>Đổi mật khẩu</span></a></li>
         </ul>
       </div>
@@ -26,9 +25,13 @@
                     <div class="row">
                       <div class="col-12 col-sm-auto mb-3">
                         <div class="mx-auto" style="width: 140px;">
-                          <div class="d-flex justify-content-center align-items-center rounded" style="height: 140px; background-color: rgb(233, 236, 239);">
-                            <span style="color: rgb(166, 168, 170); font: bold 8pt Arial;"><img src="images/user/{{$pro_user->anh_dai_dien}}" alt="" height="140" width="140"></span>
-                          </div>
+                            <div class="form-group">
+                                <label for="anh_dai_dien">
+                                <img data-toggle="tooltip" data-placement="top" title="Thay đổi mật khẩu" src="images/user/{{$pro_user->anh_dai_dien}}" alt="" height="140" width="140">
+                                <b>Thay đổi</b>
+                                </label>
+                                <input style="visibility: hidden;display: none" class="form-control" name="anh_dai_dien" id="anh_dai_dien" type="file">
+                              </div>
                         </div>
                       </div>
                       <div class="col d-flex flex-column flex-sm-row justify-content-between mb-3">
@@ -53,9 +56,7 @@
                         </div>
                       </div>
                     </div>
-                    <ul class="nav nav-tabs">
-                      <li class="nav-item"><a class="active nav-link">Chỉnh sửa Thông tin tài khoản</a></li>
-                    </ul>
+
                     <?php
                     $message = Session::get('message');
                     if ($message) {
@@ -81,12 +82,26 @@
                                   </div>
                                 </div>
                                 <div class="col">
-                                  <div class="form-group">
-                                    <label>Số Điện Thoại</label>
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text" id="">{{$pro_user->so_dien_thoai}}</span>
+
+
+                                      <div class="form-group">
+                                          @if ($pro_user->so_dien_thoai == '')
+                                          <label class="text-danger" role="alert">
+                                            Cập nhập số điện thoại*
+                                          </label>
+                                          @else
+                                        <label>Số điện thoại</label>
+                                          @endif
+
+                                        <div class="input-group-prepend">
+                                            <input @if ($pro_user->so_dien_thoai != '')
+                                            readonly
+                                            @else
+
+                                            @endif class="form-control" name="so_dien_thoai" value="{{$pro_user->so_dien_thoai}}">
+                                          </div>
                                       </div>
-                                  </div>
+
                                 </div>
                               </div>
                               <div class="row">
@@ -110,21 +125,8 @@
                             </div>
                           </div>
                           <div class="row">
-                            <div class="col-12 col-sm-5">
-                              <div class="row">
-                                <div class="col">
-                                    <div class="form-group">
-                                      <label>Ảnh Đại Diện</label>
-                                      <input class="form-control" name="anh_dai_dien" type="file">
-                                      <img src="images/user/{{$pro_user->anh_dai_dien}}" alt="" height="140" width="140">
-                                    </div>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                          <div class="row">
                             <div class="col d-flex justify-content-end">
-                              <button class="btn btn-primary" type="submit">Lưu Thay Đổi</button>
+                              <button class="btn btn-success text-white" type="submit">Lưu Thay Đổi</button>
                             </div>
                           </div>
                         </form>
@@ -141,20 +143,14 @@
         <div class="card mb-3">
           <div class="card-body">
             <div class="px-xl-3">
-              <button class="btn btn-block btn-primary">
+              <button class="btn btn-block btn-danger text-white">
                 <i class="fas fa-sign-out-alt"></i>
-                <a href="{{route('dang-xuat')}}"><span>Đăng Xuất</span></a>
+                <a href="{{route('dang-xuat')}}"><span class="text-white">Đăng Xuất</span></a>
               </button>
             </div>
           </div>
         </div>
-        <div class="card">
-          <div class="card-body">
-            <h6 class="card-title font-weight-bold">Hỗ Trợ</h6>
-            <p class="card-text">Bạn đang thắc mắc vấn đề về bảo mật.</p>
-            <button type="button" class="btn btn-primary">Hãy chọn vào đây</button>
-          </div>
-        </div>
+
       </div>
     </div>
 

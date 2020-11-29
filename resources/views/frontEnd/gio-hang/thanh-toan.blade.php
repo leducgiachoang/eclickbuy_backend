@@ -123,7 +123,7 @@
 											<label for="note">
 												Ghi chú (tùy chọn)
 											</label>
-											<textarea name="loi_nhan " id="note" type="text" class="field__input" data-bind="note"></textarea>
+											<textarea name="loi_nhan" id="note" type="text" class="field__input" data-bind="note"></textarea>
 										</div>
 
 									</div>

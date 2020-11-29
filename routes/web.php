@@ -21,6 +21,8 @@ Route::get('lien-he', 'FrontEnd\homePage@LienHe')->name('LienHe_page');
 Route::get('huong-dan-mua-hang', 'FrontEnd\homePage@HuongDanMuaHang')->name('HuongDanMuaHang');
 Route::get('chinh-sach-giao-hang', 'FrontEnd\homePage@ChinhSachGiaoHang')->name('ChinhSachGiaoHang');
 Route::get('ma-giam-gia', 'FrontEnd\homePage@MaGiamGia')->name('MaGiamGia_get');
+Route::get('/auth/redirect/{provider}', 'SocialController@redirect');
+Route::get('/callback/{provider}', 'SocialController@callback');
 
 
 
@@ -206,7 +208,7 @@ Route::group(['prefix' => 'tai-khoan', 'namespace' => 'FrontEnd'], function () {
 });
 
 
-Auth::routes();
+
 
 Route::get('/home', 'HomeController@index')->name('home');
 
