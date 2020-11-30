@@ -21,15 +21,17 @@
                 </tr>
             </thead>
             <tbody>
+                <?php $a=1 ?>
                 @foreach($all_sale_product as $key =>$all_sale)
                 <tr>
-                    <td>{{$all_sale->id}}</td>
+                    <td>{{$a}}</td>
                     <td>{{$all_sale->gia_tri}}</td>
                     <td>
                     <a class="btn btn-outline-success" href="{{ route('edit-sale-product',['id'=> $all_sale->id]) }}"><i class="fas fa-edit"></i></a>
                     <a class="btn btn-warning" onclick="return confirm('Bạn muốn xóa khuyến mãi hiệu này hả ?')" href="{{ route('delete-sale-product',['id'=> $all_sale->id]) }}"><i class="fas fa-trash-alt"></i></a>
                     </td>
                 </tr>
+                <?php $a++ ?>
                 @endforeach
             </tbody>
         </table>

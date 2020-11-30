@@ -1,5 +1,6 @@
 @extends('template.front_end')
 @section('container_layout')
+@section('title','Chính Sách Bảo Hành')
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">

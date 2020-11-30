@@ -141,20 +141,10 @@
                 </li>
 
                 <li>
-                    <a href="#hoa_don" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                    <a href="{{ route('DonHangAll') }}" class="dropdown-toggle">
                         <i class="fas fa-shopping-cart"></i>
                         Đơn hàng
                     </a>
-                    <ul class="collapse list-unstyled" id="hoa_don">
-                        <li>
-                            <a href="{{ route('DonHangAll') }}">Tất cả đơn hàng</a>
-                        </li>
-                        <li><a href="{{ route('DonHangGetId', ['id'=> 0]) }}">Đơn hàng đang xử lý</a></li>
-                        <li><a href="{{ route('DonHangGetId', ['id'=> 1]) }}">Đơn hàng đang giao</a></li>
-                        <li><a href="{{ route('DonHangGetId', ['id'=> 2]) }}">Đơn hàng đã hủy</a></li>
-                        <li><a href="{{ route('DonHangGetId', ['id'=> 3]) }}">Đơn hàng đổi/ trả</a></li>
-                        <li><a href="{{ route('DonHangGetId', ['id'=> 4]) }}">Đơn hàng đã giao</a></li>
-                    </ul>
                 </li>
 
                 <li>
@@ -302,6 +292,24 @@
               </nav>
 
             {{-- NỘI DUNG TRANG ĐỂ Ở ĐÂY --}}
+
+            @if (session('success'))
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                {{ session('success') }}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            @endif
+
+            @if (session('danger'))
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                {{ session('danger') }}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            @endif
 
             @yield('container')
 

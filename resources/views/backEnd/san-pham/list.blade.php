@@ -33,12 +33,12 @@
                 <?php $a=1 ?>
                 @foreach ($db_sps as $db_sp)
                 <tr>
-                    <td>{{ $db_sp->id }}</td>
+                    <td>{{ $a }}</td>
                     <td>{{ $db_sp->ten_san_pham }}</td>
                     <td><img width="50px" src="images/producs/{{ $db_sp->hinh_anh }}" alt=""></td>
                     <td>{{ $db_sp->so_luong }}</td>
                     <td>
-                        {{ number_format($db_sp->gia_goc, 3,'.', ',') }} <img width="22" src="images/dong.png" alt="">
+                        {{ number_format($db_sp->gia_goc, 0,'.', ',') }} <img width="22" src="images/dong.png" alt="">
                     </td>
                     <td>
 
@@ -80,9 +80,21 @@
             success: function(res){
                 var tableRow ='';
                 $('#product-view').html('');
+                $stt = 1;
                 $.each(res,function(index,value){
-                    tableRow = '<tr><td>'+value.id+'</td><td>'+value.ten_san_pham+'</td><td><img width="50px" src="images/producs/'+value.hinh_anh+'" alt=""></td><td>'+value.so_luong+'</td><td>'+ new Intl.NumberFormat().format(value.gia_goc) +' <img width="22" src="images/dong.png" alt=""></td><td> <a class="btn btn-outline-success" href="admin/san-pham/chinh-sua/'+value.id+'"><i class="fas fa-edit"></i></a> <a class="btn btn-warning" href="admin/san-pham/xoa/'+value.id+'"><i class="fas fa-trash-alt"></i></a> </td></tr>';
-                    $('#product-view').append(tableRow);
+                    $giaKhuyenMai = new Intl.NumberFormat().format(value.gia_sale)+'<img width="22" src="images/dong.png" alt="">';
+                    if(!(value.gia_sale)){
+                        $giaKhuyenMai = '<div class="badge badge-pill badge-secondary">Không áp dụng</div>';
+                    }
+
+                    $tableRow = '<tr><td>'+$stt+'</td><td>'+value.ten_san_pham+'</td>'
+                        +'<td><img width="50px" src="images/producs/'+value.hinh_anh+'" alt=""></td>'
+                        +'<td>'+value.so_luong+'</td><td>'+ new Intl.NumberFormat().format(value.gia_goc) +' <img width="22" src="images/dong.png" alt=""></td>'
+                        +'<td>'+$giaKhuyenMai+' </td>'
+                        +'<td> <a class="btn btn-outline-success" href="admin/san-pham/chinh-sua/'+value.id+'"><i class="fas fa-edit"></i></a> <a class="btn btn-warning" href="admin/san-pham/xoa/'+value.id+'"><i class="fas fa-trash-alt"></i></a> </td>'
+                        +'</tr>';
+                        $stt++;
+                    $('#product-view').append($tableRow);
                 });
             }
         });

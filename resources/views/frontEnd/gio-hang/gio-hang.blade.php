@@ -1,7 +1,11 @@
 @extends('template.front_end')
 @section('container_layout')
+@section('title','Giỏ hàng của bạn')
 
 <link href="../css/cartpage.scss.css" rel="stylesheet" type="text/css">
+<link href="../css/bpr-products-module.css" rel="stylesheet" type="text/css">
+<link href="../css/product_style.scss.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="../css/quickviews_popup_cart.scss.css">
 <div class="bodywrap">
     <section class="bread-crumb">
         <span class="crumb-border"></span>
@@ -10,7 +14,7 @@
                 <div class="col-xs-12 a-left">
                     <ul class="breadcrumb">
                         <li class="home">
-                            <a href="https://eco-shop-1.mysapo.net/"><span>Trang chủ</span></a>
+                            <a href=""><span>Trang chủ</span></a>
                             <span class="mr_lr">&nbsp;<i class="fa fa-angle-right"></i>&nbsp;</span>
                         </li>
 
@@ -34,6 +38,14 @@
                     </div>
                 </div>
                 <div class="col-main cart_desktop_page cart-page">
+                    @if (Cart::count()== 0)
+                    <div style="text-align: center">
+                        <p>Không có sản phẩm nào trong giỏ hàng</p>
+                        <a style="border-radius: 7px" class="btn btn-danger" href="/"><i class="fas fa-reply"></i>Tiếp tục mua hàng</a>
+                    </div>
+                    @else
+
+
                     <div class="cart page_cart hidden-xs hidden-sm row ">
                         <div class="col-lg-12 col-xl-12 col-md-12">
                             <h1 class="title_cart">
@@ -74,7 +86,9 @@
                                         </div>
                                         <div style="width: 25%" class="a-center">
                                             <div class="input_qty_pr">
+                                                <input type="hidden" name="idCart" value="{{ $row->id }}">
                                                 <input class="variantID" type="hidden" name="variantId" value="{{ $row->rowId }}">
+
                                                 <input type="text" min="1"
                                                     class="check_number_here input-text number-sidebar input_pop input_pop qtyItem{{ $row->id }}"
                                                     id="qtyItem{{ $row->id }}" name="qtyProduct" size="4" value="{{ $row->qty }}">
@@ -139,6 +153,7 @@
                             </div>
                         </div>
                     </div>
+                    @endif
                 </div>
             </div>
         </div>
@@ -148,6 +163,14 @@
             <div class="cart-mobile container">
 
                 <div class="margin-bottom-0">
+                    @if (Cart::count()== 0)
+                    <div style="text-align: center">
+                        <p>Không có sản phẩm nào trong giỏ hàng</p>
+                        <a style="border-radius: 7px" class="btn btn-danger" href="/"><i class="fas fa-reply"></i>Tiếp tục mua hàng</a>
+                    </div>
+                    @else
+
+
                     <div class="header-cart">
 
                         <div class="title-cart title_cart_mobile">
@@ -223,26 +246,245 @@
                                     <span>Tiến hành thanh toán</span>
                                 </button>
                                 </a>
-<a href="#">
-    <button class="btn btn-white f-left" title="Tiếp tục mua hàng" type="button">
-        <span>Tiếp tục mua hàng</span>
-    </button>
-</a>
+                                <a href="#">
+                                    <button class="btn btn-white f-left" title="Tiếp tục mua hàng" type="button">
+                                        <span>Tiếp tục mua hàng</span>
+                                    </button>
+                                </a>
 
                             </div>
                         </div>
                     </div>
-
-                </divaction=>
+                    @endif
+                </div>
             </div>
         </div>
 
+        <div class="container">
+            <div class="bg_products clearfix">
+
+
+
+
+                <div class="section_wishlist section margin-bottom-70">
+                    <h4 class="title_modules">
+                        Dành riêng cho bạn
+                    </h4>
+
+                    <div class="owl_product_news slick_wishlist">
+
+                    @foreach ($sanphamcungloais as $sanphamcungloai)
+
+
+                        <div class="item">
+                            <div class="item_product_main">
+
+
+                                    <div class="product-thumbnail">
+                                        <a class="image_thumb scale_hover" href="{{ route('ChiTietSanPham',['ten_san_pham'=> $sanphamcungloai->ten_san_pham ]) }}"
+                                            title="{{ $sanphamcungloai->ten_san_pham }}">
+                                            <img class="lazyload"
+                                                src="../images/producs/{{ $sanphamcungloai->hinh_anh }}" alt="{{ $sanphamcungloai->ten_san_pham }}">
+                                        </a>
+
+                                        @if ($sanphamcungloai->id_khuyen_mai == 1)
+
+                                        @else
+                                        <span class="smart">
+                                            -{{ $sanphamcungloai->khuyenmai->gia_tri }}%
+                                        </span>
+                                        @endif
+
+                                        <div class="action">
+                                        @if ($sanphamcungloai->so_luong <= 0)
+
+                                        @else
+                                        <button class="hidden-xs btn-buy btn-cart btn btn-views left-to add_to_cart active"
+                                            title="Thêm vào giỏ hàng" data-toggle="modal" data-target="#exampleModal">
+                                            <input type="hidden" class="val_id_product" value="{{ $sanphamcungloai->id }}">
+                                            <i class="fas fa-shopping-basket iconcart"></i>
+                                        </button>
+                                        @endif
+
+
+                                        <a title="Xem nhanh"
+                                            href="{{ route('ChiTietSanPham',['ten_san_pham'=>$sanphamcungloai->ten_san_pham ]) }}"
+                                            data-handle="macbook-pro-2017-mptr2"
+                                            class="xem_nhanh btn right-to quick-view btn-views hidden-xs hidden-sm hidden-md">
+                                            <i class="fas fa-search-plus"></i>
+                                        </a>
+
+                                        </div>
+                                    </div>
+                                    <div class="product-info">
+                                        <h3 class="product-name"><a href="{{ route('ChiTietSanPham',['ten_san_pham'=> $sanphamcungloai->ten_san_pham ]) }}"
+                                                title="{{ $sanphamcungloai->ten_san_pham }}">{{ $sanphamcungloai->ten_san_pham }}</a></h3>
+                                        <div class="price-box">
+                                            @if (($sanphamcungloai->gia_sale) != '')
+                                            {{ number_format($sanphamcungloai->gia_sale, 0,'.', '.') }}₫
+                                            @else
+                                            {{ number_format($sanphamcungloai->gia_goc, 0,'.', '.') }}₫
+                                            @endif
+                                            <span class="compare-price">
+                                                @if (($sanphamcungloai->gia_sale) == true)
+                                                {{ number_format($sanphamcungloai->gia_goc, 0,'.', '.') }}₫
+                                                @else
+
+                                                @endif
+                                            </span>
+                                        </div>
+
+                                    </div>
+                            </div>
+                        </div>
+
+                    @endforeach
+                    </div>
+
+                </div>
+            </div>
+
+
     </section>
+
 
     <link href="../css/bpr-products-module.css" rel="stylesheet" type="text/css">
     <div class="sapo-product-reviews-module"></div>
 
 </div>
+
+<script>
+    var getLimit = 6;
+    var alias = 'huawei-y7-pro';
+
+
+    function activeTab(obj) {
+        $('.product-tab ul li').removeClass('active');
+        $(obj).addClass('active');
+        var id = $(obj).attr('data-tab');
+        $('.tab-content').removeClass('active');
+        $(id).addClass('active');
+    }
+    $(".tab-content .rte").each(function (e) {
+        if ($('.tab-content .rte #content').height() >= 300) {
+            $('.tab-content').find('.read-more').removeClass('hidden').addClass('more');
+        } else {
+            $('.tab-content').find('.read-more').addClass('hidden');
+        }
+    });
+
+    jQuery('.read-more').on('click', function (event) {
+        if ($('.read-more').hasClass('more')) {
+            $(this).removeClass('more').addClass('less');
+            $(this).html('<span>Thu gọn <i class="fa fa-angle-up"></i></span>');
+        } else {
+            $(this).removeClass('less').addClass('more');
+            $(this).html('<span>Xem thêm <i class="fa fa-angle-down"></i></span>');
+            $('html, body').animate({
+                scrollTop: $('#content').offset().top
+            }, 200);
+        }
+
+        jQuery(".tab-content .rte").toggleClass("expand");
+    });
+    $('.product-tab ul li').click(function () {
+        activeTab(this);
+        return false;
+    });
+
+    $('.slider-nav').slick({
+        slidesToShow: 4,
+        slidesToScroll: 1,
+        asNavFor: '.slider-for',
+        dots: false,
+        centerMode: false,
+        infinite: false,
+        focusOnSelect: true,
+        responsive: [{
+                breakpoint: 1025,
+                settings: {
+                    slidesToShow: 4,
+                    slidesToScroll: 1
+                }
+            },
+            {
+                breakpoint: 991,
+                settings: {
+                    slidesToShow: 5
+                }
+            },
+            {
+                breakpoint: 480,
+                settings: {
+                    slidesToShow: 4
+                }
+            }
+        ]
+    });
+    $('.slider-for').slick({
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        arrows: false,
+        lazyLoad: 'ondemand',
+        fade: true,
+        infinite: false,
+        asNavFor: '.slider-nav',
+        adaptiveHeight: false,
+        responsive: [{
+            breakpoint: 480,
+            settings: {
+                dots: true
+            }
+        }]
+    });
+
+    $(document).ready(function (e) {
+        $('.slick_wishlist').slick({
+            autoplay: false,
+            autoplaySpeed: 5000,
+            dots: false,
+            arrows: true,
+            infinite: true,
+            speed: 300,
+            rows: 1,
+            loop: false,
+            infinite: false,
+            slidesToShow: 5,
+            slidesToScroll: 5,
+            responsive: [{
+                    breakpoint: 1200,
+                    settings: {
+                        slidesToShow: 4,
+                        slidesToScroll: 4
+                    }
+                },
+                {
+                    breakpoint: 1024,
+                    settings: {
+                        slidesToShow: 3,
+                        slidesToScroll: 3
+                    }
+                },
+                {
+                    breakpoint: 991,
+                    settings: {
+                        slidesToShow: 3,
+                        slidesToScroll: 3
+                    }
+                },
+                {
+                    breakpoint: 767,
+                    settings: {
+                        slidesToShow: 2,
+                        slidesToScroll: 2
+                    }
+                }
+            ]
+        });
+
+
+    });
+</script>
 
 
 <script src="../css/api.jquery.js" type="text/javascript"></script>

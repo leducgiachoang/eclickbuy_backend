@@ -22,7 +22,7 @@
                             <div class="form-group">
                                 <div class="form-group">
                                     <label for="exampleInputPassword1">Nội Dung Khuyến Mãi</label>
-                                    <textarea style="resize:none" rows="5" name="noi_dung_khuyen_mai" class="form-control" id="exampleInputEmail1">{{$edit_sale->noi_dung_khuyen_mai}}</textarea>
+                                    <textarea id="editor1" style="resize:none" rows="5" name="noi_dung_khuyen_mai" class="form-control" id="exampleInputEmail1">{{$edit_sale->noi_dung_khuyen_mai}}</textarea>
                                 </div>
                                 @if($errors->has('noi_dung_khuyen_mai'))
 							    <div class="alert alert-danger" role="alert">

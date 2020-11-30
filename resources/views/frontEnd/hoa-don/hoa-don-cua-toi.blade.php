@@ -1,5 +1,6 @@
 @extends('frontEnd.hoa-don.template')
 @section('Mydon_hang_template')
+@section('title','Hóa Đơn Của Tôi')
 @if ($dbHoaDonsByid_count != 0)
 
 

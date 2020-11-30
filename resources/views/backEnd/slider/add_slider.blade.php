@@ -2,13 +2,13 @@
 @section('container')
 <div class="row">
     <div class="col-lg-12">
-        <section class="panel">
-            <header class="panel-heading" style="text-align: center">
+        <section class="card">
+            <header class="card-header">
                 Thêm Slider
             </header>
-            <div class="panel-body">
+            <div class="card-body">
 
-                <div class="position-center">
+                <div>
                     <?php
                     $message = Session::get('message');
                     if ($message) {

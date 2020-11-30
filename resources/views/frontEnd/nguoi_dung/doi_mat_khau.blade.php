@@ -1,5 +1,7 @@
 @extends('template.front_end')
-@section('container_layout')<br>
+@section('container_layout')
+@section('title','Đổi Mật Khẩu')
+<br>
 <section class="section">
     <div class="container">
         <div class="wrap_background_aside page_login">

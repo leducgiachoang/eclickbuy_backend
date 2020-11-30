@@ -1,5 +1,6 @@
 @extends('template.front_end')
 @section('container_layout')
+@section('title','Đăng Ký Tài Khoản')
 <section class="section">
     <div class="container ">
         <div class="wrap_background_aside  page_login">

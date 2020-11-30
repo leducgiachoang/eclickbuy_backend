@@ -1,5 +1,6 @@
 @extends('template.front_end')
 @section('container_layout')
+@section('title','Giới Thiệu Về Chúng Tôi')
     <style>
 
         .snip1573 {

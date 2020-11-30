@@ -1,5 +1,6 @@
 @extends('template.front_end')
 @section('container_layout')
+@section('title','Tìm Kiếm Sản Phẩm')
 <div class="container">
 
     <link href="../css/sidebar_style.scss.css" rel="stylesheet" type="text/css">
@@ -171,7 +172,7 @@
                 <div class="section pagenav clearfix a-center">
 
                 </div>
-                
+
 
             </div>
         </div>

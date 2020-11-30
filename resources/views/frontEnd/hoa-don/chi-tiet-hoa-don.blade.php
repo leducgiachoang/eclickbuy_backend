@@ -1,7 +1,7 @@
 @extends('frontEnd.hoa-don.template')
 @section('Mydon_hang_template')
 @foreach ($dbHoaDonsByid as $dbHoaDonByid)
-
+@section('title','Chi Tiết Hóa Đơn')
 <h4>Chi tiết đơn hàng</h4>
 <div class="card">
     <div class="border-secondary bg-secondary text-white card-header">

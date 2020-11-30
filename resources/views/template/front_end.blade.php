@@ -6,7 +6,7 @@
 	<meta name='revisit-after' content='2 days'>
 	<meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <base href="{{ asset('') }}">
-    <title>EClickBuy </title>
+    <title>EClickBuy - @yield('title') </title>
 
     <link rel="shortcut icon" href="images/ovo.png">
 	<meta name="keywords" content="Cập nhật sau">
@@ -264,17 +264,17 @@
 						<ul class="ul_collections">
 
 							<li class="level0 level-top parent">
-								<a href="index.htm">Trang chủ</a>
+								<a href="/">Trang chủ</a>
 
 							</li>
 
 							<li class="level0 level-top parent">
-								<a href="gioi-thieu.html">Giới thiệu</a>
+								<a href="{{ route('pageGioiThieu') }}">Giới thiệu</a>
 
 							</li>
 
 							<li class="level0 level-top parent">
-								<a href="collections/all.html">Sản phẩm</a>
+								<a href="" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Sản phẩm</a>
 
 								<i class="fa fa-plus"></i>
 								<ul class="level0" style="display:none;">
@@ -286,23 +286,13 @@
                                     </li>
                                     @endforeach
 
-
-									<li class="level1 ">
-										<a href="phu-kien.html"> <span>Phụ kiện</span> </a>
-
-									</li>
-
 								</ul>
 
 							</li>
 
-							<li class="level0 level-top parent">
-								<a href="tin-tuc.html">Tin tức</a>
-
-							</li>
 
 							<li class="level0 level-top parent">
-								<a href="lien-he.html">Liên hệ</a>
+								<a href="{{ route('LienHe_page') }}">Liên hệ</a>
 
 							</li>
 
@@ -418,7 +408,7 @@
 
 <div class="container">
     @if (session('success'))
-    <div class="alert alert-success alert-dismissible fade show" role="alert">
+    <div class="thongbao alert alert-success alert-dismissible fade show" role="alert">
         {{ session('success') }}
         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
           <span aria-hidden="true">&times;</span>
@@ -427,7 +417,7 @@
     @endif
 
     @if (session('danger'))
-    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+    <div class="thongbao alert alert-danger alert-dismissible fade show" role="alert">
         {{ session('danger') }}
         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
           <span aria-hidden="true">&times;</span>
@@ -435,6 +425,14 @@
     </div>
     @endif
 </div>
+
+<script>
+    {{--  $(document).ready(function(){
+        setTimeout(function(){
+            $('.thongbao').hide();
+        }, 5000)
+    });  --}}
+</script>
 
 @yield('container_layout')
 

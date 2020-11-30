@@ -2,11 +2,11 @@
 @section('container')
 <div class="row">
     <div class="col-lg-12">
-        <section class="panel">
-            <header class="panel-heading" style="text-align: center">
+        <section class="card">
+            <header class="card-header" style="text-align: center">
                 Thêm thương hiệu sản phẩm
             </header>
-            <div class="panel-body">
+            <div class="card-body">
 
                 <div class="position-center">
                     <?php
@@ -32,8 +32,8 @@
                             <input type="file" name="hinh_anh" class="form-control" id="exampleInputEmail1">
                         </div>
                         <div class="form-group">
-                            <label for="exampleInputPassword1">Mô tả danh mục</label>
-                            <textarea style="resize:none" rows="5" name="brand_product_desc" class="form-control" id="exampleInputEmail1" placeholder="Mô tả thương hiệu"></textarea>
+                            <label for="exampleInputPassword1">Mô tả hiệu</label>
+                            <textarea id="editor1" style="resize:none" rows="5" name="brand_product_desc" class="form-control" id="exampleInputEmail1" placeholder="Mô tả thương hiệu"></textarea>
                         </div>
                         <div class="form-group">
                             <label for="exampleInputPassword1">Trạng thái</label>

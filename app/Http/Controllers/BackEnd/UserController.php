@@ -4,6 +4,7 @@ namespace App\Http\Controllers\BackEnd;
 
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+use App\Model\NguoiDungModel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Carbon\Carbon;
@@ -84,9 +85,14 @@ class UserController extends Controller
     }
     public function delete_user($id)
     {
-        DB::table('tai_khoan')->where('id', $id)->delete();
-        Session::put('message', 'Xóa người dùng thành công');
-        return redirect()->back();
+        $dbNguoidung = NguoiDungModel::where('id', $id)->first();
+        if($dbNguoidung->vai_tro == 1){
+            return redirect()->back()->with('danger', 'Thông báo! Không thể xóa tài khoản của người quản trị');
+        }else{
+            DB::table('tai_khoan')->where('id', $id)->delete();
+            return redirect()->back()->with('success', 'Xóa người dùng thành công');
+        }
+
     }
     public function edit_user($id)
     {

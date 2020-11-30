@@ -13,7 +13,7 @@ class SanPhamController extends Controller
 {
     public function DanhSachById($id)
     {
-        $thuonghieus = ThuongHieuSanPham_Model::inRandomOrder()->get();
+        $thuonghieus = ThuongHieuSanPham_Model::where('status', 1)->inRandomOrder()->get();
         $danhmucs = DanhMucSanPham_Model::all();
         $ten = $id;
         $iddanhmucj = DanhMucSanPham_Model::where('ten_danh_muc', $id)->get();
@@ -56,6 +56,8 @@ class SanPhamController extends Controller
 
             if($sanphambygiab->gia_sale == true){
                 $giagoc = number_format($sanphambygiab->gia_goc, 0,'.', '.');
+            }else{
+                $giagoc = '';
             }
 
             echo '<div class="col-6 col-sm-6 col-lg-3 col-lg-fix-5 product-col item-border no-padding">
@@ -108,6 +110,8 @@ class SanPhamController extends Controller
             }
             if($sanphambygiab->gia_sale == true){
                 $giagoc = number_format($sanphambygiab->gia_goc, 0,'.', '.');
+            }else{
+                $giagoc = '';
             }
             echo '<div class="col-6 col-sm-6 col-lg-3 col-lg-fix-5 product-col item-border no-padding">
             <div class="item_product_main">
@@ -159,6 +163,8 @@ class SanPhamController extends Controller
             }
             if($sanphambygiab->gia_sale == true){
                 $giagoc = number_format($sanphambygiab->gia_goc, 0,'.', '.');
+            }else{
+                $giagoc = '';
             }
             echo '<div class="col-6 col-sm-6 col-lg-3 col-lg-fix-5 product-col item-border no-padding">
             <div class="item_product_main">
@@ -211,6 +217,8 @@ class SanPhamController extends Controller
             }
             if($sanphambygiab->gia_sale == true){
                 $giagoc = number_format($sanphambygiab->gia_goc, 0,'.', '.');
+            }else{
+                $giagoc = '';
             }
             echo '<div class="col-6 col-sm-6 col-lg-3 col-lg-fix-5 product-col item-border no-padding">
             <div class="item_product_main">
@@ -262,6 +270,8 @@ class SanPhamController extends Controller
             }
             if($sanphambygiab->gia_sale == true){
                 $giagoc = number_format($sanphambygiab->gia_goc, 0,'.', '.');
+            }else{
+                $giagoc = '';
             }
             echo '<div class="col-6 col-sm-6 col-lg-3 col-lg-fix-5 product-col item-border no-padding">
             <div class="item_product_main">
@@ -291,7 +301,7 @@ class SanPhamController extends Controller
                                  $sanphambygiab->ten_san_pham .'</a></h3>
                                  <div class="price-box">'.$gia.'₫
                                  <span class="compare-price">
-                            '.$giagoc.'₫
+                            '. $giagoc.'₫
                         </div>
                         </div>
 
@@ -304,7 +314,7 @@ class SanPhamController extends Controller
     //5
     public function filter_tren13_000_000d($id)
     {
-        $sanphambygia = SanPham_Model::where('id_danh_muc', $id)->where('gia_goc','>', 13000000)->get();
+        $sanphambygia = SanPham_Model::where('id_danh_muc', $id)->whereBetween('gia_goc', [13000000, 999999999999999999999999999999])->get();
         foreach ($sanphambygia as $sanphambygiab) {
             if($sanphambygiab->gia_sale){
                 $gia = number_format($sanphambygiab->gia_sale, 0,'.',',');
@@ -313,6 +323,8 @@ class SanPhamController extends Controller
             }
             if($sanphambygiab->gia_sale == true){
                 $giagoc = number_format($sanphambygiab->gia_goc, 0,'.', '.');
+            }else{
+                $giagoc = '';
             }
             echo '<div class="col-6 col-sm-6 col-lg-3 col-lg-fix-5 product-col item-border no-padding">
             <div class="item_product_main">
@@ -363,6 +375,8 @@ class SanPhamController extends Controller
             }
             if($sanphambygiab->gia_sale == true){
                 $giagoc = number_format($sanphambygiab->gia_goc, 0,'.', '.');
+            }else{
+                $giagoc = '';
             }
             echo '<div class="col-6 col-sm-6 col-lg-3 col-lg-fix-5 product-col item-border no-padding">
             <div class="item_product_main">

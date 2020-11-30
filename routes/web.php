@@ -146,6 +146,7 @@ Route::group(['prefix' => 'admin', 'namespace' => 'BackEnd', 'middleware'=>'Chec
         Route::post('tim-kiem-danh-muc', 'SearchController@searchPost')->name('search-category');
         Route::post('tim-kiem-san-pham', 'SearchController@searchProduct')->name('search-product');
         Route::post('tim-kiem-nguoi-dung', 'SearchController@searchUser')->name('search-user');
+        Route::post('tim-kiem-don-hang', 'SearchController@searchOrder')->name('searchOrder');
     });
 });
 

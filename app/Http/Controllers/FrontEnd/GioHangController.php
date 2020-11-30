@@ -38,6 +38,8 @@ class GioHangController extends Controller
          }
 
 
+
+
         Cart::add([
                 'id' => $id,
                 'name' => $product->ten_san_pham,
@@ -51,8 +53,8 @@ class GioHangController extends Controller
      }
     public function index()
     {
-        $danhmucs = DanhMucSanPham_Model::all();
-        return view('frontEnd.gio-hang.gio-hang', ['danhmucs'=> $danhmucs]);
+        $dbSanPham = SanPham_Model::inRandomOrder()->get();
+        return view('frontEnd.gio-hang.gio-hang', ['sanphamcungloais'=> $dbSanPham]);
     }
 
     /**
@@ -107,10 +109,19 @@ class GioHangController extends Controller
      */
     public function update(Request $request)
     {
-        $rowId = $request->variantId;
         $so_luong = $request->qtyProduct;
-        Cart::update($rowId, $so_luong);
-        return redirect()->back();
+        $rowId = $request->variantId;
+        $SoluongSanpham = SanPham_Model::where('id', $request->idCart)->value('so_luong');
+        if(($so_luong) > $SoluongSanpham){
+            return redirect()->back()->with('danger', 'Xin lỗi, Hàng trong kho của chúng tôi không đủ, Vui lòng mua đối đa '.$SoluongSanpham .' sản phẩm');
+        }else{
+            Cart::update($rowId, $so_luong);
+            return redirect()->back()->with('success', 'Chúc Mừng. Bạn cập nhập giỏ hàng thành công');
+        }
+
+
+
+
     }
 
     /**
@@ -126,7 +137,17 @@ class GioHangController extends Controller
     }
 
     public function thanhtoan(){
-        return view('frontEnd.gio-hang.thanh-toan');
+        foreach(Cart::content() as $row){
+            $dbSP = SanPham_Model::where('id', $row->id)->first();
+            $id_row = $row->rowId;
+            $so_luong =  $row->qty;
+            if($so_luong > $dbSP->so_luong){
+                return redirect()->back()->with('danger', 'Xin lỗi, Hiện tại '.$dbSP->ten_san_pham.' trong kho của chúng tôi không đủ, Vui lòng mua đối đa '.$dbSP->so_luong .' sản phẩm');
+            }else{
+                return view('frontEnd.gio-hang.thanh-toan');
+            }
+        }
+
     }
     public function giftCode($code){
         $checkGift = GiftCode_Model::where('code', $code)->where('ngay_bat_dau', '<=', Carbon::now('Asia/Ho_Chi_Minh'))->where('ngay_ket_thuc', '>=', Carbon::now('Asia/Ho_Chi_Minh'))->first();

@@ -1,5 +1,6 @@
 @extends('frontEnd.hoa-don.template')
 @section('Mydon_hang_template')
+@section('title','Kiểm Tra Đơn Hàng')
 <style>
     .form_ktdh{
         margin: 0 auto;

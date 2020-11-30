@@ -1,5 +1,6 @@
 @extends('template.front_end')
 @section('container_layout')
+@section('title','Chính Sách Giao Hàng')
 
     <script>
         $("figure").mouseleave(

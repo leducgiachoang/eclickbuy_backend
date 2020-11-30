@@ -28,7 +28,6 @@
                 <tr>
                     <th>Số TT</th>
                     <th>Họ Và Tên</th>
-                    <th>Số Điện Thoại</th>
                     <th>Email</th>
                     <th>Vai Trò</th>
                     <th>Ảnh Đại Diện</th>
@@ -39,11 +38,11 @@
                 </tr>
             </thead>
             <tbody id="search-user-view">
+                <?php $a=1 ?>
                 @foreach($all_user as $key =>$user)
                 <tr>
-                    <td>{{$user->id}}</td>
+                    <td>{{$a}}</td>
                     <td>{{$user->ho_ten}}</td>
-                    <td>{{$user->so_dien_thoai}}</td>
                     <td>{{$user->email}}</td>
                     <td>
                         <?php
@@ -76,21 +75,13 @@
                         ?>
                         </span></td>
                     <td>
-                        <?php
-                        if ($user->vai_tro == 1) {
-                        ?>
-                            <span class="badge badge-secondary">ADMIN</span>
-                        <?php
-                        } else {
-                        ?>
                         <a class="btn btn-outline-success" href="{{ route('edit-user',['id'=> $user->id]) }}"><i class="fas fa-edit"></i></a>
                         <a class="btn btn-warning" onclick="return confirm('Bạn muốn xóa người dùng này hả ?')" href="{{ route('delete-user',['id'=> $user->id]) }}"><i class="fas fa-trash-alt"></i></a>
-                        <?php
-                        }
-                        ?>
+
 
                     </td>
                 </tr>
+                <?php $a++ ?>
                 @endforeach
             </tbody>
         </table>
@@ -116,9 +107,32 @@
             success: function(res){
                 var tableRow ='';
                 $('#search-user-view').html('');
+                $a = 1;
                 $.each(res,function(index,value){
-                    tableRow = '<tr><td>'+value.id+'</td><td>'+value.ho_ten+'</td><td>'+value.so_dien_thoai+'</td><td>'+value.email+'</td><td><span class="text-ellipsis"> <?php if ($user->vai_tro == 0) { ?> <span class="badge badge-success">Mặc Định</span> <?php } else { ?> <span class="badge badge-primary">Nhân Viên</span> <?php } ?> </span></td><td><img src="images/user/'+value.anh_dai_dien+'" alt="" height="80" width="60"></td><td>'+value.ngay_sinh+'</td><td>'+value.ngay_tao+'</td><td><span class="text-ellipsis"> <?php if ($user->status == 0) { ?> <a href="admin/nguoi-dung/unactive-user/'+value.id+'"><span class="badge badge-success">Vô Hiệu Hóa</span></a> <?php } else { ?> <a href="admin/nguoi-dung/active-user/'+value.id+'"><span class="badge badge-primary">Hoạt Động</span></a> <?php } ?> </span></td><td> <?php if ($user->vai_tro == 1) { ?> <span class="badge badge-secondary">ADMIN</span> <?php } else { ?> <a class="btn btn-outline-success" href="{{ route('edit-user',['id'=> $user->id]) }}"><i class="fas fa-edit"></i></a> <a class="btn btn-warning" onclick="return confirm('Bạn muốn xóa người dùng này hả ?')" href="{{ route('delete-user',['id'=> $user->id]) }}"><i class="fas fa-trash-alt"></i></a> <?php } ?> </td></tr>';
-                    $('#search-user-view').append(tableRow);
+                    $vaitro = value.vai_tro;
+                    if($vaitro == 0){
+                        $echo = '<span class="badge badge-success">Mặc Định</span>';
+                    }if($vaitro== 1){
+                        $echo = '<span class="badge badge-primary">Nhân Viên</span>';
+                    }
+                    $status = value.status;
+                    if($status == 0){
+                        $stts = '<a href="admin/nguoi-dung/unactive-user/'+value.id+'"><span class="badge badge-success">Vô Hiệu Hóa</span></a>';
+                    }if($status == 1){
+                        $stts = '<a href="admin/nguoi-dung/active-user/'+value.id+'"><span class="badge badge-primary">Hoạt Động</span></a>';
+                    }
+
+                    $tableRow = '<tr><td>'+$a+'</td>'
+                        +'<td>'+value.ho_ten+'</td>'
+                        +'<td>'+value.email+'</td>'
+                        +'<td><span class="text-ellipsis">'+$echo+'</span></td>'
+                        +'<td><img src="images/user/'+value.anh_dai_dien+'" alt="" height="80" width="60"></td>'
+                        +'<td>'+value.ngay_sinh+'</td>'
+                        +'<td>'+value.ngay_tao+'</td>'
+                        +'<td><span class="text-ellipsis">'+$stts+' </span></td>'
+                        +'<td><a class="btn btn-outline-success" href="admin/nguoi-dung/edit-user/'+value.id+'"><i class="fas fa-edit"></i></a> <a class="btn btn-warning" href="admin/nguoi-dung/delete-user/'+value.id+'"><i class="fas fa-trash-alt"></i></a> </td></tr>';
+                        $a++
+                    $('#search-user-view').append($tableRow);
                 });
             }
         });

@@ -49,6 +49,8 @@ class ThuongHieu_controller extends Controller
             }
             if($sanphambygiab->gia_sale == true){
                 $giagoc = number_format($sanphambygiab->gia_goc, 0,'.', '.');
+            }else{
+                $giagoc = '';
             }
 
         echo '<div class="col-6 col-sm-6 col-lg-3 col-lg-fix-5 product-col item-border no-padding">
@@ -114,6 +116,8 @@ public function SanPhamSapXep($kieu, $id){
 
         if($sanphambygiab->gia_sale == true){
             $giagoc = number_format($sanphambygiab->gia_goc, 0,'.', '.');
+        }else{
+            $giagoc = '';
         }
 
         echo '<div class="col-6 col-sm-6 col-lg-3 col-lg-fix-5 product-col item-border no-padding">

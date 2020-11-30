@@ -3,8 +3,10 @@
 @section('don_hang_template')
 <div class="card">
     <div class="card-header">
+        <div class="row">
 
-        Danh sách
+<div class="float-left col-4">
+    Danh sách
         @if (isset($id))
             @if ($id == 0)
             đơn hàng đang xử lý
@@ -20,6 +22,43 @@
         @else
             Tất cả đơn hàng
         @endif
+</div>
+<div class="float-right col-8">
+    <div class="row">
+        <div class="col-8">
+            <form action="{{ route('searchOrder') }}" method="POST" class="navbar-search">
+                @csrf
+                <div class="input-group">
+                <input type="text" class="form-control border-0 small" name="keyword" id="search_oder" placeholder="Tìm kiếm đơn hàng" aria-label="Search" aria-describedby="basic-addon2">
+                <div class="input-group-append">
+                    <button class="btn btn-primary" type="submit">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+                </div>
+            </form>
+        </div>
+        <div class="col-4">
+            <div class="btn-group">
+                <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown"  aria-expanded="false">
+                 Tình trạng
+                </button>
+                <div class="dropdown-menu">
+                <a class="dropdown-item" href="{{ route('DonHangAll') }}">Tất cả đơn hàng</a>
+                <a class="dropdown-item" href="{{ route('DonHangGetId', ['id'=> 0]) }}">Đơn hàng đang xử lý</a>
+                <a class="dropdown-item" href="{{ route('DonHangGetId', ['id'=> 1]) }}">Đơn hàng đang giao</a>
+                <a class="dropdown-item" href="{{ route('DonHangGetId', ['id'=> 2]) }}">Đơn hàng đã hủy</a>
+                <a class="dropdown-item" href="{{ route('DonHangGetId', ['id'=> 3]) }}">Đơn hàng đổi/ trả</a>
+                </div>
+              </div>
+        </div>
+    </div>
+
+
+</div>
+
+</div>
+
 
     </div>
 
@@ -36,7 +75,7 @@
                 </tr>
             </thead>
 
-            <tbody>
+            <tbody id="search-oder-view">
                 <?php $a = 1 ?>
                 @foreach ($db_dons as $db_don)
                 <tr>
@@ -60,7 +99,7 @@
                         @endif
 
                     </td>
-                    <td>{{ number_format($db_don->tong_tien, 3,'.', ',') }} <img width="22" src="images/dong.png" alt=""></td>
+                    <td>{{ number_format($db_don->tong_tien, 0,'.', ',') }} <img width="22" src="images/dong.png" alt=""></td>
                     <td><a href="{{ route('ChiTietDonHang_Get', ['id'=> $db_don->id]) }}"><button class="btn btn-success">Xem chi tiết</button></a></td>
 
                 </tr>

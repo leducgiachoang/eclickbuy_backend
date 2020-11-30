@@ -1,15 +1,14 @@
 @extends('template.backend')
 @section('container')
-<div class="container">
-    <div class="row">
-        <div class="col-lg-12">
-            <section class="panel">
-                <header class="panel-heading" style="text-align: center">
+<div >
+
+            <section class="card">
+                <header class="card-header">
                     Thêm người dùng
                 </header>
-                <div class="panel-body">
+                <div class="card-body">
 
-                    <div class="position-center">
+                    <div>
                         <?php
                         $message = Session::get('message');
                         if ($message) {
@@ -93,7 +92,6 @@
                 </div>
             </section>
 
-        </div>
-    </div>
+
 </div>
 @endsection

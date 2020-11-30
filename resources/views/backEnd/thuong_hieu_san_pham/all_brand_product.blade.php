@@ -17,19 +17,16 @@
                 <tr>
                     <th>Số TT</th>
                     <th>Tên thương hiệu</th>
-                    <th>Hình ảnh</th>
-                    <th>Mô tả</th>
                     <th>Tình trạng</th>
                     <th>Chỉnh sửa</th>
                 </tr>
             </thead>
             <tbody>
+                <?php $a=1 ?>
                 @foreach($all_brand_product as $key =>$brand_pro)
                 <tr>
-                    <td>{{$brand_pro->id}}</td>
+                    <td>{{$a}}</td>
                     <td>{{$brand_pro->ten_thuong_hieu}}</td>
-                    <td><img src="images/brand_product/{{$brand_pro->hinh_anh}}" alt="" height="120" width="100"></td>
-                    <td>{{$brand_pro->mo_ta}}</td>
                     <td><span class="text-ellipsis">
                             <?php
                             if ($brand_pro->status == 0) {
@@ -48,6 +45,7 @@
                             <a class="btn btn-warning" onclick="return confirm('Bạn muốn xóa thương hiệu này hả ?')" href="{{ route('delete-brand-product',['id'=> $brand_pro->id]) }}"><i class="fas fa-trash-alt"></i></a>
                     </td>
                 </tr>
+                <?php $a++ ?>
                 @endforeach
             </tbody>
         </table>

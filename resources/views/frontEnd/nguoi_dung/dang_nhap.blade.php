@@ -1,5 +1,6 @@
 @extends('template.front_end')
 @section('container_layout')
+@section('title','Đăng Nhập Tài Khoản')
 <section class="bread-crumb">
     <span class="crumb-border"></span>
     <div class="container">

@@ -1,5 +1,6 @@
 @extends('template.front_end')
 @section('container_layout')
+@section('title','Danh Sách Sản Phẩm Về Thường Hiệu')
 <div class="container">
 
     <link href="../css/sidebar_style.scss.css" rel="stylesheet" type="text/css">

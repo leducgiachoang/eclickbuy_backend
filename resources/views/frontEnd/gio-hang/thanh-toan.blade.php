@@ -11,6 +11,7 @@
     <link href="../css/fontawesome.min.css" rel="stylesheet">
     <script src="https://kit.fontawesome.com/a076d05399.js"></script>
     <script src="../js/jquery.number.min.js"></script>
+    <title>EClickBuy - Thanh Toán đơn hàng</title>
 </head>
 
 <body data-no-turbolink="">

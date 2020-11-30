@@ -24,9 +24,10 @@
                 </tr>
             </thead>
             <tbody>
+                <?php $a=1 ?>
                 @foreach($all_giftcode_product as $key =>$all_giftcode)
                 <tr>
-                    <td>{{$all_giftcode->id}}</td>
+                    <td>{{$a}}</td>
                     <td>{{$all_giftcode->code}}</td>
                     <td>{{$all_giftcode->gia_tri}} %</td>
                     <td>{{$all_giftcode->ngay_bat_dau}}</td>
@@ -36,6 +37,7 @@
                             <a class="btn btn-warning" onclick="return confirm('Bạn muốn xóa GiftCode này hả ?')" href="{{ route('delete-giftcode-product',['id'=> $all_giftcode->id]) }}"><i class="fas fa-trash-alt"></i></a>
                     </td>
                 </tr>
+                <?php $a++ ?>
                 @endforeach
             </tbody>
         </table>

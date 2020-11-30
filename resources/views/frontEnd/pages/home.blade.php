@@ -1,6 +1,7 @@
 
 @extends('template.front_end')
 @section('container_layout')
+@section('title','Trang Chủ')
 
 
 

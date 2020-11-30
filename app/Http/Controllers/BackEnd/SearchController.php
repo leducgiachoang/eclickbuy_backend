@@ -29,9 +29,10 @@ class SearchController extends Controller
         ->get();
         return json_encode($item2);
     }
-    // public function searchOrder(Request $request){
+    public function searchOrder(Request $request){
 
-    //     $item1 = DonHang_Model::where('ten_san_pham','like','%'.$request->get('searchProduct').'%')->orWhere('so_luong','like','%'.$request->get('searchProduct').'%')->get();
-    //     return json_encode($item1);
-    // }
+    $item1 = DonHang_Model::where('id','like','%'.$request->keyword.'%')->orWhere('so_dien_thoai','like','%'.$request->keyword.'%')->paginate(7);
+       return view('backEnd.don_hang.list', ['db_dons'=> $item1]);
+    }
+
 }

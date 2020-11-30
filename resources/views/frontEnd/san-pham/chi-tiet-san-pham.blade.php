@@ -1,5 +1,6 @@
 @extends('template.front_end')
 @section('container_layout')
+@section('title','Chi Tiết Sản Phẩm')
 <link href="../css/product_style.scss.css" rel="stylesheet" type="text/css">
 <link rel="stylesheet" href="../css/quickviews_popup_cart.scss.css">
 
@@ -7,8 +8,6 @@
 
 
 <div class="bodywrap">
-    <div id="fb-root"></div>
-    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v9.0&appId=247793369883440&autoLogAppEvents=1" nonce="Wp9v9YdV"></script>
 
     <section class="bread-crumb">
         <span class="crumb-border"></span>
@@ -195,7 +194,7 @@
                                                                         type="button"><i class="fas fa-plus"></i></button>
                                                                 </div>
                                                             </div>
-                                                            <div class="btn-mua button_actions clearfix">
+                                                            <div class="btn-mua button_actions">
 
 
                                                                 <button type="submit"
@@ -203,12 +202,11 @@
                                                                     <span class="txt-main text_1">Thêm vào giỏ hàng</span>
                                                                 </button>
 
-                                                                <button type="button"
-                                                                    class="btn fast btn_base btn_add_cart btn-cart">
+                                                                <div class="btn fast btn_base btn_add_cart btn-cart">
                                                                     <a style="color: white" href="{{ route('mua_ngay_get', ['id'=>$sanpham->id]) }}">
                                                                     <span class="txt-main text_1">Mua ngay</span>
                                                                 </a>
-                                                                </button>
+                                                                </div>
 
 
                                                             </div>
@@ -217,7 +215,7 @@
                                                 </form>
                                                 @endif
 
-                                            <div class="contact">Gọi đặt mua: <a href="tel:19006750">19006750</a>
+                                            <div class="contact">Gọi đặt mua: <a href="tel:0369203989">0369203989</a>
                                                 (8:00 - 22:00)</div>
                                         </form>
                                     </div>
@@ -501,7 +499,7 @@
 
                 <div class="section_wishlist section margin-bottom-70">
                     <h2 class="title_modules">
-                        <a href="dien-thoai-may-tinh-bang.html" title="Sản phẩm liên quan">Sản phẩm liên quan</a>
+                        <a title="Sản phẩm liên quan">Sản phẩm liên quan</a>
                     </h2>
 
                     <div class="owl_product_news slick_wishlist">
@@ -576,7 +574,8 @@
 
                 </div>
             </div>
-            <div class="fb-comments" data-href="https://eclickbuy.com:1301/san-pham/nokia%205" data-numposts="5" data-width="100%"></div>
+
+            <div class="fb-comments" data-href="https://eclickbuy.xyz/san-pham/{{ $sanpham->ten_san_pham }}" data-numposts="5" data-width="100%"></div>
 
             </div>
 
@@ -719,7 +718,6 @@
 
     <link href="../css/bpr-products-module.css" rel="stylesheet" type="text/css">
         <div class="sapo-product-reviews-module"></div>
-        <script src="../css/api.jquery.js" type="text/javascript"></script>
 
 </div>
 @endforeach
