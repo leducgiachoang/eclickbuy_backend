@@ -1,5 +1,10 @@
 @extends('template.front_end')
 @section('container_layout')
+<style>
+    .swal2-content {
+        margin-bottom: -40px;
+    }
+</style>
 <div class="container"><br>
 <div class="row flex-lg-nowrap">
   <div class="col-12 col-lg-auto mb-3" style="width: 200px;">
@@ -161,7 +166,25 @@
   </div>
 </div>
 </div>
-
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+@if(Session::has('update_image'))
+    <script>
+    Swal.fire({
+        icon: 'success',
+        title: 'Cập nhật ảnh đại diện thành công',
+        showConfirmButton: true,
+});
+</script>
+@endif
+@if(Session::has('update_pro'))
+    <script>
+    Swal.fire({
+        icon: 'success',
+        title: 'Cập nhật thông tin thành công',
+        showConfirmButton: true,
+});
+</script>
+@endif
 @section('script')
 <style>
     #menu_header_menu{

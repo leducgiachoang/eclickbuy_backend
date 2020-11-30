@@ -1,5 +1,10 @@
 @extends('template.front_end')
 @section('container_layout')
+<style>
+    .swal2-content {
+        margin-bottom: -40px;
+    }
+</style>
 <section class="bread-crumb">
     <span class="crumb-border"></span>
     <div class="container">
@@ -174,7 +179,45 @@
         </div>
     </div>
 </section>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+@if(Session::has('login-erro'))
+    <script>
+    Swal.fire({
+        icon: 'error',
+        title: 'Sai tên đăng nhập hoặc mật khẩu',
+        confirmButtonText:'Thử đăng nhập lại',
+});
+    </script>
+@endif
+@if(Session::has('erro-LayLaiMatKhau'))
+    <script>
+    Swal.fire({
+        icon: 'success',
+        title: 'Vui lòng kiểm tra email để xác nhận cập nhật lại mật khẩu mới',
+});
+    </script>
+@endif
+@if(Session::has('kich_hoat_thanh_cong'))
+    <script>
+    Swal.fire({
+        icon: 'success',
+        title: '<p style="font-size:15px">Kích hoạt tài khoản thành công</p>',
+        showConfirmButton: true,
 
+});
+</script>
+@endif
+@if(Session::has('message_front_end'))
+    <script>
+    Swal.fire({
+        icon: 'success',
+        title: '<p style="font-size:17px">Đăng kí tài khoản thành công, vui lòng kiểm tra email để kích hoạt tài khoản</p>',
+        showConfirmButton: true,
+
+});
+
+</script>
+@endif
 @section('script')
 <style>
     #menu_header_menu{

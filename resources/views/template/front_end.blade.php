@@ -24,7 +24,12 @@
 
 	<script src="../js/home.js"></script>
     <link href="../css/account_oder_style.scss.css" rel="stylesheet" type="text/css">
+    <style>
+    .swal2-checkbox input, .swal2-radio input {
+        display: none;
+    };
 
+    </style>
 
 
 </head>
@@ -638,7 +643,7 @@ margin: 0;">
     </script>
 
 
-
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 	<script src="../js/index.js" type="text/javascript"></script>
 
     <script src="../js/main.js" type="text/javascript"></script>
