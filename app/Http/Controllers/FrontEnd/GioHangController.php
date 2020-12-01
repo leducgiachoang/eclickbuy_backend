@@ -177,6 +177,15 @@ class GioHangController extends Controller
             'ngay_tao' => Carbon::now(),
         ]);
 
+        if($id_giftcode = 1){
+            $gift = '';
+            $giftValue = 'Không ám dụng';
+        }else{
+            $dbgiffft = GiftCode_Model::where('id', $id_giftcode)->first();
+            $gift = $dbgiffft->code;
+            $giftValue = '-('.$dbgiffft->gia_tri.')%';
+        }
+
         if($idHoadon){
             $productsCart = Cart::content();
             foreach($productsCart as $item){
@@ -209,7 +218,14 @@ class GioHangController extends Controller
             'codegift'=> $request->code,
             'tamtinh' => Cart::subtotal() . '₫',
             'tonggia' => number_format($request->tong_tien, 2,'.', ','). '₫',
-            'email'=> $request->email
+            'email'=> $request->email,
+            'khuyen_mai'=> $gift,
+            'valuKM'=> $giftValue,
+            'ngaydat'=> Carbon::now(),
+            'chinhsachgiaohang'=> route('ChinhSachGiaoHang'),
+            'chinhsachbaohanh'=> route('ChinhSachBaoHanh'),
+            'chitietdonhang'=> route('ChiTietDonHangCuaToi_get',['id'=> $idHoadon]),
+
         ];
         Mail::send('mail.dat-hang-thanh-cong', $data, function ($message) use ($email, $idHoadon) {
             $message->to($email, 'ECLICKBUY')->subject('ECLICKBUY đã nhận đơn hàng #' . $idHoadon);

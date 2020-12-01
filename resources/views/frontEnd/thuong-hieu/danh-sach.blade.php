@@ -235,11 +235,15 @@
                                     <div class="action">
 
 
+                                        @if ($itesanham->so_luong <= 0)
+
+                                        @else
                                         <button class="hidden-xs btn-buy btn-cart btn btn-views left-to add_to_cart active"
                                             title="Thêm vào giỏ hàng" data-toggle="modal" data-target="#exampleModal">
                                             <input type="hidden" class="val_id_product" value="{{ $itesanham->id }}">
                                             <i class="fas fa-shopping-basket iconcart"></i>
                                         </button>
+                                        @endif
 
 
                                         <a title="Xem nhanh"

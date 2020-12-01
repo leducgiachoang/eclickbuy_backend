@@ -5,150 +5,251 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <style>
+        body {
+            background: rgb(221, 221, 221);
+            margin: auto;
+            text-align: center;
+            padding-bottom: 50px;
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-size: 72px;
+        }
+
+        .logo img {
+            width: 200px;
+            padding-top: 20px;
+            margin: auto;
+            text-align: center;
+        }
+        .li_flext{
+            width: 100%;
+        }
+        .li_flext:last-child{
+            width: 40%;
+            float: right;
+        }
+        .li_flext:first-child{
+            width: 50%;
+            float: left;
+        }
+
+
+        .container {
+            width: 60%;
+            background-color: white;
+            margin: auto;
+            text-align: center;
+        }
+
         .content {
-            background-color: rgb(255, 255, 255);
-            padding: 20px;
-            color: rgb(255, 255, 255);
+            width: 80%;
+            margin: auto;
+            text-align: center;
         }
 
-        .text {
-            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-            color: rgb(0, 0, 0);
+        .number {
+            text-align: left;
         }
 
-        .nut {
-            text-decoration: none;
+        .print {
+            text-align: left;
+        }
+
+        ul {
+            display: inline-block;
+            list-style: none;
+            width: 100%;
+            margin: 0px;
+            padding: 0px;
+        }
+
+        ul li {
+            display: block;
+            list-style: none;
+            width: 100%;
+        }
+
+        button {
+            text-align: center;
+            margin: auto;
+            width: 100%;
+            line-height: 40px;
+            margin: 20px 0px;
+            background-color: teal;
+            border: 0px;
             color: white;
-            background-color: rgb(248, 79, 18);
-            padding: 15px 17px;
-            border-radius: 7px;
             font-size: 20px;
         }
-        a{
-            text-decoration: none;
-            font-weight: bold;
-            color: blanchedalmond;
+
+        .footer {
+            margin: auto;
+            text-align: center;
+            padding-bottom: 20px;
         }
 
+        .hello {
+            font-size: 20px;
+            font-weight: 700;
+            padding: 20px;
+        }
+
+        h2 {
+            font-size: 72px;
+            font-size: 35px;
+            color: blueviolet;
+        }
+
+        .it {
+            color: rgb(141, 141, 141);
+            font-size: 20px;
+            font-weight: 520;
+        }
+
+        .it .user {
+            background-color: white;
+            font-weight: 550;
+            color: rgb(94, 94, 94);
+            padding-left: 10px;
+        }
+
+        .here {
+            color: rgb(94, 94, 94);
+            font-weight: 550;
+            font-size: 14px;
+        }
+
+        .here1 {
+            color: rgb(94, 94, 94);
+            font-weight: 500;
+            font-size: 20px;
+        }
+
+        .incon {
+            display: inline-block;
+            list-style: none;
+            margin: 0px;
+            padding: 0px;
+        }
+
+        .incon li {
+            display: inline-block;
+            list-style: none;
+            height: 30px;
+            width: 30px;
+            border-radius: 50% 50%;
+            margin: 0px 5px;
+        }
+
+        .incon li a {
+            text-decoration: none;
+            line-height: 30px;
+        }
+
+        .thuonghieu {
+            color: black;
+            font-weight: 550;
+        }
+
+        @media (max-width:680px) {
+            .container {
+                width: 95%;
+            }
+
+            .container .content {
+                width: 95%;
+                margin: auto;
+                text-align: center;
+            }
+        }
     </style>
 </head>
 
-<body style="width: 100%;margin: -8px auto;border: 2px solid black;">
-    <header style="background-color: rgb(255, 255, 255);padding: 15px;">
-        <p style="text-align: center;"><img src="https://lh3.googleusercontent.com/NGRLoXoVCRdI5NE_lIrVtpGATZ8BCKNMaQyXB64nDbd09FoGD-EGr_8LhiINDsisk5CRT1RvjT5DuoYtfP8rXzib7BUXGrPL9aRKtAQRtZ6l9FIaGzSe7wQUxocSvwYLvFtKrOKKu1aFKY40i0CLon_u5HdqF-mWKtm0h65EsXOWerrJXdpNPIC0Dbziyop79gKmIGK3fHJuPd9KLYbBYEVgJ9IF75dYyC6qPb3STizNghbZ4EGrixxXsvYlDLAZbiQkRkMKsGqgwnHGFuwUdvYsCInMPCOOpkaev9-Nsd2mNgOPKmc22_kqzsk48I57Lh3bxgQhuHkyTZo_ooM_4RcCrINpD-_4wAcixhRuLI0ZOig1LXHAPO8_hBq5zGs2rGkcPsy7mYi5yuB4eFxJrGyt-MnAaOJwtFFnJ5QVmAFZhvpMkrhfrx9yc6i_NCyDXcxeFFuaTmt3bwXS-JtuLG1C0bwvgqoUOs8samxPUgkmuolQ-hOB0yPIogGhVFz3s5gNQmnAy2CWX4iLM-Ei2PPTZf0tjyT11ddS9BiJaGAqF2C1qQKCYw7cw7lGJHLipHavS1VvbsokV3l1Jy7w3cC9elZfcyLdHgHmeymJM9CDVbH7hHQNxt74vFPnBFXdswqPm7OFDTTlFlTmz-4_7bix4mh8H9SLryRsGZtnlifUwJfAhwKPbIwggY_yY5c=w1920-h688-no?authuser=0" alt=""></p>
-    </header>
-    <div class="content">
+<body>
+    <div style="background: rgb(210,0,0);
+    background: linear-gradient(4deg, rgba(210,0,0,1) 0%, rgba(255,255,255,0.8410714627647934) 100%, rgba(255,0,0,1) 100%);">
+        <div style="text-align: center" class="logo"><img style="text-align: center" src="https://lh3.googleusercontent.com/7aZxJO5qkXcjqYpQQ8TBjmTu2S16Q-TtTevmZwWb8faxIeuzK_B84VPmJuSv5G_068WjdXxznbbLAbsdPXDh7Sb4OwxB1Tt8gsmyRDcch3kHN03i3KlrdTn2rPjxoJ1tVNGzOwqAQ2PjfyuFlC73yb74QbjoApAkdRnAKA2SXPP9SACPUHyzxnrM3i2YtNh3FDzkwU2pBnnwBJps5ZSMemTCUHIa9gvtTL33Oz-FnJGDIkdhwz5a2twtTKKvVqYU1SaX_ASPYejFL22OOeozmKtcKm8Hr-bLpXgSLOom5svbQbnWo0PmZyDzqXNF56Cso8E-Rx9Dz8RA0BbCrDHhZ74MnhLw4f_25nLO1t0ib0HpCKj_dnL-Ee7qA2lLQ8X56J1Ssb8A1DSrbwl_k8XEgnEj30W9n1JJtroHCD6pqZw-STOcKavwq2T8Eg1HMibkwpZwA4PtYOqJ-TjAB3CHvZcwO7igh9yF8xKUQea1JCx5kQSa2yd9U2v4Kiu6mWImJCZMyTxyIQ134ixHNNBJJ5Nj6MSuTzo-BuYrFoc1WegSE7dC1SGNWfTNmnqFKB-VGwHeH_dt2-RRxhgQkPbgRv9HrB54LE4LZhISlXdmQmcd3tA_KZEJUFLSSDfjJOzxW_M4IV3jYyxTLY70ODTitUPib1goPYc6lAXxe5R1qRREYvTNn5uy9d3l2z5FwCs=w1920-h688-no?authuser=0" alt=""></div>
+        <div class="container">
+            <div class="content">
+                <p class="hello">Xin Chào {{ $hoten }}!</p>
+                <h2>Cảm ơn bạn.</h2>
+                <p class="it">
+                    Quản lý đơn đặt hàng của bạn. Hãy xem bên dưới để biết tất cả
+                    chi<br>
+                    tiết xác nhận bạn sẽ cần</p>
+                <hr style="width:100%;border:none;  border-top-style:dashed; clear:both;color: rgb(138, 138, 138);">
+                <div class="number">
+                    <p class="it">Nhận bởi: <span class="user">Công Ty TNHH<span class="thuonghieu">Eclickbuy</span></p>
+                    <p class="it">Địa chỉ: <span class="user">137 Nguyễn Thị Thập, Hòa Minh,Liên Chiểu, Đà Nẵng</p>
+                </div>
+                <hr style="width:100%;border:none;  border-top-style:dashed; clear:both;color: rgb(138, 138, 138);">
+                <div class="print">
+                    <p class="here1">Đây là những gì bạn đã đặt hàng:</p>
+                    <table style="width: 100%;">
+                        @foreach ($products as $product)
+                        <tr class="li_flext">
+                            <th style="margin: 0px;padding: 0px;color: rgb(141, 141, 141);font-size: 20px;font-weight: 550;">
+                                <span style="color: rgb(39, 39, 39);">{{ $product->qty }}</span> {{ $product->name }}</th>
+                            <th class="here1" style="text-align: right;">{{ number_format($product->price,0,",",".") }} VNĐ</th>
+                        </tr>
+                        @endforeach
+                        <hr style="width:100%;border:none;  border-top-style:dashed; clear:both;color: rgb(138, 138, 138);">
+                        <tr class="li_flext">
+                            <th class="here1" style="margin-top: -25px;padding: 0px;">Tổng tiền tạm Tính</th>
+                            <th class="here1" style="text-align: right;">{{ $tamtinh }}</th>
 
-        <div class="text">
-            <h2 style="text-align: center;margin: 40px;">Cám ơn bạn đã đặt hàng tại ECLICKBUY!</h2>
-            <p style="font-size: 20px;">Xin chào {{ $hoten }}</p>
-            <p style="font-size: 16px;">Cám ơn bạn đã tin tưởng ECLICKBUY!! <br><br>
-                ECLICKBUY đã nhận được yêu cầu đặt hàng của bạn và đang xử lý nhé. Bạn sẽ nhận được thông báo tiếp theo
-                khi đơn hàng đã sẵn sàng được giao.
-            </p>
-            <h2 style="text-align: center;margin: 40px;"><a class="nut" href="#">TÌNH TRẠNG ĐƠN HÀNG</a></h2>
-            <p style="font-weight: bold;">**Một vài lưu nhỏ cho bạn:</p>
-            <ul style="font-size: 16px;text-align: justify;">
-                <li>Nếu đơn hàng của bạn được thực hiện theo hình thức "Mua theo nhóm", thì đơn hàng này chỉ có giá trị
-                    khi tất cả các đơn đặt hàng trong nhóm của bạn đã được đặt thành công.</li>
-                <li>Để đảm bảo bạn sẽ nhận đúng hàng, hãy chỉ nhận hàng khi đơn hàng được cập nhật trạng thái là Đang
-                    giao hàng” nhé!</li>
-                <li>Để đảm bảo an toàn và thuận tiện cho bạn trong mùa dịch, ECLICKBUY thực hiện giao hàng không tiếp xúc
-                    bằng cách đặt kiện hàng ở vị trí thuận tiện đồng thời bạn có thể ký xác nhận để nhân viên chụp lại
-                    từ khoảng cách an toàn. Nếu thanh toán bằng tiền mặt, bạn vui lòng chuẩn bị tiền đúng như giá trị
-                    đơn hàng và gián tiếp đưa cho nhân viên như cách bạn nhận kiện hàng.</li>
-                <li>Bạn nhớ mang khẩu trang khi nhận hàng và rửa tay sạch sau khi nhận hàng để giữ an toàn!</li>
-            </ul>
-            <hr style="border: 7px solid rgb(201, 2, 2);background-color: rgb(201, 2, 2)">
+                        </tr>
+                        <tr class="li_flext">
+                            <th class="here1" style="margin-top: -25px;padding: 0px;">Khuyến Mãi</th>
+                            <th class="here1" style="text-align: right;">{{ $khuyen_mai }} {{ $valuKM }}</th>
 
-            <p style="font-size: 30px;"><i class="fa fa-map-marker" aria-hidden="true"></i> Đơn hàng được giao đến</p>
-            <table style="margin: 20px;padding: 20px;font-size: 16px;">
+                        </tr>
+                        <tr class="li_flext">
+                            <th class="here1" style="margin-top: -25px;padding: 0px;">Phí vận chuyển</th>
+                            <th class="here1" style="text-align: right;">30.000 VNĐ</th>
 
-                <tr>
-                    <th style="padding: 5px;text-align: left;">Tên: </th>
-                    <td style="padding: 5px;">{{ $hoten }}</td>
-                </tr>
+                        </tr>
+                        <tr class="li_flext">
+                            <th class="here1" style="margin: 0px;padding: 0px;">Tổng giá</th>
+                            <th class="here1" style="text-align: right;">{{ $tonggia }}</th>
 
-                <tr>
-                    <th style="padding: 5px;text-align: left;">Địa chỉ nhà: </th>
-                    <td style="padding: 5px;">{{ $noinhan }}</td>
-                </tr>
-                <tr>
-                    <th style="padding: 5px;text-align: left;">Số điện thoại: </th>
-                    <td style="padding: 5px;">{{ $sodienthoai }}</td>
-                </tr>
-                <tr>
-                    <th style="padding: 5px;text-align: left;">Email: </th>
-                    <td style="padding: 5px;">{{ $email }}</td>
-                </tr>
-            </table>
+                        </tr>
+                    </table>
+                    <p class="here1">Địa chỉ giao hàng của bạn:<br>
+                        <span style="font-size: 18px;font-weight: 500;">{{ $noinhan }}</span>
+                    </p>
+                    <ul>
+                        <li class="li_flext">
+                            <p class="here1" style="margin: 0px;padding: 0px;">Hình thức thanh toán: <br/><i style="font-size: 15px;">Thanh toán khi nhận Hàng</i></p>
+                            <p class="here1" style="text-align: right;font-size: 16px;">
+                                {{ date("d".' \T\h\á\n\g'." m". ' \N\ă\m'." Y", strtotime($ngaydat)) }}</p>
 
-            <hr style="border: 7px solid rgb(201, 2, 2);background-color: rgb(201, 2, 2)">
+                        </li>
+                    </ul>
+                    <hr style="width:100%;border:none;  border-top-style:dashed; clear:both;color: rgb(138, 138, 138);">
 
-            <table style="margin: 20px auto;border: 1px solid white;padding: 20px;border-radius: 7px;">
-                <p style="font-size: 30px;"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Kiện hàng</p>
-                @foreach ($products as $i)
-                <tr>
-                    <td style="padding: 5px;">
-                    <img width="160px" src="../images/producs/{{ $i->options->avatar }}" alt="">
-                    </td>
-                    <td style="padding: 5px;">
-                        <p>{{ $i->name }}<br>
-                            <strong style="color: red;">VND {{ number_format($i->price,0,',','.') }}</strong> <br>
-                            Số lượng: {{ $i->qty }}
-                        </p>
-                    </td>
-                </tr>
-               @endforeach
-            </table>
+                    <p class="here1">Nếu bạn muốn theo dõi đơn đặt hàng của mình, bạn có thể
+                        kiểm tra trạng thái của nó hoặc <span style="color: teal;font-weight: 550;">sắp xếp lại</span>
+                        bất cứ lúc nào <span style="color: teal;font-weight: 550;">Tài khoản của bạn.</span></p>
+                    <a href="{{ $chitietdonhang }}"><button><span>Quản lý đơn đặt hàng của bạn</span></button></a>
+                    <hr style="width:100%;border:none;  border-top-style:dashed; clear:both;color: rgb(138, 138, 138);">
 
-            <hr style="border: 7px solid rgb(201, 2, 2);background-color: rgb(201, 2, 2)">
 
-            <table style="width: 100%;">
-                <tr>
-                    <th style="text-align: left;">Hình thức thanh toán:</th>
-                    <th style="text-align: right;">Thanh toán khi nhận hàng</th>
-                </tr>
 
-                <tr>
-                    <th style="text-align: left;">Tạm tính:</th>
-                    <th style="text-align: right;">{{ $tamtinh }}</th>
-                </tr>
+                </div>
+                <div class="footer">
+                    <p class="here" style="font-weight: 500;color: rgb(202, 202, 202);">@ Xin chào, đây là tin nhắn tự động từ <span
+                            class="thuonghieu">Eclickbuy</span>.<br>
+                        <span> 137 Nguyễn Thị Thập, Hòa Minh,Liên Chiểu, Đà Nẵng.<br>
+                            Chúng tôi đã đăng ký tại Anh, Số công ty: 5121723</span>
+                    </p>
+                    <p class="here" style="color: teal;"><a href="{{ $chinhsachgiaohang }}">Chính sách giao hàng</a> |
+                        <a href="{{ $chinhsachbaohanh }}">Chính sách bảo hành</a></p>
 
-                <tr>
-                    <th style="text-align: left;">Mã giảm giá:</th>
-                    <th style="text-align: right;">{{ $codegift }}</th>
-                </tr>
-
-                <tr>
-                    <th style="text-align: left;">Phí vận chuyển:</th>
-                    <th style="text-align: right;">30.000đ</th>
-                </tr>
-
-                <tr>
-                    <th style="text-align: left;">Tổng cộng:</th>
-
-                    <th style="text-align: right;">{{ $tonggia }}</th>
-                </tr>
-            </table>
+                </div>
+            </div>
         </div>
     </div>
-    <header style="color: white;padding: 20px ;background-color: rgb(0, 0, 0);text-align: center;font-family: sans-serif;text-decoration: none;font-size: 16px;">
-        <p>
-            <strong>
-                <a href="">Trung tâm hỗ trợ</a> |
-                <a href="">Liên hệ</a>
-            </strong> <br> <br>
-            Công ty TNHH ECLICKBUY - Điện Bàn, Quảng Nam <br><br>
-            <img src="" alt=""> <br><br>
-            Đây là thư tự động được tạo từ danh sách đăng ký của chúng tôi. Do đó, xin đừng trả lời thư này.
-
-        </p>
-    </header>
 </body>
 
 </html>
-
-

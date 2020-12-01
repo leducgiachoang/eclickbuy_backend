@@ -1,7 +1,14 @@
 @extends('template.front_end')
+
 @section('container_layout')
 @section('title','Đổi Mật Khẩu')
 <br>
+
+<style>
+    .swal2-content {
+        margin-bottom: -40px;
+    }
+</style>
 <section class="section">
     <div class="container">
         <div class="wrap_background_aside page_login">
@@ -70,7 +77,30 @@
         </div>
     </div>
 </section>
+<style>
 
+</style>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+@if(Session::has('success'))
+    <script>
+    Swal.fire({
+        icon: 'success',
+        title: 'Đổi mật khẩu thành công',
+        showConfirmButton: true,
+
+});
+</script>
+@endif
+@if(Session::has('danger'))
+    <script>
+    Swal.fire({
+        title: 'Mật khẩu hiện tại chưa đúng. Vui lòng thử lại!',
+        icon: "error",
+        showConfirmButton: true,
+
+ });
+    </script>
+@endif
 @section('script')
 <style>
     #menu_header_menu{

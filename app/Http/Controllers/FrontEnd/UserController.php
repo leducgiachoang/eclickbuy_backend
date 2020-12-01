@@ -22,15 +22,14 @@ class UserController extends Controller
     }
     public function login(Request $request)
     {
-        $danhmucs = DanhMucSanPham_Model::all();
 
         $email = $request->email;
         $password = $request->mat_khau;
         if (Auth::attempt(['email' => $email, 'password' => $password, 'status' => 1])) {
             return redirect(route('homepage'));
         }else {
-            Session::put('message', 'Sai tên đăng nhập hoặc mật khẩu');
-            return redirect()->back();
+            // Session::put('message', 'Sai tên đăng nhập hoặc mật khẩu');
+            return redirect()->back()->with('login-erro','');
         }
     }
     public function view_register()
@@ -87,8 +86,8 @@ class UserController extends Controller
             $message->to($email, 'Gửi mail')->subject('Xin chào bạn, đây là tin nhắn kích hoạt từ EClickbuy');
         });
 
-        Session::put('message_front_end', 'Đăng kí tài khoản thành công, vui lòng kiểm tra email để kích hoạt tài khoản');
-        return redirect()->back();
+        // Session::put(, 'Đăng kí tài khoản thành công, vui lòng kiểm tra email để kích hoạt tài khoản');
+        return redirect('tai-khoan/dang-nhap-tai-khoan')->with('message_front_end','');
     }
     public function logout()
     {
@@ -114,8 +113,8 @@ class UserController extends Controller
                 ]
             )->update(['status'=>1]);
 
-            Session::put('message_front_end', 'Kích hoạt tài khoản thành công');
-            return redirect('tai-khoan/dang-nhap-tai-khoan');
+            // Session::put(, 'Kích hoạt tài khoản thành công');
+            return redirect('tai-khoan/dang-nhap-tai-khoan')->with('kich_hoat_thanh_cong','');
         }
     }
     public function profile($id){
@@ -145,12 +144,12 @@ class UserController extends Controller
             $get_image->move('images/user/', $new_image);
             $data['anh_dai_dien'] = $new_image;
             DB::table('tai_khoan')->where('id', $id)->update($data);
-            Session::put('message', 'Cập nhật thông tin thành công');
-            return redirect()->back();
+            // Session::put('message', 'Cập nhật thông tin thành công');
+            return redirect()->back()->with('update_image','');
         }
         DB::table('tai_khoan')->where('id', $id)->update($data);
-        Session::put('message', 'Cập nhật thông tin thành công');
-        return redirect()->back();
+        // Session::put('message', 'Cập nhật thông tin thành công');
+        return redirect()->back()->with('update_pro','');
     }
     public function view_update_password(){
         return view('frontEnd.nguoi_dung.doi_mat_khau');
@@ -175,9 +174,9 @@ class UserController extends Controller
         $password_now = $request->password_now;
         if (Auth::attempt(['email' => Auth::user()->email, 'password' => $password_now])) {
             $user = DB::table('tai_khoan')->where('id',Auth::user()->id)->update(['password' => bcrypt($request->password_new),]);
-            return redirect()->back()->with('success','Đổi mật khẩu thành công');
+            return redirect()->back()->with('success','');
         }else {
-            return redirect()->back()->with('danger','Mật khẩu cũ chưa chính xác, vui lòng nhập lại');
+            return redirect()->back()->with('danger','');
         }
 
     }
@@ -211,8 +210,7 @@ class UserController extends Controller
             Mail::send('mail.quen-mat-khau', $data, function ($message) use ($email) {
                 $message->to($email, 'Lấy lại mật khẩu')->subject('Xin chào bạn, đây là tin nhắn kích hoạt từ EClickbuy');
             });
-            Session::put('message_front_end', 'Thông báo! Vui lòng kiểm tra email để tiến hành lấy lại mật khẩu');
-            return redirect('tai-khoan/dang-nhap-tai-khoan');
+            return redirect('tai-khoan/dang-nhap-tai-khoan')->with('erro-LayLaiMatKhau', '');
         }
 
     }

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html class="floating-labels">
     <head>
-    <link rel="shortcut icon" href="images/ovo.png">
+    <link rel="shortcut icon" href="../images/ovo.png">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
     <title>EclikBuy - Thanh toán đơn hàng</title>

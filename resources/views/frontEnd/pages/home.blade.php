@@ -48,11 +48,16 @@
                                                 </a>
 
                                                 <div class="action">
-                                                    <button class="hidden-xs btn-buy btn-cart btn btn-views left-to add_to_cart active"
+
+                                                @if ($SPbyid1random->so_luong <= 0)
+
+                                                @else
+                                                <button class="hidden-xs btn-buy btn-cart btn btn-views left-to add_to_cart active"
                                                     title="Thêm vào giỏ hàng" data-toggle="modal" data-target="#exampleModal">
                                                     <input type="hidden" class="val_id_product" value="{{ $SPbyid1random->id }}">
                                                     <i class="fas fa-shopping-basket iconcart"></i>
                                                 </button>
+                                                @endif
 
 
                                                 <a title="Xem nhanh"
@@ -185,8 +190,8 @@
         <div class="container">
             <a class="scale_hover" href="#" title="Banner">
                 <img class="lazyload banner_leng"
-                    src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC"
-                    data-src="//bizweb.dktcdn.net/100/397/652/themes/792901/assets/banner-leng.jpg?1603341153354"
+                    src="../images/maxresdefault.jpg"
+                    data-src="../images/maxresdefault.jpg"
                     alt="Banner">
             </a>
         </div>
@@ -292,19 +297,12 @@
 
                             <div class="two_banner hidden-xs">
                             <div class="row">
-                                <div class="col-lg-6 col-md-6 col-sm-12 col-12">
-                                    <a class="scale_hover" href="#" title="Banner 1">
-                                        <img class="img_banner lazyload"
-                                            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC"
-                                            data-src="//bizweb.dktcdn.net/100/397/652/themes/792901/assets/banner_col_1_1.jpg?1603341153354"
-                                            alt="Banner 1">
-                                    </a>
-                                </div>
-                                <div class="col-lg-6 col-md-6 col-sm-12 col-12">
+
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-12">
                                     <a class="scale_hover" href="#" title="Banner 2">
                                         <img class="img_banner lazyload"
-                                            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC"
-                                            data-src="//bizweb.dktcdn.net/100/397/652/themes/792901/assets/banner_col_1_2.jpg?1603341153354"
+                                            src="../images/banner_product_2.jpg"
+                                            data-src="../images/banner_product_2.jpg"
                                             alt="Banner 2">
                                     </a>
                                 </div>
@@ -415,16 +413,16 @@
                                 <div class="col-lg-6 col-md-6 col-sm-12 col-12">
                                     <a class="scale_hover" href="#" title="Banner 1">
                                         <img class="img_banner lazyload"
-                                            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC"
-                                            data-src="//bizweb.dktcdn.net/100/397/652/themes/792901/assets/banner_col_2_1.jpg?1603341153354"
+                                            src="../images/bannerbaixinxahang.png"
+                                            data-src="../images/bannerbaixinxahang.png"
                                             alt="Banner 1">
                                     </a>
                                 </div>
                                 <div class="col-lg-6 col-md-6 col-sm-12 col-12">
                                     <a class="scale_hover" href="#" title="Banner 2">
                                         <img class="img_banner lazyload"
-                                            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC"
-                                            data-src="//bizweb.dktcdn.net/100/397/652/themes/792901/assets/banner_col_2_2.jpg?1603341153354"
+                                            src="../images/banner-eob-7566s.u2441.d20161121.t223852.772763.jpg"
+                                            data-src="../images/banner-eob-7566s.u2441.d20161121.t223852.772763.jpg"
                                             alt="Banner 2">
                                     </a>
                                 </div>

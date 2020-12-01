@@ -89,7 +89,7 @@
                                                 <input type="hidden" name="idCart" value="{{ $row->id }}">
                                                 <input class="variantID" type="hidden" name="variantId" value="{{ $row->rowId }}">
 
-                                                <input type="text" min="1"
+                                                <input type="text" min="1" max="5"
                                                     class="check_number_here input-text number-sidebar input_pop input_pop qtyItem{{ $row->id }}"
                                                     id="qtyItem{{ $row->id }}" name="qtyProduct" size="4" value="{{ $row->qty }}">
                                                 <button
@@ -209,11 +209,12 @@
                                 </div>
                                 <div class="select-item-qty-mobile">
                                     <div class="txt_center">
+                                        <input type="hidden" name="idCart" value="{{ $row->id }}">
                                         <input class="variantID" type="hidden" name="variantId" value="{{ $row->rowId }}">
                                         <button  onclick="var result = document.getElementById(&#39;qtyItem{{ $row->id }}1&#39;); var qtyItem{{ $row->id }}1 = result.value; if( !isNaN( qtyItem{{ $row->id }}1 )) result.value++;return false;"
                                                     class="increase_pop items-count btn-plus" type="button"><i
                                                         class="fas fa-plus-circle"></i></button>
-                                        <input type="text" min="1"
+                                        <input type="text" min="1" max="5"
                                                         class="check_number_here input-text number-sidebar input_pop input_pop qtyItem{{ $row->id }}1"
                                                         id="qtyItem{{ $row->id }}1" name="qtyProduct" size="4" value="{{ $row->qty }}">
                                         <button onclick="var result = document.getElementById(&#39;qtyItem{{ $row->id }}1&#39;); var qtyItem{{ $row->id }}1 = result.value; if( !isNaN( qtyItem{{ $row->id }}1 ) &amp;&amp; qtyItem{{ $row->id }}1 &gt; 1 ) result.value--;return false;"
