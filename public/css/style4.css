@@ -26,11 +26,14 @@ a:focus {
 
 .navbar {
     padding: 15px 10px;
-    background: #fff;
+    background: #6D7FCC !important;
     border: none;
     border-radius: 0;
     margin-bottom: 40px;
     box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+}
+.navbar> *{
+color: white;
 }
 
 .navbar-btn {
@@ -146,7 +149,7 @@ span {
 #sidebar ul li.active>a,
 a[aria-expanded="true"] {
     color: #fff;
-    background: #6d7fcc;
+    background: #6D7FCC !important;
 }
 
 a[data-toggle="collapse"] {
@@ -196,7 +199,7 @@ a.article:hover {
 
 #content {
     width: 100%;
-    padding: 20px;
+    padding: 0px;
     min-height: 100vh;
     transition: all 0.3s;
 }

@@ -138,7 +138,7 @@
 										<img src="../images/icon/i_phone.png"
 											alt="Giỏ hàng">
 										Hotline:
-										<a class="fone" href="tel:18006750">1800 6750</a>
+										<a class="fone" href="tel:0369203989">0369.203.989</a>
 									</div>
 									<div class="accout hidden-xs hidden-sm">
 										<div class="tkname">
@@ -262,15 +262,35 @@
 					<!-- Menu mobile -->
 					<div class="contenttop">
 						<div class="section margin-bottom-10 margin-top-20">
-
-                        <a class="btnx" href="{{route('dang-nhap')}}">Đăng nhập</a>&nbsp;/
+                            @if (!Auth::check())
+                            <a class="btnx" href="{{route('dang-nhap')}}">Đăng nhập</a>&nbsp;/
 							<a href="{{route('dang-ki')}}">Đăng ký</a>
+                            @else
+
+                            @endif
+
 
 						</div>
 					</div>
 					<div class="menu_mobile">
 						<ul class="ul_collections">
+                            @if (!Auth::check())
 
+                            @else
+                            <li class="level0 level-top parent">
+								<a href="" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ Auth::user()->ho_ten }}</a>
+
+								<i class="fa fa-plus"></i>
+								<ul class="level0" style="display:none;">
+
+                                    <li class="level1"><a class="btnx" href="{{route('DonHangCuaToi_get')}}">Đơn hàng của tôi</a></li>
+                                    <li class="level1"><a class="btnx" href="{{route('ho-so-tai-khoan',['id'=> Auth::user()->id]) }}">Hồ sơ</a></li>
+                                    <li class="level1"><a class="btnx" href="{{route('dang-xuat')}}">Đăng xuất</a></li>
+
+								</ul>
+
+							</li>
+                            @endif
 							<li class="level0 level-top parent">
 								<a href="/">Trang chủ</a>
 
@@ -295,6 +315,7 @@
                                     @endforeach
 
 								</ul>
+
 
 							</li>
 
@@ -349,12 +370,23 @@
 
                             }
                             .text_header_slider{
-                                text-align: center;
                                 position: absolute;
-                                bottom: 10px;
-                                color: white;
+                                display: flex;
+                                z-index: 999;
+                                bottom: 0;
+                                top: 0;
+                                cursor: pointer;
+                                width: 865px;
+                                margin: 0 auto;
+                                background: none
+                                {{-- background: rgb(0, 0, 0);
+                                padding: 20px;
+                                background: linear-gradient(86deg, rgb(0, 0, 0) 0%, rgba(255, 255, 255, 0) 100%, rgb(255, 255, 255) 100%); --}}
+                                ;
+                            }
+                            .text_header_slider *{
                                 margin: auto;
-                                width: 100%;
+
                             }
                             .sliderShow_img{
                                 height: 500px;
@@ -377,6 +409,9 @@
                                     height: 200px;
                                     width: 100%;
                                 }
+                                .text_header_slider{
+                                    width: 500px;
+                                }
                             }
                         </style>
 
@@ -387,7 +422,7 @@
                                 <div>
                                     <img class="sliderShow_img" src="../images/slider/{{ $sliderShow->hinh_anh }}" alt="">
                                     <div class="text_header_slider">
-                                        {{ $sliderShow->noi_dung_hinh_anh }}
+                                        <p><?php echo $sliderShow->noi_dung_hinh_anh ?></p>
                                     </div>
                                 </div>
                                 @endforeach
@@ -415,22 +450,33 @@
 		</section>
 
 <div class="container">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.10.4/dist/sweetalert2.all.min.js"></script>
+
+
     @if (session('success'))
-    <div class="thongbao alert alert-success alert-dismissible fade show" role="alert">
-        {{ session('success') }}
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-    </div>
+    <script>
+        Swal.fire({
+            text: '{{ session("success") }}',
+            icon: 'success',
+            focusConfirm: false,
+            showCloseButton: true,
+            showConfirmButton: false,
+          });
+    </script>
     @endif
 
+
     @if (session('danger'))
-    <div class="thongbao alert alert-danger alert-dismissible fade show" role="alert">
-        {{ session('danger') }}
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-    </div>
+    <script>
+        Swal.fire({
+            title: 'Lỗi!',
+            text: '{{ session("danger") }}',
+            icon: 'error',
+            focusConfirm: false,
+            showCloseButton: true,
+            showConfirmButton: false,
+          });
+    </script>
     @endif
 </div>
 
@@ -563,37 +609,34 @@
 											<div class="getmail section">
 												<div class="adress">
 													Bán hàng:
-													<a class="fone" href="tel:18006750">1800 6750</a>
+													<a class="fone" href="tel:0369203989">0369.203.989</a>
 												</div>
 
-												<div class="adress">
-													Bán hàng:
-													<a class="fone" href="tel:18006750">1800 6750</a>
-												</div>
+
 
 												<div class="social">
 													<h4>
 														Kết nối với chúng tôi
 													</h4>
 
-													<a class="tw" href="index-1.htm" title="Theo dõi trên Twitter"><i
+													<a class="tw" href="" title="Theo dõi trên Twitter"><i
 															class="fab fa-twitter"></i></a>
 
 
-													<a class="fb" href="sapowebvietnam/index.htm"
+													<a class="fb" href="https://www.facebook.com/eclickbuyshop"
 														title="Theo dõi trên Facebook"><i
 															class="fab fa-facebook-f"></i></a>
 
 
-													<a class="pi" href="index-2.htm" title="Theo dõi trên Pinterest"><i
+													<a class="pi" href="" title="Theo dõi trên Pinterest"><i
 															class="fab fa-pinterest-p"></i></a>
 
 
-													<a class="go" href="index-3.htm" title="Theo dõi trên Google"><i
+													<a class="go" href="" title="Theo dõi trên Google"><i
 															class="fab fa-google-plus-g"></i></a>
 
 
-													<a class="yt" href="index-4.htm" title="Theo dõi trên Youtube"><i
+													<a class="yt" href="https://www.youtube.com/c/Ho%C3%A0ngH%C3%A0iH%C6%B0%E1%BB%9Bc/videos?view_as=subscriber" title="Theo dõi trên Youtube"><i
 															class="fab fa-youtube"></i></a>
 
 												</div>
@@ -623,7 +666,8 @@ margin: 0;">
 											<span class="opacity1">Cung cấp bởi</span>
 
 											<a href=""
-												rel="nofollow" title="Sapo" target="_blank">TEAM ONE FPT POLYTECHNIC</a>
+                                                rel="nofollow" title="Sapo" target="_blank">TEAM ONE FPT POLYTECHNIC</a>
+                                                <i style="color: blueviolet">(Đây là dự án tốt nghiệp, Vui lòng không đặt hàng và thanh toán, Mất tiền ráng chịu)</i>
 
 										</span>
 									</div>

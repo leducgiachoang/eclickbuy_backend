@@ -126,7 +126,6 @@
                     <th>Số lượng</th>
                     <th>Đơn giá</th>
                     <th>Tổng</th>
-                    <th>Xem sản phẩm</th>
 
                 </tr>
             </thead>
@@ -135,11 +134,11 @@
                 @foreach ($db_chi_tiet->sanpham as $chitiet)
                 <tr>
                     <td>{{ $a }}</td>
-                    <td>{{ $chitiet->ten_san_pham }}</td>
+                    <td><a href="{{ route('ChiTietSanPham',['ten_san_pham'=>$chitiet->ten_san_pham]) }}">{{ $chitiet->ten_san_pham }}</a></td>
                     <td>{{ $chitiet->pivot->so_luong }}</td>
                     <td>{{ number_format($chitiet->pivot->don_gia, 3,'.', ',') }} <img width="22" src="images/dong.png" alt=""></td>
                     <td>{{ number_format($chitiet->pivot->don_gia*$chitiet->pivot->so_luong, 3,'.', ',') }} <img width="22" src="images/dong.png" alt=""></td>
-                    <th></th>
+
                 </tr>
                 <?php $a++ ?>
                 @endforeach

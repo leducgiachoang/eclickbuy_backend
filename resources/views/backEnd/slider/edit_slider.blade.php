@@ -26,7 +26,7 @@
                         </div>
                         <div class="form-group">
                             <label for="exampleInputPassword1">Nội Dung</label>
-                            <textarea style="resize:none" rows="5" name="noi_dung_hinh_anh" class="form-control">{{$e_slider->noi_dung_hinh_anh}}</textarea>
+                            <textarea id="editor1" style="resize:none" rows="5" name="noi_dung_hinh_anh" class="form-control">{{$e_slider->noi_dung_hinh_anh}}</textarea>
                         </div>
                         <button type="submit" name="add_slider_product" class="btn btn-info">Cập nhật Slider</button>
                     </form>

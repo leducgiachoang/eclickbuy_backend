@@ -33,10 +33,9 @@ class SocialController extends Controller
  }
  if (Auth::attempt(['email' => $email, 'password' => $getInfo->id])) {
     Auth::attempt(['email' => $email, 'password' => $getInfo->id]);
-    return redirect(route('homepage'));
+    return redirect(route('homepage'))->with('success', 'Đăng nhập thành công');
 }else {
-    Session::put('message', 'Sai tên đăng nhập hoặc mật khẩu');
-    return redirect()->back();
+    return redirect()->back()->with('danger', 'Đăng nhập thành công');
 }
  }
 

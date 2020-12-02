@@ -15,7 +15,8 @@
     <link rel="stylesheet" href="../css/sb-admin-2.min.css">
     <link rel="stylesheet" href="../css/style4.css">
     <script src="../js/jquery.number.min.js"></script>
-
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Pacifico&display=swap" rel="stylesheet">
     <!-- Font Awesome JS -->
     <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
     <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
@@ -185,7 +186,7 @@
         <div id="content">
 
             <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
-                <button type="button" id="sidebarCollapse" class="btn btn-info">
+                <button type="button" id="sidebarCollapse" class="btn btn-outline-info">
                     <i class="fas fa-align-left"></i>
                     <span>MENU</span>
                 </button>
@@ -267,22 +268,31 @@
                         {{-- <span>Tài khoản</span> --}}
                         <img class="img-profile rounded-circle" src="https://source.unsplash.com/QAB-WJcbgJk/60x60">
                         @else
-                        <span class="mr-2 d-none d-lg-inline text-gray-600 small" href="">{{ Auth::user()->ho_ten }}</span>
+                        @if (Auth::user()->so_dien_thoai == '0369203989')
+                        <span style="color: white;font-weight: bold;font-size: 15px;
+                        background: -webkit-linear-gradient(#fff, #ffc107);text-shadow: 0 0px 1px #ffffff;font-family: 'Pacifico', cursive;
+                        -webkit-background-clip: text;
+                        -webkit-text-fill-color: transparent;" class="mr-2 d-none d-lg-inline text-white-900 small" href="">{{ Auth::user()->ho_ten }}</span>
                         <img class="img-profile rounded-circle" src="images/user/{{ Auth::user()->anh_dai_dien }}">
+                        @else
+                        <span style="color: white" class="mr-2 d-none d-lg-inline text-white-900 small">{{ Auth::user()->ho_ten }} </span>
+                        <img class="img-profile rounded-circle" src="images/user/{{ Auth::user()->anh_dai_dien }}">
+                        @endif
+
                         @endif
 
                     </a>
                     <!-- Dropdown - User Information -->
                     <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                      <a class="dropdown-item" href="#">
+                      <a class="dropdown-item" href="{{route('ho-so-tai-khoan',['id'=> Auth::user()->id]) }}">
                         <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                        Profile
+                        Thông tin cá nhân
                       </a>
 
                       <div class="dropdown-divider"></div>
-                      <a class="dropdown-item" href="{{route('dang-xuat')}}" data-toggle="modal" data-target="#logoutModal">
+                      <a class="dropdown-item" href="{{route('dang-xuat')}}">
                         <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                        Logout
+                        Đăng xuất
                       </a>
                     </div>
                   </li>
@@ -310,8 +320,10 @@
                 </button>
             </div>
             @endif
+            <div style="padding: 0 10px">
+                @yield('container')
+            </div>
 
-            @yield('container')
 
 
         </div>

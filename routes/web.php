@@ -20,7 +20,7 @@ Route::get('chinh-sach-bao-hang', 'FrontEnd\homePage@ChinhSachBaoHanh')->name('C
 Route::get('lien-he', 'FrontEnd\homePage@LienHe')->name('LienHe_page');
 Route::get('huong-dan-mua-hang', 'FrontEnd\homePage@HuongDanMuaHang')->name('HuongDanMuaHang');
 Route::get('chinh-sach-giao-hang', 'FrontEnd\homePage@ChinhSachGiaoHang')->name('ChinhSachGiaoHang');
-Route::get('ma-giam-gia', 'FrontEnd\homePage@MaGiamGia')->name('MaGiamGia_get');
+Route::get('ma-giam-gia', 'FrontEnd\homePage@MaGiamGia')->name('MaGiamGia_get')->middleware('CheckLogin');
 Route::get('/auth/redirect/{provider}', 'SocialController@redirect');
 Route::get('/callback/{provider}', 'SocialController@callback');
 
@@ -164,7 +164,7 @@ Route::group(['prefix' => 'gio-hang', 'namespace'=> 'FrontEnd'], function() {
     Route::get('xoa/{id}', 'GioHangController@destroy')->name('XoaHangById');
     Route::get('thanh-toan','GioHangController@thanhtoan')->name('thanhtoan_get')->middleware('CheckLogin');
     Route::post('thanh-toan','GioHangController@thanhtoan_post')->name('thanhtoan_post')->middleware('CheckLogin');
-    Route::get('check_giftcode/{code}','GioHangController@giftCode');
+    Route::get('check_giftcode/{code}','GioHangController@giftCode')->middleware('CheckLogin');
     Route::post('them', 'GioHangController@them')->name('the_san_pham_cart_post');
     Route::get('mua-ngay/{id}', 'GioHangController@muangay')->name('mua_ngay_get');
 });
@@ -201,14 +201,14 @@ Route::group(['prefix' => 'thuong-hieu', 'namespace'=>'FrontEnd'], function () {
 Route::group(['prefix' => 'tai-khoan', 'namespace' => 'FrontEnd'], function () {
     Route::get('dang-nhap-tai-khoan', 'UserController@view_login')->name('dang-nhap');
     Route::post('dang-nhap-tai-khoan', 'UserController@login')->name('dang-nhap');
-    Route::get('dang-xuat-tai-khoan', 'UserController@logout')->name('dang-xuat');
+    Route::get('dang-xuat-tai-khoan', 'UserController@logout')->name('dang-xuat')->middleware('CheckLogin');;
     Route::get('dang-ki-tai-khoan', 'UserController@view_register')->name('dang-ki');
     Route::post('dang-ki-tai-khoan', 'UserController@register')->name('dang-ki');
     Route::get('verify/{code}/{email}', 'UserController@verify')->name('kich-hoat');
-    Route::get('ho-so/{id}', 'UserController@profile')->name('ho-so-tai-khoan');
-    Route::post('cap-nha-ho-so{id}', 'UserController@update_profile')->name('update-profile');
-    Route::get('cap-nhat-mat-khau', 'UserController@view_update_password')->name('view-update-password');
-    Route::post('cap-nhat-mat-khau', 'UserController@update_password')->name('update-password');
+    Route::get('ho-so/{id}', 'UserController@profile')->name('ho-so-tai-khoan')->middleware('CheckLogin');
+    Route::post('cap-nha-ho-so{id}', 'UserController@update_profile')->name('update-profile')->middleware('CheckLogin');;
+    Route::get('cap-nhat-mat-khau', 'UserController@view_update_password')->name('view-update-password')->middleware('CheckLogin');;
+    Route::post('cap-nhat-mat-khau', 'UserController@update_password')->name('update-password')->middleware('CheckLogin');;
     Route::post('quen-mat-khau', 'UserController@reset_password')->name('reset-password');
     Route::get('lay-lai-mat-khau/{code}/{email}', 'UserController@LayLaiMatKhau')->name('LayLaiMatKhau_get');
     Route::post('cap-nhap-mk-khi-quen','UserController@CapNhatMatKhauKhiQuen')->name('CapNhatMatKhauKhiQuen_post');
