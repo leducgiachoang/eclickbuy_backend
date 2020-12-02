@@ -379,9 +379,7 @@
                                 width: 865px;
                                 margin: 0 auto;
                                 background: none
-                                {{-- background: rgb(0, 0, 0);
-                                padding: 20px;
-                                background: linear-gradient(86deg, rgb(0, 0, 0) 0%, rgba(255, 255, 255, 0) 100%, rgb(255, 255, 255) 100%); --}}
+
                                 ;
                             }
                             .text_header_slider *{
@@ -650,8 +648,8 @@
 						</div>
 
 					</div>
-<hr style="padding: 0;
-margin: 0;">
+                    <hr style="padding: 0;
+                    margin: 0;">
 					<div class="bg-footer-bottom copyright clearfix">
 						<div class="container">
 							<div class="inner clearfix">

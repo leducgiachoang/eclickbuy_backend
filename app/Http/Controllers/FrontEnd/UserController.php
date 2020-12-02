@@ -196,10 +196,11 @@ class UserController extends Controller
                 $ho_ten = $nguoidungx->ho_ten;
             }
             $code = bcrypt(md5(time().$request->email));
+            $codexx = preg_replace("/\\//","",$code);
             NguoiDungModel::where('email',$request->email)->update([
-                'code'=>$code
+                'code'=>$codexx
             ]);
-            $url = route('LayLaiMatKhau_get', ['code'=> $code, 'email'=>$request->email]);
+            $url = route('LayLaiMatKhau_get', ['code'=> $codexx, 'email'=>$request->email]);
 
             $data = [
                 'link' => $url,
